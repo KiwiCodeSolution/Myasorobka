@@ -1,2 +1,0 @@
-# Myasorobka
-Front-End part
