@@ -3,7 +3,7 @@ import appState from "../mobX/appState";
 import counter from "../mobX/counter";
 
 console.log("app state theme:", appState.theme);
-// const { count, inc } = counter;
+// const { count, inc } = counter;      Никогда не деструктурируйте объект состояния !!! не будет работать.
 
 const Test = observer(() => {
   const themeStyle = appState.theme === "light" ? "bg-orange-200" : "bg-orange-600"
