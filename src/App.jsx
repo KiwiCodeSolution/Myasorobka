@@ -5,17 +5,19 @@ import ClientPage from './clients';
 import AdminLogin from './adminLogin';
 import AdminPage from './adminPage';
 import NotFound from './notFoundPage';
+import { PrivateRoute, RedirectRoute } from './redirect';
 
-function App() {
+const App = () => {
+
   return (
     // <h1>Hello</h1>
     <Routes >
-      <Route path="/" element={< ClientPage />} />
-      <Route path="/admin" element={<AdminLogin />} />
-      <Route path="/admin/authorized" element={<AdminPage />} />
+      <Route path="/" element={<ClientPage />} />
+      <Route path="/admin" element={<RedirectRoute><AdminLogin /></RedirectRoute>} />
+      <Route path="/admin/authorized" element={<PrivateRoute><AdminPage /></PrivateRoute>} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
-}
+};
 
 export default App;
