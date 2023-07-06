@@ -8,20 +8,13 @@ class AppState {
   constructor() {
     makeAutoObservable(this)
   }
-
-  // setDarkTheme() {
-  //   this.theme = "dark"
-  // }
-  // setLightTheme() {
-  //   this.theme = "light"
-  // }
-  toggleTheme() {
+  toggleTheme = () => {
     this.theme === "light" ? this.theme = "dark" : this.theme = "light"
   }
-  setLang(str) {
+  setLang = (str) => {
     this.lang = str
   }
-  setShowModal(bool) {
+  setShowModal = (bool) => {
     this.showModal = bool
   }
 }

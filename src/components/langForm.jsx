@@ -1,11 +1,12 @@
 import appState from "../mobX/appState";
 
 const LangForm = () => {
+  const { setLang, setShowModal } = appState;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    appState.setLang(e.currentTarget.elements.language.value);
-    appState.setShowModal(false)
+    setLang(e.currentTarget.elements.language.value);
+    setShowModal(false)
   }
 
   return (
