@@ -2,17 +2,8 @@ import { makeAutoObservable } from "mobx";
 
 class Counter {
   count = 3
-
-  constructor () {
-    makeAutoObservable(this)
-  }
-
-  inc() {
-    this.count += 1
-  }
-  setCounter(arg) {
-    this.count += arg
-  }
+  constructor () { makeAutoObservable(this) }
+  inc = () => { this.count += 1  }
 }
 
-export default new Counter;
+export default new Counter();
