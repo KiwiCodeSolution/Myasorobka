@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
@@ -13,7 +13,7 @@ const Portal = ({ children }) => {
     };
   }, [container]);
 
-  return ReactDOM.createPortal(children, container);
+  return createPortal(children, container);
 };
 
 Portal.propTypes = {

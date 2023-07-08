@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import Portal from "./Portal";
 
 const PopupOverlay = ({
-  closeByClickOnOverlay,
-  closeByPressEsc,
-  onClose,
+  closeByClickOnOverlay, // true if you need it
+  closeByPressEsc, // true if you need it
+  onClose, // fn changing state - show modal
   children,
 }) => {
   const onOverlayClick = (e) => {
