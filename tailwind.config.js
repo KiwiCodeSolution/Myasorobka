@@ -20,6 +20,14 @@ export default {
         "bg-orange": "DC8943",
         "bg-light-orange": "D09E32",
       },
+      fontFamily: {
+        basic: "Roboto, sans-serif",
+        review: "Nunito', sans-serif",
+      },
+      backgroundImage: {
+        hero: "url('./src/images/hero.jpg')",
+        about: "url('./src/images/about.jpg')",
+      },
     },
   },
   plugins: [],
