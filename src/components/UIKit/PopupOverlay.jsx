@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 
 import Portal from "./Portal";
+import useScrollBlock from "../../hooks/useScrollBlock";
 
 const PopupOverlay = ({
   closeByClickOnOverlay, // true if you need it
@@ -9,6 +10,8 @@ const PopupOverlay = ({
   onClose, // fn changing state - show modal
   children,
 }) => {
+  const [blockScroll, unblockScroll] = useScrollBlock();
+
   const onOverlayClick = (e) => {
     if (!closeByClickOnOverlay) {
       return;
@@ -22,6 +25,8 @@ const PopupOverlay = ({
   };
 
   useEffect(() => {
+    blockScroll();
+
     if (!closeByPressEsc) {
       return;
     }
@@ -35,9 +40,10 @@ const PopupOverlay = ({
     window.addEventListener("keydown", onPressEsc);
 
     return () => {
+      unblockScroll();
       window.removeEventListener("keydown", onPressEsc);
     };
-  }, [closeByPressEsc, onClose]);
+  }, [closeByPressEsc, onClose, blockScroll, unblockScroll]);
 
   return (
     <>
