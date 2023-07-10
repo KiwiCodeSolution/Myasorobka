@@ -1,6 +1,7 @@
 // import PropTypes from "prop-types";
 import ButtonMain from "./UIKit/button";
 import logo from "../images/logo.png";
+import theme from "../store/theme";
 
 const NAV_ELEMENTS = [
   { name: "Про нас", linkId: "about" },
@@ -8,6 +9,10 @@ const NAV_ELEMENTS = [
   { name: "Контакти", linkId: "contacts" },
   // { name: "Оптовим покупцям", linkId: "wholesale" },
 ]
+const changeTheme = () => {
+  theme.toggleTheme();
+  console.log('theme changed')
+}
 
 const Header = () => {
   return (
@@ -26,7 +31,7 @@ const Header = () => {
             ))}
           </ul>
         </nav>
-        <ButtonMain style="redCustom">
+        <ButtonMain style="redCustom" clickFn={changeTheme}>
           Замовити смаколики
         </ButtonMain>
       </div>
@@ -34,7 +39,4 @@ const Header = () => {
   );
 };
 
-// Header.propTypes = {
-//   toggleModal: PropTypes.func.isRequired,
-// };
 export default Header;

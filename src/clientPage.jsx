@@ -6,15 +6,17 @@ import HeaderHero from "./clientSections/headerHero";
 import Products from "./clientSections/products";
 import Review from "./clientSections/review";
 
+import { observer } from "mobx-react-lite";
+import theme from "./store/theme";
+
 // import AlertPopup from "./components/UIKit/AlertPopup";
 // import ConfirmPopup from "./components/UIKit/ConfirmPopup";
 // import BasePopup from "./components/UIKit/BasePopup";
 
-const ClientPage = () => {
+const ClientPage = observer(() => {
+  console.log("theme backgroung:", theme.bg);
   return (
     <>
-      <h2 className="text-center text-2xl">Cтраничка магазина</h2>
-      <hr />
       <HeaderHero />
       <Products />
       <Favourite />
@@ -60,5 +62,5 @@ const ClientPage = () => {
       </BasePopup> */}
     </>
   );
-};
+});
 export default ClientPage;
