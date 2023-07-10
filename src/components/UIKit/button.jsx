@@ -19,14 +19,14 @@ const buttonsStyle = {
     "bg-bg-red w-[240px] h-[38px] py-2 text-base font-medium text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
 };
 
-const ButtonMain = ({ children, style, btnType, icon, btnClass }) => {
-  // const handleClick = () => (clickFn ? clickFn() : null);
+const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass }) => {
+  const handleClick = () => (clickFn ? clickFn() : null);
   const additionalStyle = btnClass || "";
 
   const currentStyle = `rounded-full mx-auto ${buttonsStyle[style]} ${additionalStyle}`;
 
   return (
-    <button type={btnType || "button"} className={currentStyle}>
+    <button type={btnType || "button"} className={currentStyle} onClick={handleClick}>
       {icon}
       {children}
     </button>
@@ -38,6 +38,7 @@ ButtonMain.propTypes = {
   style: PropTypes.string.isRequired,
   btnType: PropTypes.string,
   icon: PropTypes.element,
+  clickFn: PropTypes.func,
   btnClass: PropTypes.string,
 };
 

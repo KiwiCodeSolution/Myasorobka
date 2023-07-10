@@ -1,10 +1,13 @@
-import { makeAutoObservable } from "mobx"
+import { makeAutoObservable } from "mobx";
+import { makePersistable } from "mobx-persist-store";
 
 class Theme {
   bg = "black"
 
   constructor() {
-  makeAutoObservable(this)
+    makeAutoObservable(this);
+    makePersistable(this, { name: 'ThemeStore', properties: ['bg'], storage: window.localStorage })
+      .then(({ isHydrated }) => console.log("is hydrated:", isHydrated));
   }
 
   toggleTheme = () => {
