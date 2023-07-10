@@ -19,6 +19,4 @@ export const SocialLinksBlock = ({ flexDirection = "col" }) => (
 
 SocialLinksBlock.propTypes = {
   flexDirection: PropTypes.oneOf(["col", "row"]),
-  left: PropTypes.string,
-  bottom: PropTypes.string,
 }

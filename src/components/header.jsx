@@ -1,5 +1,6 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import ButtonMain from "./UIKit/button";
+import logo from "../images/logo.png";
 
 const NAV_ELEMENTS = [
   { name: "Про нас", linkId: "about" },
@@ -8,10 +9,10 @@ const NAV_ELEMENTS = [
   // { name: "Оптовим покупцям", linkId: "wholesale" },
 ]
 
-const Header = ({ toggleModal }) => {
+const Header = () => {
   return (
-    <div className="max-w-[1280px] h-20  mx-auto flex justify-between text-txt-main-white ">
-      <img src="../../src/images/logo.png" alt="Logo" className="w-[76px] h-[76px] ml-20 mt-4" />
+    <div className="max-w-[1280px] h-20 mx-auto flex justify-between text-txt-main-white pt-2">
+      <img src={logo} alt="Logo" className="w-[76px] h-[76px] ml-20" />
       <div className="flex py-5 items-center">
         <nav className="mr-11">
           <ul className="h-20 flex items-center gap-x-11 ">
@@ -25,7 +26,7 @@ const Header = ({ toggleModal }) => {
             ))}
           </ul>
         </nav>
-        <ButtonMain style="redCustom" clickFn={toggleModal}>
+        <ButtonMain style="redCustom">
           Замовити смаколики
         </ButtonMain>
       </div>
@@ -33,7 +34,7 @@ const Header = ({ toggleModal }) => {
   );
 };
 
-Header.propTypes = {
-  toggleModal: PropTypes.func.isRequired,
-};
+// Header.propTypes = {
+//   toggleModal: PropTypes.func.isRequired,
+// };
 export default Header;
