@@ -6,11 +6,13 @@ import HeaderHero from "./clientSections/headerHero";
 import Products from "./clientSections/products";
 import Review from "./clientSections/review";
 
-const ClientPage = () => {
+import { observer } from "mobx-react-lite";
+import theme from "./store/theme";
+
+const ClientPage = observer(() => {
+  console.log("theme backgroung:", theme.bg)
   return (
     <>
-      <h2 className="text-center text-2xl">Cтраничка магазина</h2>
-      <hr />
       <HeaderHero />
       <Products />
       <Favourite />
@@ -20,5 +22,5 @@ const ClientPage = () => {
       <Footer />
     </>
   )
-};
+});
 export default ClientPage;
