@@ -1,5 +1,6 @@
 import ButtonMain from "../components/UIKit/button";
 import Header from "../components/header";
+import { SocialLinksBlock } from "../components/socBlock";
 
 const HeaderHero = () => {
   function toggleModal() {
@@ -23,6 +24,7 @@ const HeaderHero = () => {
           Замовити смаколики
         </ButtonMain>
       </div>
+      <SocialLinksBlock />
     </div>
   );
 };
