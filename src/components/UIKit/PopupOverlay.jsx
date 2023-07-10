@@ -60,10 +60,9 @@ const PopupOverlay = ({
 };
 
 PopupOverlay.propTypes = {
-  isOpened: PropTypes.bool,
   closeByClickOnOverlay: PropTypes.bool,
   closeByPressEsc: PropTypes.bool,
-  onClose: PropTypes.func,
+  onClose: PropTypes.func.isRequired,
   children: PropTypes.node,
 };
 
