@@ -13,7 +13,7 @@ const AdminLogin = observer(() => {
 
   return (
     <>
-      {auth.isLoading ?
+      {!auth.isLoading ?
         (<div className="flex justify-center items-center">
           <RingLoader color="red" loading={auth.isloading} size={120} />
         </div>) :
@@ -32,7 +32,7 @@ const AdminLogin = observer(() => {
             type="button"
             onClick={(() => auth.toggleIsAuth())}
           >
-            enter wothout server
+            enter without server
           </button>
           {auth.error && <PopupOverlay closeByClickOnOverlay closeByPressEsc onClose={() => auth.clearError()}>
             <h2 className="p-20 bg-bg-orange text-2xl rounded-full">{auth.error}</h2>

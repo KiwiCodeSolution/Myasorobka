@@ -16,9 +16,9 @@ export default {
         "bg-red": "#D21C1C",
         "bg-black": "#282828",
         "bg-yellow": "#FBDD3D",
-        "bg-brown": "3C291A",
-        "bg-orange": "DC8943",
-        "bg-light-orange": "D09E32",
+        "bg-brown": "#3C291A",
+        "bg-orange": "#DC8943",
+        "bg-light-orange": "#D09E32",
       },
       fontFamily: {
         basic: "Roboto, sans-serif",
