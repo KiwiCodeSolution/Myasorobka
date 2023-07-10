@@ -28,6 +28,9 @@ export default {
         hero: "url('./src/images/hero.jpg')",
         about: "url('./src/images/about.jpg')",
       },
+      boxShadow: {
+        soc: "0 5px 20px -5px rgba(251,221,61,1)"
+      }
     },
   },
   plugins: [],
