@@ -1,5 +1,8 @@
 import PropTypes from "prop-types";
+
 import PopupOverlay from "../UIKit/PopupOverlay";
+import { Close, Prev } from "../../icons/iconComponent";
+import logoSrc from "../../images/logo.png";
 
 const BasePopup = ({
   title,
@@ -15,7 +18,7 @@ const BasePopup = ({
       closeByClickOnOverlay={closeByClickOnOverlay}
       closeByPressEsc={closeByPressEsc}
     >
-      <div className="w-[600px] h-[500px] rounded-3xl overflow-hidden bg-bg-dark-grey">
+      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-dark-grey">
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px] ">
@@ -23,9 +26,12 @@ const BasePopup = ({
             <button
               type="button"
               onClick={prevFn}
-              className="absolute left-8 bottom-[40%] translate-y-1/2 px-1 h-[40px] bg-slate-100"
+              className="group absolute left-8 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-end gap-x-3 text-bg-light-grey"
             >
-              prev
+              <Prev />
+              <span className="text-base font-bold group-hover:underline group-focus:underline ">
+                Повернутися
+              </span>
             </button>
           )}
           {title ? (
@@ -34,17 +40,17 @@ const BasePopup = ({
             </h1>
           ) : (
             <img
-              src="../../images/logo.png"
+              src={logoSrc}
               alt="app logo"
-              className="absolute left-1/2 bottom-1/2 -translate-x-1/2 translate-y-1/2 w-[60px] h-[60px] bg-slate-100 rounded-full"
+              className="absolute left-1/2 bottom-1/2 -translate-x-1/2 translate-y-1/2 w-[60px] h-[60px] "
             />
           )}
           <button
             type="button"
             onClick={onClose}
-            className="absolute right-8  bottom-[40%] translate-y-1/2 w-8 h-8 bg-white flex justify-center items-center rounded-full"
+            className="group absolute right-8 bottom-[45%] translate-y-1/2 w-8 h-8  flex justify-center items-center "
           >
-            x
+            <Close className=" w-12 h-12 group-hover:fill-bg-red group-focus:fill-bg-red transition-colors duration-[250ms]" />
           </button>
           <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#ACACAC00] via-[#EB1A1A] to-[#ACACAC00]"></div>
         </div>
