@@ -7,14 +7,14 @@ import Products from "./clientSections/products";
 import Review from "./clientSections/review";
 
 import { observer } from "mobx-react-lite";
-import theme from "./store/theme";
 
-// import AlertPopup from "./components/UIKit/AlertPopup";
+import AlertPopup from "./components/UIKit/AlertPopup";
+import auth from "./store/auth";
 // import ConfirmPopup from "./components/UIKit/ConfirmPopup";
 // import BasePopup from "./components/UIKit/BasePopup";
 
 const ClientPage = observer(() => {
-  console.log("theme backgroung:", theme.bg);
+
   return (
     <>
       <HeaderHero />
@@ -33,14 +33,9 @@ const ClientPage = observer(() => {
         <h1>Hello world</h1>
       </ConfirmPopup> */}
 
-      {/* <AlertPopup onOk={() => console.log("alles gut")}>
-        <h1>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-          obcaecati expedita, nihil illo amet voluptate libero ratione optio
-          aspernatur soluta at voluptates maxime earum nostrum! Excepturi quis
-          et corporis tempora?
-        </h1>
-      </AlertPopup> */}
+      {auth.error && <AlertPopup onOk={() => auth.setError("")}>
+        <h1>{auth.error}</h1>
+      </AlertPopup>}
 
       {/* <BasePopup
         onClose={() => console.log("close")}

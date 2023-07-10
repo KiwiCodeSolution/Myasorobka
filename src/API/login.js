@@ -1,4 +1,5 @@
 import axios from "axios";
+import { baseServerURL } from "../config/url";
 
 export const axiosToken = {
   set(token) {axios.defaults.headers.common.Authorization = `Bearer ${token}`},
@@ -6,7 +7,7 @@ export const axiosToken = {
 };
 
 const login = async () => {
-  const {data} = await axios.get("http://localhost:5000/auth");
+  const {data} = await axios.get(`${baseServerURL}auth`);
   if (data.token) axiosToken.set(data.token);
   return data;
 };

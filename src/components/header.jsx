@@ -1,7 +1,6 @@
 // import PropTypes from "prop-types";
 import ButtonMain from "./UIKit/button";
 import logo from "../images/logo.png";
-import theme from "../store/theme";
 
 const NAV_ELEMENTS = [
   { name: "Про нас", linkId: "about" },
@@ -9,11 +8,6 @@ const NAV_ELEMENTS = [
   { name: "Контакти", linkId: "contacts" },
   // { name: "Оптовим покупцям", linkId: "wholesale" },
 ]
-const changeTheme = () => {
-  theme.toggleTheme();
-  console.log('theme changed')
-}
-
 const Header = () => {
   return (
     <div className="max-w-[1280px] h-20 mx-auto flex justify-between text-txt-main-white pt-2">
@@ -31,7 +25,7 @@ const Header = () => {
             ))}
           </ul>
         </nav>
-        <ButtonMain style="redCustom" clickFn={changeTheme}>
+        <ButtonMain style="redCustom" >
           Замовити смаколики
         </ButtonMain>
       </div>

@@ -16,9 +16,13 @@ class Auth {
   toggleIsAuth = () => {
     this.isAuth = !this.isAuth
   }
-  clearError = () => {
-    this.error = ""
+  setError = (errMessage) => {
+    this.error = errMessage;
   }
+  setIsLoading = (bool) => {
+    this.isLoading = bool;
+  }
+
   loginAction = async () => {
     try {
       this.isLoading = true;

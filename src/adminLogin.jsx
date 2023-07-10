@@ -30,7 +30,7 @@ const AdminLogin = observer(() => {
           <button
             className="w-full text-center"
             type="button"
-            onClick={(() => auth.toggleIsAuth())}
+            onClick={() => auth.toggleIsAuth()}
           >
             enter without server
           </button>
