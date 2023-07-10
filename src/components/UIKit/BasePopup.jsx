@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 
-import PopupOverlay from "../UIKit/PopupOverlay";
+import PopupOverlay from "./PopupOverlay";
 import { Close, Prev } from "../../icons/iconComponent";
 import logoSrc from "../../images/logo.png";
 
 const BasePopup = ({
   title,
   onClose,
-  prevFn,
+  onPrevBtnClick,
   closeByClickOnOverlay,
   closeByPressEsc,
   children,
@@ -22,10 +22,10 @@ const BasePopup = ({
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px] ">
-          {prevFn && (
+          {onPrevBtnClick && (
             <button
               type="button"
-              onClick={prevFn}
+              onClick={onPrevBtnClick}
               className="group absolute left-8 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-end gap-x-3 text-bg-light-grey"
             >
               <Prev />
@@ -64,7 +64,7 @@ const BasePopup = ({
 BasePopup.propTypes = {
   title: PropTypes.string,
   onClose: PropTypes.func,
-  prevFn: PropTypes.func,
+  onPrevBtnClick: PropTypes.func,
   closeByClickOnOverlay: PropTypes.bool,
   closeByPressEsc: PropTypes.bool,
   children: PropTypes.node,
