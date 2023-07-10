@@ -47,21 +47,6 @@ const Header = ({ toggleModal }) => {
               </a>
             </li>
           ))}
-          {/* <li className="rounded-full hover:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)] focus:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)]">
-            <a href="" className="">
-              <img src={fbIcon} alt="facebook icon" />
-            </a>
-          </li>
-          <li className="rounded-full hover:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)] focus:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)]">
-            <a href="">
-              <img src="../../src/icons/telegram.svg" alt="telegram icon" />
-            </a>
-          </li>
-          <li className="rounded-full hover:shadow-[0_5px_10px_-5px_rgba(251,221,61,1)] focus:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)]">
-            <a href="">
-              <img src="../../src/icons/instagram.svg" alt="instagram icon" />
-            </a>
-          </li> */}
         </ul>
       </div>
     </div>
