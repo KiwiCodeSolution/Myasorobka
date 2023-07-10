@@ -40,13 +40,13 @@ const Header = ({ toggleModal }) => {
         </div>
 
         <ul className="absolute bottom-[85px] left-[10%] flex flex-col gap-y-6">
-          {SOC_ELEMENTS.map(({ key, imgSrc, alt }) => {
+          {SOC_ELEMENTS.map(({ key, imgSrc, alt }) => (
             <li key={key} className="rounded-full hover:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)] focus:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)]">
               <a href="" className="">
                 <img src={imgSrc} alt={alt} />
               </a>
             </li>
-          })}
+          ))}
           {/* <li className="rounded-full hover:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)] focus:shadow-[0_5px_20px_-5px_rgba(251,221,61,1)]">
             <a href="" className="">
               <img src={fbIcon} alt="facebook icon" />
