@@ -7,18 +7,15 @@ const SOC_ELEMENTS = [
   { key: "inst", Icon: icons.Insta }
 ]
 
-export const SocialLinksBlock = ({ flexDirection = "col" }) => {
-  const shadow = "shadow-[0_5px_20px_-5px_rgba(251,221,61,1)]";
-  return (
-    <ul className={`absolute flex ${flexDirection === "col" ? "flex-col gap-y-6 bottom-[85px] left-[70px]" : "flex-row gap-x-5"} `}>
-      {SOC_ELEMENTS.map(({ key, Icon }) => (
-        <li key={key} className={`rounded-full hover:${shadow} focus:${shadow}`}>
-          <a href="" className=""><Icon /></a>
-        </li>
-      ))}
-    </ul>
-  )
-};
+export const SocialLinksBlock = ({ flexDirection = "col" }) => (
+  <ul className={`absolute flex ${flexDirection === "col" ? "flex-col gap-y-6 bottom-[85px] left-[70px]" : "flex-row gap-x-5"} `}>
+    {SOC_ELEMENTS.map(({ key, Icon }) => (
+      <li key={key} className="rounded-full hover:shadow-soc focus:shadow-soc">
+        <a href="" className=""><Icon /></a>
+      </li>
+    ))}
+  </ul>
+)
 
 SocialLinksBlock.propTypes = {
   flexDirection: PropTypes.oneOf(["col", "row"]),
