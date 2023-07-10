@@ -13,7 +13,7 @@ const AdminLogin = observer(() => {
 
   return (
     <>
-      {!auth.isLoading ?
+      {auth.isLoading ?
         (<div className="flex justify-center items-center">
           <RingLoader color="red" loading={auth.isloading} size={120} />
         </div>) :
