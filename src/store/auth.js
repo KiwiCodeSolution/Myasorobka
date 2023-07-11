@@ -46,7 +46,6 @@ class Auth {
       this.isLoading = false;
     }
   }
-  
 }
 
 export default new Auth();

@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import auth from "./store/auth";
-import PopupOverlay from "./components/UIKit/PopupOverlay";
+import AlertPopup from "./components/UIKit/AlertPopup";
 import RingLoader from "react-spinners/RingLoader";
 
 const AdminLogin = observer(() => {
@@ -34,10 +34,10 @@ const AdminLogin = observer(() => {
           >
             enter without server
           </button>
-          {auth.error && <PopupOverlay closeByClickOnOverlay closeByPressEsc onClose={() => auth.clearError()}>
-            <h2 className="p-20 bg-bg-orange text-2xl rounded-full">{auth.error}</h2>
-          </PopupOverlay>
-          }
+          {auth.error && <AlertPopup onOk={() => auth.setError("")}>
+            <h1>{auth.error}</h1>
+          </AlertPopup>}
+          
         </>)
       }
     </>
