@@ -8,6 +8,7 @@ export default {
         "txt-main-red": "#D21C1C",
         "txt-main-black": "#282828",
         "txt-main-yellow": "#FBDD3D",
+        "txt-grey": "#A3A3A3",
         "bg-main": "#424242",
         "bg-grey": "#5E5E5E",
         "bg-light-grey": "#a3a3a3",
