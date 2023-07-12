@@ -91,6 +91,32 @@ export const Cart = () => (
   </svg>
 );
 
+export const Line = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="216"
+    height="2"
+    viewBox="0 0 216 2"
+    fill="none"
+  >
+    <path d="M0 1H216" stroke="url(#paint0_linear_1347_303)" strokeWidth="2" />
+    <defs>
+      <linearGradient
+        id="paint0_linear_1347_303"
+        x1="0.00454344"
+        y1="1"
+        x2="216.485"
+        y2="0.99996"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#F3F3F3" stopOpacity="0" />
+        <stop offset="0.503292" stopColor="#EB1A1A" />
+        <stop offset="1" stopColor="#F3F3F3" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
 export const Plus = ({ className }) => (
   <svg
     width="16"

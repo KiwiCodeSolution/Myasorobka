@@ -3,9 +3,11 @@ import auth from "../store/auth";
 
 const SideBar = () => {
   const navigate = useNavigate();
+
   const logOut = () => {
     // запрос на сервер, если токен ок, то логаут
-    auth.toggleIsAuth();
+    auth.logoutAction();
+    // auth.toggleIsAuth();
       
   }
   return (

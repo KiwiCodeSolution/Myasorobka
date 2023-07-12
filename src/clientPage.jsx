@@ -10,6 +10,7 @@ import { observer } from "mobx-react-lite";
 
 import AlertPopup from "./components/UIKit/AlertPopup";
 import auth from "./store/auth";
+import Cart from "./components/cart";
 // import ConfirmPopup from "./components/UIKit/ConfirmPopup";
 // import BasePopup from "./components/UIKit/BasePopup";
 
@@ -17,6 +18,7 @@ const ClientPage = observer(() => {
 
   return (
     <>
+      <Cart />
       <HeaderHero />
       <Products />
       <Favourite />

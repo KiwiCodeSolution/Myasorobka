@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import auth from "../store/auth";
 import ButtonMain from "../components/UIKit/button";
 import orders from "../store/orders";
+import ProductList from "../components/productList";
 
 const Products = observer(() => {
   console.log(products.products);
@@ -22,6 +23,7 @@ const Products = observer(() => {
       <ButtonMain style={"addToCart"} clickFn={addToCart}>
         Додати у кошик
       </ButtonMain>
+      <ProductList />
       {auth.isLoading && <p>is loading ...</p>}
     </>
   )

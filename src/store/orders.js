@@ -14,7 +14,8 @@ class Orders {
   }
 
   addToCart = (product, quantity) => {
-    this.order.products.push({ product, quantity })
+    this.order.products.push({ product, quantity });
+    console.dir("order:", this.order);
   }
   // getProductsAction = async () => {
   //   auth.setIsLoading(true);

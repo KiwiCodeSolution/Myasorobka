@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import login from "../API/login";
+import { login, logout } from "../API/authOperations";
 
 class Auth {
   isAuth = false;
@@ -42,8 +42,31 @@ class Auth {
       })
     }
     catch (error) {
-      this.error = error.message;
       this.isLoading = false;
+      error.response ?  
+      this.error = error.response.data.message : // server error
+      this.error = error.message;   // no internet connection
+    }
+  }
+  logoutAction = async () => {
+    try {
+      this.isLoading = true;
+      const result = await logout();
+      runInAction(() => {
+        this.isLoading = false;
+
+        if (result.status === 200) {
+          this.isAuth = false;
+          this.token = "";
+        } else {
+          this.error = "";
+        }
+      })
+    } catch (error) {
+      this.isLoading = false;
+      error.response ?  
+      this.error = error.response.data.message : // server error
+      this.error = error.message;   // no internet connection
     }
   }
 }

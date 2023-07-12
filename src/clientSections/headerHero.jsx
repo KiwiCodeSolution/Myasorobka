@@ -1,8 +1,6 @@
 import ButtonMain from "../components/UIKit/button";
 import Header from "../components/header";
 import { SocialLinksBlock } from "../components/socBlock";
-// import * as icons from "../icons/iconComponent";
-import Cart from "../components/cart";
 
 const HeaderHero = () => {
 
@@ -24,7 +22,6 @@ const HeaderHero = () => {
         </ButtonMain>
       </div>
       <SocialLinksBlock />
-      <Cart />
     </div>
   );
 };

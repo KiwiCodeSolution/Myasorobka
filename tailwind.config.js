@@ -8,6 +8,7 @@ export default {
         "txt-main-red": "#D21C1C",
         "txt-main-black": "#282828",
         "txt-main-yellow": "#FBDD3D",
+        "txt-grey": "#A3A3A3",
         "bg-main": "#424242",
         "bg-grey": "#5E5E5E",
         "bg-light-grey": "#a3a3a3",
@@ -25,8 +26,8 @@ export default {
         review: "Nunito', sans-serif",
       },
       backgroundImage: {
-        hero: "url('./src/images/hero.jpg')",
-        about: "url('./src/images/about.jpg')",
+        hero: "url('images/hero.jpg')",
+        about: "url('images/about.jpg')",
       },
       boxShadow: {
         soc: "0 5px 20px -5px rgba(251,221,61,1)",
