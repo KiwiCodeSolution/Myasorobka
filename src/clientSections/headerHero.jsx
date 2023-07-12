@@ -5,13 +5,12 @@ import { SocialLinksBlock } from "../components/socBlock";
 import Cart from "../components/cart";
 
 const HeaderHero = () => {
-
   return (
     <div className="bg-hero bg-no-repeat bg-cover min-h-[764px] text-txt-main-white relative">
       <div className="max-w-[1280px] mx-auto">
         <Header />
         <p className="mt-[122px] ml-[192px] w-[822px] text-[56px] font-bold leading-tight ">
-          МясорОбка - це завжди{" "}
+          М’ясорОбка - це завжди{" "}
           <span className="text-txt-main-yellow">
             свіже <span className="text-txt-main-white">та</span> корисне м’ясо
           </span>
