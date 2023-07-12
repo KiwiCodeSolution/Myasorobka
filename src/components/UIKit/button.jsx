@@ -8,7 +8,7 @@ const buttonsStyle = {
   redLarge:
     "bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
   addToCart:
-    "bg-bg-red w-[176px] h-[28px] py-[6px] px-3 text-sm font-medium text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
+    "bg-bg-red w-[176px] h-[28px] py-1 px-3 text-sm font-medium text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
   blackSmall:
     "bg-bg-black w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-md hover:shadow-btnBlack focus:shadow-md focus:shadow-btnBlack",
   blackMedium:

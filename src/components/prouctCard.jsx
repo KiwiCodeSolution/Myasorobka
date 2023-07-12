@@ -4,12 +4,13 @@ import * as icons from "../icons/iconComponent";
 import RoundNumbers from "./roundNumbers";
 import ButtonMain from "./UIKit/button";
 import ordersStore from "../store/orders";
+import { useState } from "react";
 
 const ProductCard = ({ product }) => {
-  console.log(product.img)
+  const [qttyBtn, setQttyBtn] = useState(1);
 
   const addToCart = () => {
-    ordersStore.addToCart({ product }, 1);
+    ordersStore.addToCart({ product }, qttyBtn);
   }
 
   return (
@@ -21,7 +22,7 @@ const ProductCard = ({ product }) => {
       {product.discount_price ?
         <p className="px-2 py-1 text-center text-txt-grey font-basic">{product.discount_price} грн / {product.unit}</p> :
         <p className="px-2 py-1 text-center text-txt-grey font-basic">_________________</p>}
-      <RoundNumbers />
+      <RoundNumbers activeBtn={qttyBtn} setQtty={setQttyBtn} />
       <div className="flex justify-center">
         <ButtonMain style={"addToCart"} clickFn={addToCart}>
           Додати у кошик
