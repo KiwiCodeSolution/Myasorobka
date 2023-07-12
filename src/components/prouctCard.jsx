@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
       <p className="px-2 py-1 text-center font-basic">{product.price} грн / {product.unit}</p>
       {product.discount_price ?
         <p className="px-2 py-1 text-center text-txt-grey font-basic">{product.discount_price} грн / {product.unit}</p> :
-        <p className="px-2 py-1 text-center text-txt-grey font-basic">no discount</p>}
+        <p className="px-2 py-1 text-center text-txt-grey font-basic">_________________</p>}
       <RoundNumbers />
       <div className="flex justify-center">
         <ButtonMain style={"addToCart"} clickFn={addToCart}>
