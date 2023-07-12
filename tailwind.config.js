@@ -25,8 +25,8 @@ export default {
         review: "Nunito', sans-serif",
       },
       backgroundImage: {
-        hero: "url('./src/images/hero.jpg')",
-        about: "url('./src/images/about.jpg')",
+        hero: "url('images/hero.jpg')",
+        about: "url('images/about.jpg')",
       },
       boxShadow: {
         soc: "0 5px 20px -5px rgba(251,221,61,1)",
