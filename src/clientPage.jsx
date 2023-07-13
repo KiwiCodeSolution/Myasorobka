@@ -11,11 +11,11 @@ import { observer } from "mobx-react-lite";
 import AlertPopup from "./components/UIKit/AlertPopup";
 import auth from "./store/auth";
 import Cart from "./components/cart";
+import CartPopup from "./components/popups/CartPopup";
 // import ConfirmPopup from "./components/UIKit/ConfirmPopup";
 // import BasePopup from "./components/UIKit/BasePopup";
 
 const ClientPage = observer(() => {
-
   return (
     <>
       <Cart />
@@ -25,6 +25,7 @@ const ClientPage = observer(() => {
       <About />
       <Review />
       <Discount />
+      {/* <CartPopup /> */}
       <Footer />
       {/* <ConfirmPopup
         primaryBtnText="Выдалити"
@@ -35,9 +36,11 @@ const ClientPage = observer(() => {
         <h1>Hello world</h1>
       </ConfirmPopup> */}
 
-      {auth.error && <AlertPopup onOk={() => auth.setError("")}>
-        <h1>{auth.error}</h1>
-      </AlertPopup>}
+      {auth.error && (
+        <AlertPopup onOk={() => auth.setError("")}>
+          <h1>{auth.error}</h1>
+        </AlertPopup>
+      )}
 
       {/* <BasePopup
         onClose={() => console.log("close")}
