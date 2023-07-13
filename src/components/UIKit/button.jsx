@@ -13,6 +13,8 @@ const buttonsStyle = {
     "bg-bg-black w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-md hover:shadow-btnBlack focus:shadow-md focus:shadow-btnBlack",
   blackMedium:
     "bg-bg-black w-[240px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-md hover:shadow-btnBlack focus:shadow-md focus:shadow-btnBlack",
+  categoriesBtn:
+    "bg-bg-white w-[162px] h-[56px] py-3 text-base font-semibold text-txt-main-black hover:shadow-md hover:shadow-btnWhite focus:shadow-md focus:shadow-btnWhite",
   whiteSmall:
     "bg-bg-white w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-black border border-2 border-bg-black hover:shadow-md hover:shadow-btnWhite focus:shadow-md focus:shadow-btnWhite",
   redCustom:
@@ -36,7 +38,15 @@ const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass }) => {
 ButtonMain.propTypes = {
   children: PropTypes.node.isRequired,
   style: PropTypes.oneOf([
-    "redLarge", "redMedium", "redSmall", "addToCart", "blackSmall", "blackMedium", "whiteSmall", "redCustom"
+    "redLarge",
+    "redMedium",
+    "redSmall",
+    "addToCart",
+    "blackSmall",
+    "blackMedium",
+    "whiteSmall",
+    "redCustom",
+    "categoriesBtn",
   ]).isRequired,
   btnType: PropTypes.string,
   icon: PropTypes.element,
