@@ -47,6 +47,19 @@ export const Insta = () => (
   </svg>
 );
 
+export const Cross = ({ className }) => (
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path d="M3.59943 0.363636L5.94602 4.32955H6.03693L8.39489 0.363636H11.1733L7.62216 6.18182L11.2528 12H8.4233L6.03693 8.02841H5.94602L3.55966 12H0.741477L4.38352 6.18182L0.809659 0.363636H3.59943Z" />
+  </svg>
+);
+
 export const Close = ({ className }) => (
   <svg
     width="32"

@@ -1,5 +1,6 @@
 import BasePopup from "../UIKit/BasePopup";
 import ButtonMain from "../UIKit/button";
+import DeleteBtn from "../UIKit/buttons/DeleteBtn";
 import CartProductList from "../CartProductList";
 
 const CartPopup = () => {
@@ -13,6 +14,7 @@ const CartPopup = () => {
     >
       <div className="flex flex-col  items-center text-txt-main-white">
         <CartProductList />
+        {/* <DeleteBtn onClick={() => console.log("something was deleted")} /> */}
 
         <ButtonMain style="redLarge">Перейти до замовлення</ButtonMain>
         <p className="mt-4 text-white text-sm">
