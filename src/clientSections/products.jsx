@@ -23,7 +23,10 @@ const Products = observer(() => {
       <ButtonMain style={"addToCart"} clickFn={addToCart}>
         Додати у кошик
       </ButtonMain>
-      <ProductList />
+      
+      <div className="flex justify-center">
+        <ProductList />
+      </div>
       {auth.isLoading && <p>is loading ...</p>}
     </>
   )
