@@ -17,13 +17,13 @@ const SideBar = () => {
         Каталог Товарів
       </button>
       <div className="py-2">
-        <icon.Line active={pathname.endsWith("products")} long/>
+        <icon.Line active={pathname.endsWith("products")} long />
       </div>
       <button type="button" className="text-3xl" onClick={() => navigate("orders")}>
         Список Замовлень
       </button>
       <div className="py-2">
-        <icon.Line active={pathname.endsWith("orders")} long/>
+        <icon.Line active={pathname.endsWith("orders")} long />
       </div>
       <button type="button" className="w-[240px] mx-auto mt-auto mb-8 text-xl border rounded-full px-[90px] py-[14px]" onClick={() => auth.logoutAction()}>
         Вийти
