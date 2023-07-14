@@ -2,23 +2,23 @@ import PropTypes from "prop-types";
 
 const buttonsStyle = {
   redSmall:
-    "bg-bg-red w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
+    "bg-bg-red w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white hover:shadow-btnRedS focus:shadow-btnRedS",
   redMedium:
-    "bg-bg-red w-[240px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
+    "bg-bg-red w-[240px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed",
   redLarge:
-    "bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
+    "bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed",
   addToCart:
-    "bg-bg-red w-[176px] h-[28px] py-1 px-3 text-sm font-medium text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
+    "bg-bg-red w-[176px] h-[28px] py-1 px-3 text-sm font-medium text-txt-main-white hover:shadow-btnRedS focus:shadow-btnRedS",
   blackSmall:
-    "bg-bg-black w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-md hover:shadow-btnBlack focus:shadow-md focus:shadow-btnBlack",
+    "bg-bg-black w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-btnBlack focus:shadow-btnBlack",
   blackMedium:
     "bg-bg-black w-[240px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-md hover:shadow-btnBlack focus:shadow-md focus:shadow-btnBlack",
   categoriesBtn:
     "bg-bg-white w-[162px] h-[56px] py-3 text-base font-semibold text-txt-main-black hover:shadow-md hover:shadow-btnWhite focus:shadow-md focus:shadow-btnWhite",
   whiteSmall:
-    "bg-bg-white w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-black border border-2 border-bg-black hover:shadow-md hover:shadow-btnWhite focus:shadow-md focus:shadow-btnWhite",
+    "bg-bg-white w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-black border border-2 border-bg-black hover:shadow-btnWhite focus:shadow-btnWhite",
   redCustom:
-    "bg-bg-red w-[240px] h-[38px] py-2 text-base font-medium text-txt-main-white hover:shadow-md hover:shadow-btnRed focus:shadow-md focus:shadow-btnRed",
+    "bg-bg-red w-[240px] h-[38px] py-2 text-base font-medium text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed",
 };
 
 const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass }) => {
