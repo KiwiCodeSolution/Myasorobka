@@ -13,9 +13,7 @@ const AdminPage = observer(() => {
           <RingLoader color="red" loading size={120} />
         </div>) :
         (<>
-        <h2 className="text-center p-4">Админ страничка</h2>
-        <hr />
-        <div className="flex">
+        <div className="flex bg-bg-black">
           <SideBar />
           <Outlet />
         </div>

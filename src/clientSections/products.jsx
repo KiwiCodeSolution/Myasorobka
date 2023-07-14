@@ -18,7 +18,7 @@ const Products = observer(() => {
 
   return (
     <>
-      <div className="pt-8 bg-bg-dark-grey">
+ <div className="pt-8 bg-bg-dark-grey">
         {auth.isLoading && <p>is loading ...</p>}
         <div className="max-w-[1280px] mx-auto">
           <h2 className="text-4xl font-bold text-txt-main-white mb-4">Категорії товарів</h2>
