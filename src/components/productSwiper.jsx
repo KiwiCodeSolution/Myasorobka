@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Grid, Pagination } from "swiper/modules";
+import { observer } from "mobx-react-lite";
 import "swiper/css";
 import "swiper/css/grid";
 import "./productSwiper.css";
@@ -8,16 +9,12 @@ import * as icons from "../icons/iconComponent";
 import ProductCard from "./prouctCard";
 import productStore from "../store/products";
 import filterStore from "../store/filter";
-import filter from "../store/filter";
 
-const ProductSwiper = () => {
+const ProductSwiper = observer(() => {
   const filteredProducts =
     filterStore.category === "Всі продукти" || ""
       ? productStore.products
       : productStore.products.filter((product) => product.category === filterStore.category);
-
-  console.log("filteredProducts", filteredProducts);
-  console.log("filterStore.text", filter.category);
 
   return (
     <div className="h-[780px] w-full py-4 px-[120px] relative product">
@@ -60,6 +57,6 @@ const ProductSwiper = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ProductSwiper;

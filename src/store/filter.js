@@ -11,7 +11,6 @@ class Filter {
 
   setText = (text) => {
     this.category = text;
-    // console.log(this.category);
   };
 }
 
