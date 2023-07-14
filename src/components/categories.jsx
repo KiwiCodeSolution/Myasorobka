@@ -4,7 +4,7 @@ import ButtonMain from "./UIKit/button";
 import * as icons from "../icons/iconComponent";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -20,22 +20,19 @@ const Categories = observer(({ products }) => {
     }
   });
 
-  function filterCategories() {
-    console.log(products);
-    // products.filter();
-  }
+  const filterCategories = () => {
+    console.log("click");
+  };
 
   return (
-    <div className="">
+    <div>
       {categories.length > 0 && (
-        <div className="flex w-[1200px] mx-auto relative ">
+        <div className="flex w-[1200px] mx-auto relative justify-center gap-x-5">
           {categories.length > 6 ? (
             <>
               <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                modules={[Navigation, Scrollbar]}
                 slidesPerView={6}
-                onSlideChange={() => console.log("slide change")}
-                onSwiper={(swiper) => console.log(swiper)}
                 navigation={{
                   nextEl: ".button-next",
                   prevEl: ".button-prev",
@@ -44,7 +41,7 @@ const Categories = observer(({ products }) => {
                 {categories.map((el) => (
                   <SwiperSlide key={el}>
                     <div className="px-4">
-                      <ButtonMain style={"categoriesBtn"} clickFn={filterCategories}>
+                      <ButtonMain style={"categoriesBtn"} clickFn={filterCategories} btnValue={el}>
                         {el}
                       </ButtonMain>
                     </div>
@@ -61,7 +58,7 @@ const Categories = observer(({ products }) => {
           ) : (
             <>
               {categories.map((el) => (
-                <ButtonMain style={"categoriesBtn"} clickFn={filterCategories} key={el}>
+                <ButtonMain style={"categoriesBtn"} clickFn={filterCategories} key={el} btnValue={el}>
                   {el}
                 </ButtonMain>
               ))}
