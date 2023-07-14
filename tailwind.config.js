@@ -35,8 +35,11 @@ export default {
         btnRedS: "0 0 4px 4px rgba(210,28,28,0.4)",
         btnBlack: "0 0 14px 14px rgba(40,40,40,0.4)",
         btnBlackSmall: "0 0 6px 6px rgba(40,40,40,0.4)",
-        btnWhite: "0 0 14px 14px rgba(255,245,218,0.4)"
-      }
+        btnWhite: "0 0 14px 14px rgba(255,245,218,0.4)",
+      },
+      gridTemplateColumns: {
+        productItem: "50% 25% 20% 5%",
+      },
     },
   },
   plugins: [],
