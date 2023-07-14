@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 
 import PopupOverlay from "./PopupOverlay";
-import { Close, Prev } from "../../icons/iconComponent";
+import { Prev } from "../../icons/iconComponent";
+import ClosePopupBtn from "./buttons/ClosePopupBtn";
 import logoSrc from "../../images/logo.png";
 
 const BasePopup = ({
@@ -45,17 +46,13 @@ const BasePopup = ({
               className="absolute left-1/2 bottom-1/2 -translate-x-1/2 translate-y-1/2 w-[60px] h-[60px] "
             />
           )}
-          <button
-            type="button"
-            onClick={onClose}
-            className="group absolute right-8 bottom-[45%] translate-y-1/2 w-8 h-8  flex justify-center items-center "
-          >
-            <Close className=" w-12 h-12 group-hover:fill-bg-red group-focus:fill-bg-red transition-colors duration-[250ms]" />
-          </button>
+          <div className="absolute right-8 bottom-[45%] translate-y-1/2">
+            <ClosePopupBtn onClick={onClose} />
+          </div>
           <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#ACACAC00] via-[#EB1A1A] to-[#ACACAC00]"></div>
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
-        <div className="px-8 py-6 text-white">{children}</div>
+        <div className="px-8 py-6 ">{children}</div>
       </div>
     </PopupOverlay>
   );
