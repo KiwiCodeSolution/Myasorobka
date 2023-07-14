@@ -7,6 +7,7 @@ import Products from "./clientSections/products";
 import Review from "./clientSections/review";
 
 import { observer } from "mobx-react-lite";
+import { useState } from "react";
 
 import AlertPopup from "./components/UIKit/AlertPopup";
 import auth from "./store/auth";
@@ -16,16 +17,20 @@ import CartPopup from "./components/popups/CartPopup";
 // import BasePopup from "./components/UIKit/BasePopup";
 
 const ClientPage = observer(() => {
+  const [isCartPopupShown, setIsCartPopupShown] = useState(false);
+
   return (
     <>
-      <Cart />
+      <Cart onClick={() => setIsCartPopupShown(true)} />
       <HeaderHero />
       <Products />
       <Favourite />
       <About />
       <Review />
       <Discount />
-      {/* <CartPopup /> */}
+      {isCartPopupShown && (
+        <CartPopup onClose={() => setIsCartPopupShown(false)} />
+      )}
       <Footer />
       {/* <ConfirmPopup
         primaryBtnText="Выдалити"

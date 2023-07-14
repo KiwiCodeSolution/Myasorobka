@@ -1,29 +1,33 @@
+/* eslint-disable react/prop-types */
 import Proptypes from "prop-types";
+import { observer } from "mobx-react-lite";
 
+import orderStore from "../store//orders";
 import Counter from "./UIKit/Counter";
+import DeleteBtn from "./UIKit/buttons/DeleteBtn";
 
-function totalPrice(price, quantity) {
-  return price * quantity;
-}
+const CartProductItem = observer(({ name, quantity, price }) => {
+  console.log("quantity: ", quantity);
 
-const CartProductItem = ({ name }) => {
   return (
-    <>
-      <div className="flex items-center justify-between w-full ">
-        <h1>{name}</h1>
-        <Counter
-          initialValue={"0"}
-          onChange={(value) => console.log(totalPrice(301, value))}
-          outlinedControls
-          size="s"
-        />
+    <div className="w-full h-12 grid grid-cols-productItem items-center  ">
+      <span>{name}</span>
+      <Counter
+        initialValue={quantity}
+        onChange={(value) => orderStore.changeProductQuantity(name, value)}
+        size="s"
+      />
+      <span className=" text-center">{quantity * price}</span>
+      <div>
+        <DeleteBtn onClick={() => orderStore.deleteProduct(name)} />
       </div>
-    </>
+    </div>
   );
-};
+});
 
 CartProductItem.propTypes = {
   name: Proptypes.string.isRequired,
+  quantity: Proptypes.number.isRequired,
 };
 
 export default CartProductItem;

@@ -14,10 +14,12 @@ const CONTAINER_STYLES = {
 };
 
 const Counter = ({ initialValue, onChange, size, outlinedControls }) => {
-  const [count, setCount] = useState(() => {
-    const parsedValue = parseInt(initialValue);
-    return isNaN(parsedValue) || parsedValue < 0 ? 0 : parsedValue;
-  });
+  const [count, setCount] = useState(initialValue);
+
+  // const [count, setCount] = useState(() => {
+  //   const parsedValue = parseInt(initialValue);
+  //   return isNaN(parsedValue) || parsedValue < 0 ? 0 : parsedValue;
+  // });
 
   const onInputChange = ({ currentTarget: { value } }) => {
     const parsedValue = Number(value);
@@ -63,7 +65,7 @@ const Counter = ({ initialValue, onChange, size, outlinedControls }) => {
 };
 
 Counter.propTypes = {
-  initialValue: PropTypes.string,
+  initialValue: PropTypes.number,
   onChange: PropTypes.func.isRequired, //recieve one parametr(changed value)
   size: PropTypes.oneOf(["s", "m"]).isRequired, //s-small, m-medium
   outlinedControls: PropTypes.bool,
