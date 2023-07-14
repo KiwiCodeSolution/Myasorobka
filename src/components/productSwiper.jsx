@@ -7,8 +7,18 @@ import "./productSwiper.css";
 import * as icons from "../icons/iconComponent";
 import ProductCard from "./prouctCard";
 import productStore from "../store/products";
+import filterStore from "../store/filter";
+import filter from "../store/filter";
 
 const ProductSwiper = () => {
+  const filteredProducts =
+    filterStore.category === "Всі продукти" || ""
+      ? productStore.products
+      : productStore.products.filter((product) => product.category === filterStore.category);
+
+  console.log("filteredProducts", filteredProducts);
+  console.log("filterStore.text", filter.category);
+
   return (
     <div className="h-[780px] w-full py-4 px-[120px] relative product">
       <>
@@ -30,7 +40,7 @@ const ProductSwiper = () => {
             prevEl: ".prod-button-prev",
           }}
         >
-          {productStore.products.map((product) => (
+          {filteredProducts.map((product) => (
             <SwiperSlide key={product.name}>
               <ProductCard product={product} />
             </SwiperSlide>

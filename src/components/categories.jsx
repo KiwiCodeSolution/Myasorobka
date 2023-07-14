@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-// import products from "../store/products";
+import filter from "../store/filter";
 
 const Categories = observer(({ products }) => {
   const categories = ["Всі продукти"];
@@ -19,10 +19,6 @@ const Categories = observer(({ products }) => {
       categories.push(el.category);
     }
   });
-
-  const filterCategories = () => {
-    console.log("click");
-  };
 
   return (
     <div>
@@ -41,7 +37,7 @@ const Categories = observer(({ products }) => {
                 {categories.map((el) => (
                   <SwiperSlide key={el}>
                     <div className="px-4">
-                      <ButtonMain style={"categoriesBtn"} clickFn={filterCategories} btnValue={el}>
+                      <ButtonMain style={"categoriesBtn"} clickFn={() => filter.setText(el)} btnValue={el}>
                         {el}
                       </ButtonMain>
                     </div>
@@ -58,7 +54,7 @@ const Categories = observer(({ products }) => {
           ) : (
             <>
               {categories.map((el) => (
-                <ButtonMain style={"categoriesBtn"} clickFn={filterCategories} key={el} btnValue={el}>
+                <ButtonMain style={"categoriesBtn"} clickFn={() => filter.setText(el)} key={el} btnValue={el}>
                   {el}
                 </ButtonMain>
               ))}
