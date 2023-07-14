@@ -6,7 +6,7 @@ import AdminLogin from './adminLogin';
 import AdminPage from './adminPage';
 import NotFound from './notFoundPage';
 import { PrivateRoute, RedirectRoute } from './redirect';
-import Orders from './adminSections/orders';
+import Orders from './adminSections/adminOrders';
 import AdminProducts from './adminSections/adminProducts';
 
 const App = () => {
