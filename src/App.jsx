@@ -1,6 +1,10 @@
 // import Test from "./components/test";
 import { Routes, Route } from 'react-router-dom';
 
+import { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
+import authStore from "./store/auth";
+
 import ClientPage from './clientPage';
 import AdminLogin from './adminLogin';
 import AdminPage from './adminPage';
@@ -9,7 +13,11 @@ import { PrivateRoute, RedirectRoute } from './redirect';
 import Orders from './adminSections/adminOrders';
 import AdminProducts from './adminSections/adminProducts';
 
-const App = () => {
+const App = observer(() => {
+
+  useEffect(() => {
+    if (authStore.token) authStore.getCurrentAction()
+  }, []);
 
   return (
     <Routes >
@@ -22,6 +30,6 @@ const App = () => {
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
-};
+});
 
 export default App;

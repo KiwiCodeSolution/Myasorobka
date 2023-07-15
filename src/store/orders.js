@@ -1,7 +1,8 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction, toJS } from "mobx";
 import { makePersistable } from "mobx-persist-store";
+import clientStore from "../store/client";
 // import auth from "./auth";
-// import { placeOrder } from "../API/ordersAPI";
+import { placeOrder } from "../API/ordersAPI";
 
 class Orders {
   order = {
@@ -11,18 +12,17 @@ class Orders {
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
-      name: "orders",
+      name: "order",
       properties: ["order"],
       storage: window.localStorage,
     });
   }
 
   addToCart = (productToAdd, quantity) => {
-    const foundProduct = this.order.products.find(({ product }) => {
-      return product.product.name === productToAdd.product.name;
-    });
+    const foundProduct = this.order.products.find(({ product }) => product.name === productToAdd.name);
 
     if (foundProduct) {
+      console.log("Такой товар уже в корзине");
       // this.changeProductQuantity(
       //   productToAdd.product.name,
       //   quantity + foundProduct.quantity
@@ -46,14 +46,14 @@ class Orders {
 
   get totalPrice() {
     return this.order.products.reduce(
-      (acc, { product, quantity }) => acc + product.product.price * quantity,
+      (acc, { product, quantity }) => acc + product.price * quantity,
       0
     );
   }
 
   deleteProduct(productName) {
     const productIndex = this.order.products.findIndex(
-      ({ product }) => product.product.name === productName
+      ({ product }) => product.name === productName
     );
 
     if (productIndex === -1) {
@@ -65,7 +65,7 @@ class Orders {
 
   changeProductQuantity(productName, newQuantity) {
     const productIndex = this.order.products.findIndex(({ product }) => {
-      return product.product.name === productName;
+      return product.name === productName;
     });
 
     if (productIndex === -1) {
@@ -75,18 +75,31 @@ class Orders {
     this.products[productIndex].quantity = newQuantity;
   }
 
-  // getProductsAction = async () => {
-  //   auth.setIsLoading(true);
-  //   const result = await getProducts();
+  placeOrderAction = async () => {
+    clientStore.setIsLoading(true);
+    // временное .. начало
+    const order = {
+      "customer_name": "Test_name",
+      "phone_number": "+123456789",
+      "delivery_address": "34 Fullton Street",
+      "total_amount": 5555,
+      ...toJS(this.order)
+    }
+    console.log("placingOrder:", order);
+    const result = await placeOrder(order);
+    //  временное .. стоп
 
-  //   runInAction(() => {
-  //     auth.setIsLoading(false);
-  //     if (result.error) {
-  //       auth.setError = result.error;
-  //       return;
-  //     }
-  //     this.products = result.data;
-  //   })
-  // }
+    // const result = await placeOrder(toJS(this.order));
+
+    runInAction(() => {
+      clientStore.setIsLoading(false);
+      if (result.error) {
+        clientStore.setError(result.error);
+        return;
+      }
+      this.order = { products: [] };
+      clientStore.setMessage(result.data.order_number)
+    })
+  }
 }
 export default new Orders();

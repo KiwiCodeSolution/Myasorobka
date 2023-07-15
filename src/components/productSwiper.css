@@ -1,0 +1,20 @@
+.product.pagination {
+  width: 400px;
+  position: absolute;
+  bottom: -24px;
+  margin: 0 auto;
+}
+
+.product .swiper-pagination-bullet {
+  background: #939393;
+  opacity: 0.2;
+  width: 6px;
+  height: 6px;
+}
+
+.product .swiper-pagination-bullet-active {
+  background: #d21c1c;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+}

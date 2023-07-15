@@ -10,7 +10,7 @@ import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
 import AlertPopup from "./components/UIKit/AlertPopup";
-import auth from "./store/auth";
+import clientStore from "./store/client";
 import Cart from "./components/cart";
 import CartPopup from "./components/popups/CartPopup";
 import OrderPopup from "./components/popups/OrderPopup";
@@ -51,9 +51,9 @@ const ClientPage = observer(() => {
         />
       )}
       <Footer />
-      {auth.error && (
-        <AlertPopup onOk={() => auth.setError("")}>
-          <h1>{auth.error}</h1>
+      {clientStore.error && (
+        <AlertPopup onOk={() => clientStore.setError("")}>
+          <h1>{clientStore.error}</h1>
         </AlertPopup>
       )}
     </>

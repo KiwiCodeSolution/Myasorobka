@@ -37,6 +37,9 @@ const CartPopup = observer(({ onClose, onGoToTheOrder }) => {
               <ButtonMain style="redLarge" clickFn={onGoToTheOrder}>
                 Перейти до замовлення
               </ButtonMain>
+              {/* <ButtonMain clickFn={() => ordersStore.placeOrderAction()} style="redLarge">
+                  Перейти до замовлення
+                </ButtonMain> */}
             </div>
             <p className="mt-4 text-white text-sm">
               * Товар ваговий. Вказано середню вагу упаковки продукту. Можливе
