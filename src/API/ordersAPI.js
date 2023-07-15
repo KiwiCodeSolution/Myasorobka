@@ -11,7 +11,8 @@ export const getOrders = async () => {
   }
 };
 
-export const createOrder = async (order) => {
+export const placeOrder = async (order) => {
+  console.log("Placing order:", order)
   try {
     const result = await axios.post(`${baseServerURL}order`, order);
     return result; 

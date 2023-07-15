@@ -12,7 +12,7 @@ const CartProductList = ({ products }) => {
         <span className="text-center">Сума</span>
       </div>
       <ul className="w-full h-40 mt-2 flex flex-col gap-y-2 overflow-auto">
-        {products.map(({ product: { product }, quantity }, idx) => {
+        {products.map(({ product, quantity }, idx) => {
           return (
             <li
               key={product.name}

@@ -5,12 +5,14 @@ import RoundNumbers from "./roundNumbers";
 import ButtonMain from "./UIKit/button";
 import ordersStore from "../store/orders";
 import { useState } from "react";
+// import { toJS } from "mobx";
 
 const ProductCard = ({ product }) => {
   const [qttyBtn, setQttyBtn] = useState(1);
 
   const addToCart = () => {
-    ordersStore.addToCart({ product }, qttyBtn);
+    // console.log("Product to add:", toJS(product));
+    ordersStore.addToCart( product, qttyBtn);
   }
 
   return (
