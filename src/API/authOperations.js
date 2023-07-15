@@ -3,7 +3,7 @@ import { baseServerURL } from "../config/url";
 
 const testData = {
   username: "admin",
-  password: "123456"
+  password: "12345"
 }
 
 export const axiosToken = {
