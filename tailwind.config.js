@@ -28,6 +28,7 @@ export default {
       backgroundImage: {
         hero: "url('images/hero.jpg')",
         about: "url('images/about.jpg')",
+        products: "url('images/waves.png')",
       },
       boxShadow: {
         soc: "0 5px 20px -5px rgba(251,221,61,1)",

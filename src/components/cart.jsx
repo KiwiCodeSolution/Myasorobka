@@ -13,11 +13,7 @@ const Cart = observer(({ onClick }) => {
 
   return (
     <Portal>
-      <button
-        type="button"
-        onClick={onClick}
-        className="fixed bottom-[60px] right-[60px] z-1"
-      >
+      <button type="button" onClick={onClick} className="fixed bottom-[60px] right-[60px] z-50">
         <icons.Cart />
         {!isCartEmpty && (
           <p
