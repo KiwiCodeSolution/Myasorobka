@@ -1,4 +1,5 @@
 import { observer } from "mobx-react-lite";
+import { toJS } from "mobx";
 import products from "../store/products";
 import { useEffect } from "react";
 import auth from "../store/auth";
@@ -7,7 +8,7 @@ import orders from "../store/orders";
 import ProductList from "../components/productList";
 
 const Products = observer(() => {
-  console.log(products.products);
+  console.log(toJS(products.products));
 
   const addToCart = () => {
     orders.addToCart({ product: products.products[1] }, 2);

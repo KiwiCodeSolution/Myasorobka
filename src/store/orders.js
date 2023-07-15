@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable, runInAction, toJS } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import clientStore from "../store/client";
 // import auth from "./auth";
@@ -12,7 +12,7 @@ class Orders {
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
-      name: "orders",
+      name: "order",
       properties: ["order"],
       storage: window.localStorage,
     });
@@ -77,7 +77,19 @@ class Orders {
 
   placeOrderAction = async () => {
     clientStore.setIsLoading(true);
-    const result = await placeOrder(this.order);
+    // временное .. начало
+    const order = {
+      "customer_name": "Test_name",
+      "phone_number": "+123456789",
+      "delivery_address": "34 Fullton Street",
+      "total_amount": 5555,
+      ...toJS(this.order)
+    }
+    console.log("placingOrder:", order);
+    const result = await placeOrder(order);
+    //  временное .. стоп
+
+    // const result = await placeOrder(toJS(this.order));
 
     runInAction(() => {
       clientStore.setIsLoading(false);
@@ -85,8 +97,8 @@ class Orders {
         clientStore.setError(result.error);
         return;
       }
-      this.order = "";
-      clientStore.setMessage(result.data.saved_order)
+      this.order = { products: [] };
+      clientStore.setMessage(result.data.order_number)
     })
   }
 }

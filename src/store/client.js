@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { makePersistable } from "mobx-persist-store";
 
 class Client {
   isLoading = false;
@@ -8,12 +9,20 @@ class Client {
   // theme = "";
   constructor() {
     makeAutoObservable(this);
+    makePersistable(this, {
+      name: "client",
+      properties: ["isLoading", "error", "message"],
+      storage: window.localStorage,
+    })
   }
   setIsLoading = (bool) => {
     this.isLoading = bool;
   }
   setError = (errMessage) => {
     this.error = errMessage;
+  }
+  setMessage = (message) => {
+    this.message = message;
   }
 }
 export default new Client();
