@@ -3,7 +3,7 @@ import { baseServerURL } from "../config/url";
 
 const testData = {
   username: "admin",
-  password: "123456"
+  password: "12345"
 }
 
 export const axiosToken = {
@@ -20,10 +20,14 @@ export const login = async (credentials = testData) => {
 };
 
 export const logout = async () => {
-  console.log("logout")
   const result = await axios.get(`${baseServerURL}auth/logout`);
-  console.log("result:", result)
   if (result.status === 200) axiosToken.unset();
   return result;
 }
 
+export const getCurrent = async (token) => {
+  axiosToken.set(token);
+  const result = await axios.get(`${baseServerURL}auth/getCurrent`);
+  if (result.status === 200) axiosToken.set(result.data.token);
+  return result.data.token;
+}

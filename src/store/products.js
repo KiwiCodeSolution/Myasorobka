@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import auth from "./auth";
+import clientStore from "./client";
 import { getProducts } from "../API/productsAPI";
 
 class Products {
@@ -12,13 +12,13 @@ class Products {
   }
 
   getProductsAction = async () => {
-    auth.setIsLoading(true);
+    clientStore.setIsLoading(true);
     const result = await getProducts();
 
     runInAction(() => {
-      auth.setIsLoading(false);
+      clientStore.setIsLoading(false);
       if (result.error) {
-        auth.setError = result.error;
+        clientStore.setError(result.error);
         return;
       }
       this.products = result.data;

@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import { login, logout } from "../API/authOperations";
+import { login, logout, getCurrent } from "../API/authOperations";
 
 class Auth {
   isAuth = false;
@@ -48,25 +48,42 @@ class Auth {
       this.error = error.message;   // no internet connection
     }
   }
+
   logoutAction = async () => {
     try {
       this.isLoading = true;
-      const result = await logout();
+      await logout();
       runInAction(() => {
         this.isLoading = false;
-
-        if (result.status === 200) {
-          this.isAuth = false;
-          this.token = "";
-        } else {
-          this.error = "";
-        }
+        this.isAuth = false;
+        this.token = "";
       })
     } catch (error) {
       this.isLoading = false;
-      error.response ?  
-      this.error = error.response.data.message : // server error
-      this.error = error.message;   // no internet connection
+      if (error.response) { // server error
+        this.error = error.response.data.message;
+        this.isAuth = false;
+        this.token = "";
+      } else {
+        this.error = error.message;   // no internet connection
+      }
+    }
+  }
+
+  getCurrentAction = async () => {
+    try {
+      console.log("getCurrentAction - token:", this.token);
+      if (this.token) await getCurrent(this.token);
+
+    } catch (error) {
+      this.isLoading = false;
+      if (error.response) { // server error
+        this.error = error.response.data.message;
+        this.isAuth = false;
+        this.token = "";
+      } else {
+        this.error = error.message;   // no internet connection
+      }
     }
   }
 }

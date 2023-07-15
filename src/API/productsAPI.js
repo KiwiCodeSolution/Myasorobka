@@ -12,9 +12,27 @@ export const getProducts = async () => {
   }
 };
 
-export const createProducts = async (product) => {
+export const createProduct = async (product) => {
   try {
     const result = await axios.post(`${baseServerURL}product`, product);
+    return result; 
+  } catch (error) {
+    return { error: error.message }
+  }
+}
+
+export const updateProduct = async (product) => {
+  try {
+    const result = await axios.put(`${baseServerURL}product/${product._id}`, { ...product });
+    return result; 
+  } catch (error) {
+    return { error: error.message }
+  }
+}
+
+export const deleteProduct = async (product) => {
+  try {
+    const result = await axios.delete(`${baseServerURL}product/${product._id}`);
     return result; 
   } catch (error) {
     return { error: error.message }

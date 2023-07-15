@@ -2,10 +2,12 @@ import Proptypes from "prop-types";
 
 import * as icons from "../icons/iconComponent";
 import { observer } from "mobx-react-lite";
+import { toJS } from "mobx";
 import ordersStore from "../store/orders";
 import Portal from "./UIKit/Portal";
 
 const Cart = observer(({ onClick }) => {
+  console.log("Orders store:", toJS(ordersStore.order))
   const cartProductsNum = ordersStore.order.products.length;
   const isCartEmpty = cartProductsNum === 0;
 
