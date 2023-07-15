@@ -7,7 +7,7 @@ import ButtonMain from "../UIKit/button";
 import CartProductList from "../CartProductList";
 import ordersStore from "../../store/orders";
 
-const CartPopup = observer(({ onClose }) => {
+const CartPopup = observer(({ onClose, onGoToTheOrder }) => {
   const isCartEmpty = ordersStore.products.length === 0;
 
   return (
@@ -34,7 +34,9 @@ const CartPopup = observer(({ onClose }) => {
               <CartProductList products={toJS(ordersStore.products)} />
             </div>
             <div className="mt-8">
-              <ButtonMain style="redLarge">Перейти до замовлення</ButtonMain>
+              <ButtonMain style="redLarge" clickFn={onGoToTheOrder}>
+                Перейти до замовлення
+              </ButtonMain>
             </div>
             <p className="mt-4 text-white text-sm">
               * Товар ваговий. Вказано середню вагу упаковки продукту. Можливе
@@ -51,6 +53,7 @@ const CartPopup = observer(({ onClose }) => {
 
 CartPopup.propTypes = {
   onClose: PropTypes.func.isRequired,
+  onGoToTheOrder: PropTypes.func.isRequired,
 };
 
 export default CartPopup;
