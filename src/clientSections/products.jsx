@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { toJS } from "mobx";
-import products from "../store/products";
+import productStore from "../store/products";
 import { useEffect } from "react";
 import auth from "../store/auth";
 // import ButtonMain from "../components/UIKit/button";
@@ -11,7 +10,7 @@ import Categories from "../components/categories";
 const Products = observer(() => {
 
   useEffect(() => {
-    products.getProductsAction();
+    productStore.getProductsAction();
   }, []);
 
   return (
@@ -20,7 +19,7 @@ const Products = observer(() => {
         {auth.isLoading && <p>is loading ...</p>}
         <div className="max-w-[1280px] mx-auto">
           <h2 className="text-4xl font-bold text-txt-main-white mb-4">Категорії товарів</h2>
-          <Categories products={products.products} />
+          <Categories products={productStore.products} />
           <h2 className="text-4xl font-bold text-txt-main-white mt-[72px]">Всі категорії</h2>
         </div>
       </div>
