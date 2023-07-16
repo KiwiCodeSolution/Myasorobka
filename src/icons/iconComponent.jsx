@@ -80,9 +80,9 @@ export const Cart = () => (
   </svg>
 );
 
-export const Line = ({ active, long }) => (
+export const Line = ({ active, long, small }) => (
   <svg
-    width={long ? "356" : "216"}
+    width={long ? "356" : (small ? "162" : "216")}
     height="2"
     viewBox="0 0 216 2"
     fill="none"

@@ -1,11 +1,6 @@
 import axios from "axios";
 import { baseServerURL } from "../config/url";
 
-const testData = {
-  username: "admin",
-  password: "12345"
-}
-
 export const axiosToken = {
   set(token) {axios.defaults.headers.common.Authorization = `Bearer ${token}`},
   unset() {axios.defaults.headers.common.Authorization = ''},
@@ -13,7 +8,8 @@ export const axiosToken = {
 
         // Auth OPERATIONS
 
-export const login = async (credentials = testData) => {
+export const login = async (credentials) => {
+  console.log({ ...credentials });
   const {data} = await axios.post(`${baseServerURL}auth/login`, { ...credentials});
   if (data.token) axiosToken.set(data.token);
   return data;

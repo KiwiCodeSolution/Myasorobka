@@ -8,5 +8,5 @@ export const PrivateRoute = observer(({ children }) => {
 });
 
 export const RedirectRoute = observer(({ children }) => {
-  return auth.isAuth ? <Navigate to="/admin/authorized" /> : children;
+  return auth.isAuth ? <Navigate to="/admin/authorized/products" /> : children;
 });
