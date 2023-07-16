@@ -1,27 +1,31 @@
 import { useForm } from 'react-hook-form';
+import auth from '../store/auth';
 
 export default function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
     if (errors) return;
-    console.log("data:", data)
+    console.log("data:", data);
+    auth.loginAction(data);
   }
   console.log("errors:", errors);
   
   return (
-    <form className="flex flex-col justify-center gap-8 p-8" onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex flex-col justify-center text-txt-main-white p-8" onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor='username'>Ім&apos;я користувача або Email адреса</label>
+      <input
+          type="text"
+          className={`mb-8 p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"}`}
+          {...register("username", { required: true, maxLength: 20 })} />
+      <label htmlFor='password'>Пароль</label>
       <input
         type="text"
-        className={`text-txt-main-white ${errors.username ? "bg-bg-orange" : "bg-bg-main"}`}
-        placeholder="User name" {...register("username", { required: true, maxLength: 20 })} />
-      <input
-        type="text"
-        className={`text-txt-main-white ${errors.password ? "bg-bg-orange" : "bg-bg-main"}`}
-        placeholder="Password" {...register("password", { required: true, minLength: 6 })} />
+        className={`mb-8 p-1 ${errors.password ? "bg-bg-orange" : "bg-bg-main"}`}
+        {...register("password", { required: true, minLength: 6 })} />
       <input
         type="submit"
-        className="bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto rounded-full" />
-
+        className="bg-bg-red w-[280px] h-[56px] mt-8 py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto rounded-full" />
+      {/* <input type="submit" /> */}
     </form>
   );
 }

@@ -8,18 +8,17 @@ import logo from "./images/logo.png";
 const AdminLogin = observer(() => {
   console.log("isAuth:", auth.isAuth);
 
-  const handleLogin = () => {
-    // console.log("handle login");
-    auth.loginAction();
-  }
+  // const handleLogin = () => {
+  //   auth.loginAction();
+  // }
 
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center h-screen">
       {auth.isLoading ?
         (<div className="">
           <RingLoader color="red" loading size={120} />
         </div>) :
-        (<div className="mx-auto my-auto w-[640px] h-[480px] bg-bg-black">
+        (<div className="w-[640px] h-[480px] bg-bg-black">
           <div className="pt-8 pb-4">
             <img src={logo} alt="Logo" className="w-[108px] h-[108px] mx-auto" />
           </div>
