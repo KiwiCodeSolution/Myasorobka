@@ -34,6 +34,20 @@ const Categories = observer(({ products }) => {
                   nextEl: ".button-next",
                   prevEl: ".button-prev",
                 }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1,
+                  },
+                  639: {
+                    slidesPerView: 2,
+                  },
+                  1000: {
+                    slidesPerView: 4,
+                  },
+                  1200: {
+                    slidesPerView: 6,
+                  },
+                }}
               >
                 {categories.map((el) => (
                   <SwiperSlide key={el}>
