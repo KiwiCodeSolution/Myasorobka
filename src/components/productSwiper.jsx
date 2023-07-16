@@ -14,10 +14,12 @@ const ProductSwiper = observer(() => {
   const filteredProducts =
     filterStore.category === "Всі продукти" || ""
       ? productStore.products
-      : productStore.products.filter((product) => product.category === filterStore.category);
+      : productStore.products.filter(
+          (product) => product.category === filterStore.category
+        );
 
   return (
-    <div className="h-[780px] w-full py-4 px-[120px] relative product">
+    <div className="h-[780px] w-full py-4 px-[120px] relative product z-[1]">
       <>
         <Swiper
           modules={[Navigation, Grid, Pagination]}

@@ -55,7 +55,7 @@ const PopupOverlay = ({
     <>
       <Portal>
         <div
-          className={`fixed inset-0 flex justify-center items-center cursor-pointer ${overlayStyles}`}
+          className={`fixed inset-0 flex justify-center items-center cursor-pointer z-[1]  ${overlayStyles}`}
           onClick={onOverlayClick}
         >
           {children}
