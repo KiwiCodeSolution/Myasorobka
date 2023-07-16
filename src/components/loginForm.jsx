@@ -4,7 +4,7 @@ import auth from '../store/auth';
 export default function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
-    if (errors) return;
+    if (errors.username || errors.password) return;
     console.log("data:", data);
     auth.loginAction(data);
   }
@@ -19,7 +19,7 @@ export default function LoginForm() {
           {...register("username", { required: true, maxLength: 20 })} />
       <label htmlFor='password'>Пароль</label>
       <input
-        type="text"
+        type="password"
         className={`mb-8 p-1 ${errors.password ? "bg-bg-orange" : "bg-bg-main"}`}
         {...register("password", { required: true, minLength: 6 })} />
       <input
