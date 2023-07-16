@@ -1,40 +1,30 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Grid, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { observer } from "mobx-react-lite";
 import "swiper/css";
-import "swiper/css/grid";
 import "./productSwiper.css";
 
 import * as icons from "../icons/iconComponent";
 import ProductCard from "./prouctCard";
 import productStore from "../store/products";
-import filterStore from "../store/filter";
 
-const AllProductSwiper = observer(() => {
-  const filteredProducts =
-    filterStore.category === "Всі продукти" || ""
-      ? productStore.products
-      : productStore.products.filter((product) => product.category === filterStore.category);
+const FavouriteProductSwiper = observer(() => {
+  const favouriteProducts = productStore.products.filter((product) => product.favourite === true);
 
   return (
-    <div className="h-[780px] w-full py-4 px-[120px] relative product">
+    <div className="w-full py-4 px-[120px] relative favourite">
       <>
         <Swiper
-          modules={[Navigation, Grid, Pagination]}
+          modules={[Navigation, Pagination]}
           rewind={true}
           slidesPerView={4}
-          spaceBetween={30}
-          grid={{
-            rows: 2,
-            fill: "row",
-          }}
           pagination={{
             clickable: true,
-            el: ".pagination",
+            el: ".fav-pagination",
           }}
           navigation={{
-            nextEl: ".prod-button-next",
-            prevEl: ".prod-button-prev",
+            nextEl: ".fav-button-next",
+            prevEl: ".fav-button-prev",
           }}
           breakpoints={{
             0: {
@@ -55,26 +45,26 @@ const AllProductSwiper = observer(() => {
             },
           }}
         >
-          {filteredProducts.map((product) => (
+          {favouriteProducts.map((product) => (
             <SwiperSlide key={product.name}>
               <ProductCard product={product} />
             </SwiperSlide>
           ))}
         </Swiper>
 
-        <button className="prod-button-next right-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full">
+        <button className="fav-button-next right-[40%] bottom-[-4px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full">
           <icons.Right />
         </button>
-        <button className="prod-button-prev left-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full">
+        <button className="fav-button-prev left-[40%] bottom-[-4px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full">
           <icons.Left />
         </button>
       </>
 
       <div className="w-full mt-14">
-        <div className="pagination flex justify-center gap-x-4"></div>
+        <div className="fav-pagination flex justify-center gap-x-4"></div>
       </div>
     </div>
   );
 });
 
-export default AllProductSwiper;
+export default FavouriteProductSwiper;

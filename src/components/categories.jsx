@@ -4,13 +4,11 @@ import ButtonMain from "./UIKit/button";
 import * as icons from "../icons/iconComponent";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Scrollbar } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 
-import filter from "../store/filter";
+import filterStore from "../store/filter";
 
 const Categories = observer(({ products }) => {
   const categories = ["Всі продукти"];
@@ -30,7 +28,7 @@ const Categories = observer(({ products }) => {
           {categories.length > 6 ? (
             <>
               <Swiper
-                modules={[Navigation, Scrollbar]}
+                modules={[Navigation]}
                 slidesPerView={6}
                 navigation={{
                   nextEl: ".button-next",
@@ -40,8 +38,12 @@ const Categories = observer(({ products }) => {
                 {categories.map((el) => (
                   <SwiperSlide key={el}>
                     <div className="px-4">
-                      <ButtonMain style={"categoriesBtn"} clickFn={() => filter.setText(el)} btnValue={el}>
-                        <p>{el}</p>
+                      <ButtonMain
+                        style={"categoriesBtn"}
+                        clickFn={() => filterStore.setText(el)}
+                        icon={el === filterStore.category ? <icons.Line active small /> : <icons.Line category small />}
+                      >
+                        {el}
                       </ButtonMain>
                     </div>
                   </SwiperSlide>
@@ -59,10 +61,9 @@ const Categories = observer(({ products }) => {
               {categories.map((el) => (
                 <ButtonMain
                   style={"categoriesBtn"}
-                  clickFn={() => filter.setText(el)}
+                  clickFn={() => filterStore.setText(el)}
                   key={el}
-                  icon={<icons.Line />}
-                  // icon={el === filter ? <icons.Line active /> : <icons.Line />}
+                  icon={el === filterStore.category ? <icons.Line active small /> : <icons.Line category small />}
                 >
                   {el}
                 </ButtonMain>

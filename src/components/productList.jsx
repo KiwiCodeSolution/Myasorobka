@@ -1,22 +1,22 @@
 import { observer } from "mobx-react-lite";
 
-import productStore from "../store/products";
-import ProductCard from "./prouctCard";
 import AllProductSwiper from "./allProductSwiper";
+import FavouriteProductSwiper from "./favouriteProductSwiper";
 
 const ProductList = observer(({ favourite }) => {
   return favourite ? (
-    <ul className="w-screen py-4 flex justify-center gap-8">
-      {productStore.products
-        .filter((product) => product.favourite === true)
-        .map((product) => (
-          <li key={product.name}>
-            <ProductCard product={product} />
-          </li>
-        ))}
-    </ul>
+    // <ul className="w-screen py-4 flex justify-center gap-8">
+    //   {productStore.products
+    //     .filter((product) => product.favourite === true)
+    //     .map((product) => (
+    //       <li key={product.name}>
+    //         <ProductCard product={product} />
+    //       </li>
+    //     ))}
+    // </ul>
+    <FavouriteProductSwiper />
   ) : (
-    <AllProductSwiper viewGrid />
+    <AllProductSwiper />
   );
 });
 

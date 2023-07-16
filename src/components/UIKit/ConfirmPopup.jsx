@@ -4,16 +4,10 @@ import PopupOverlay from "./PopupOverlay";
 import ButtonMain from "./button";
 import logoSrc from "../../images/logo.png";
 
-const ConfirmPopup = ({
-  primaryBtnText,
-  onPrimaryBtnClick,
-  secondaryBtnText,
-  onSecondaryBtnClick,
-  children,
-}) => {
+const ConfirmPopup = ({ primaryBtnText, onPrimaryBtnClick, secondaryBtnText, onSecondaryBtnClick, children }) => {
   return (
     <PopupOverlay onClose={onSecondaryBtnClick}>
-      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-dark-grey">
+      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px] ">
