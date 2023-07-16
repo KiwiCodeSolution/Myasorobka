@@ -4,13 +4,11 @@ import ButtonMain from "./UIKit/button";
 import * as icons from "../icons/iconComponent";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Scrollbar } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 
-import filter from "../store/filter";
+import filterStore from "../store/filter";
 
 const Categories = observer(({ products }) => {
   const categories = ["Всі продукти"];
@@ -20,41 +18,67 @@ const Categories = observer(({ products }) => {
     }
   });
 
+  const distanceTop = categories.length > 6 ? "" : "mt-4";
+  const distanceBottom = categories.length > 6 ? "mb-11" : "mb-[72px]";
+
   return (
-    <div>
+    <div className={`categories ${distanceTop} ${distanceBottom}`}>
       {categories.length > 0 && (
         <div className="flex w-[1200px] mx-auto relative justify-center gap-x-5">
           {categories.length > 6 ? (
             <>
               <Swiper
-                modules={[Navigation, Scrollbar]}
+                modules={[Navigation]}
                 slidesPerView={6}
                 navigation={{
                   nextEl: ".button-next",
                   prevEl: ".button-prev",
                 }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1,
+                  },
+                  639: {
+                    slidesPerView: 2,
+                  },
+                  1000: {
+                    slidesPerView: 4,
+                  },
+                  1200: {
+                    slidesPerView: 6,
+                  },
+                }}
               >
                 {categories.map((el) => (
                   <SwiperSlide key={el}>
                     <div className="px-4">
-                      <ButtonMain style={"categoriesBtn"} clickFn={() => filter.setText(el)} btnValue={el}>
+                      <ButtonMain
+                        style={"categoriesBtn"}
+                        clickFn={() => filterStore.setText(el)}
+                        icon={el === filterStore.category ? <icons.Line active small /> : <icons.Line category small />}
+                      >
                         {el}
                       </ButtonMain>
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <button className="button-next right-[-32px] top-3 w-8 h-8 absolute">
+              <button className="button-next right-[-32px] top-9 w-8 h-8 absolute">
                 <icons.SwipeRight />
               </button>
-              <button className="button-prev left-[-32px] top-3 w-8 h-8 absolute">
+              <button className="button-prev left-[-32px] top-9 w-8 h-8 absolute">
                 <icons.SwipeLeft />
               </button>
             </>
           ) : (
             <>
               {categories.map((el) => (
-                <ButtonMain style={"categoriesBtn"} clickFn={() => filter.setText(el)} key={el} btnValue={el}>
+                <ButtonMain
+                  style={"categoriesBtn"}
+                  clickFn={() => filterStore.setText(el)}
+                  key={el}
+                  icon={el === filterStore.category ? <icons.Line active small /> : <icons.Line category small />}
+                >
                   {el}
                 </ButtonMain>
               ))}
