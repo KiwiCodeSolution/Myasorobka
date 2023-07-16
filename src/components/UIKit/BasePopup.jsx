@@ -19,7 +19,7 @@ const BasePopup = ({
       closeByClickOnOverlay={closeByClickOnOverlay}
       closeByPressEsc={closeByPressEsc}
     >
-      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-dark-grey">
+      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px] ">

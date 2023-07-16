@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import auth from "./store/auth";
 import AlertPopup from "./components/UIKit/AlertPopup";
 import RingLoader from "react-spinners/RingLoader";
-import LoginForm from "./components/loginForm";
+import LoginForm from "./components/Forms/loginForm";
 import logo from "./images/logo.png";
 
 const AdminLogin = observer(() => {
