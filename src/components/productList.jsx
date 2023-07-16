@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 
 import productStore from "../store/products";
 import ProductCard from "./prouctCard";
-import ProductSwiper from "./productSwiper";
+import AllProductSwiper from "./allProductSwiper";
 
 const ProductList = observer(({ favourite }) => {
   return favourite ? (
@@ -16,7 +16,7 @@ const ProductList = observer(({ favourite }) => {
         ))}
     </ul>
   ) : (
-    <ProductSwiper />
+    <AllProductSwiper viewGrid />
   );
 });
 

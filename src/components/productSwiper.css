@@ -1,3 +1,7 @@
+.swiper {
+  z-index: 0;
+}
+
 .product.pagination {
   width: 400px;
   position: absolute;
@@ -17,4 +21,10 @@
   opacity: 1;
   width: 8px;
   height: 8px;
+}
+
+.categories .swiper {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 10px;
 }

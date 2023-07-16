@@ -20,8 +20,11 @@ const Categories = observer(({ products }) => {
     }
   });
 
+  const distanceTop = categories.length > 6 ? "" : "mt-4";
+  const distanceBottom = categories.length > 6 ? "mb-11" : "mb-[72px]";
+
   return (
-    <div>
+    <div className={`categories ${distanceTop} ${distanceBottom}`}>
       {categories.length > 0 && (
         <div className="flex w-[1200px] mx-auto relative justify-center gap-x-5">
           {categories.length > 6 ? (
@@ -38,23 +41,29 @@ const Categories = observer(({ products }) => {
                   <SwiperSlide key={el}>
                     <div className="px-4">
                       <ButtonMain style={"categoriesBtn"} clickFn={() => filter.setText(el)} btnValue={el}>
-                        {el}
+                        <p>{el}</p>
                       </ButtonMain>
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <button className="button-next right-[-32px] top-3 w-8 h-8 absolute">
+              <button className="button-next right-[-32px] top-9 w-8 h-8 absolute">
                 <icons.SwipeRight />
               </button>
-              <button className="button-prev left-[-32px] top-3 w-8 h-8 absolute">
+              <button className="button-prev left-[-32px] top-9 w-8 h-8 absolute">
                 <icons.SwipeLeft />
               </button>
             </>
           ) : (
             <>
               {categories.map((el) => (
-                <ButtonMain style={"categoriesBtn"} clickFn={() => filter.setText(el)} key={el} btnValue={el}>
+                <ButtonMain
+                  style={"categoriesBtn"}
+                  clickFn={() => filter.setText(el)}
+                  key={el}
+                  icon={<icons.Line />}
+                  // icon={el === filter ? <icons.Line active /> : <icons.Line />}
+                >
                   {el}
                 </ButtonMain>
               ))}

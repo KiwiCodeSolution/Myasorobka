@@ -10,7 +10,7 @@ import ProductCard from "./prouctCard";
 import productStore from "../store/products";
 import filterStore from "../store/filter";
 
-const ProductSwiper = observer(() => {
+const AllProductSwiper = observer(({ viewGrid }) => {
   const filteredProducts =
     filterStore.category === "Всі продукти" || ""
       ? productStore.products
@@ -24,10 +24,14 @@ const ProductSwiper = observer(() => {
           rewind={true}
           slidesPerView={4}
           spaceBetween={30}
-          grid={{
-            rows: 2,
-            fill: "row",
-          }}
+          grid={
+            viewGrid
+              ? {
+                  rows: 2,
+                  fill: "row",
+                }
+              : ""
+          }
           pagination={{
             clickable: true,
             el: ".pagination",
@@ -59,4 +63,4 @@ const ProductSwiper = observer(() => {
   );
 });
 
-export default ProductSwiper;
+export default AllProductSwiper;
