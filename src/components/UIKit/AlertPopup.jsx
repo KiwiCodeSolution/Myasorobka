@@ -7,7 +7,7 @@ import logoSrc from "../../images/logo.png";
 const AlertPopup = ({ onOk, children }) => {
   return (
     <PopupOverlay onClose={onOk}>
-      <div className="w-[640px] rounded-3xl overflow-hidden bg-bg-dark-grey">
+      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px] ">

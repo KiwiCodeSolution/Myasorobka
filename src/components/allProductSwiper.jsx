@@ -10,7 +10,7 @@ import ProductCard from "./prouctCard";
 import productStore from "../store/products";
 import filterStore from "../store/filter";
 
-const ProductSwiper = observer(() => {
+const AllProductSwiper = observer(() => {
   const filteredProducts =
     filterStore.category === "Всі продукти" || ""
       ? productStore.products
@@ -38,6 +38,24 @@ const ProductSwiper = observer(() => {
             nextEl: ".prod-button-next",
             prevEl: ".prod-button-prev",
           }}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 0,
+            },
+            639: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            1000: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+            },
+          }}
         >
           {filteredProducts.map((product) => (
             <SwiperSlide key={product.name}>
@@ -46,10 +64,10 @@ const ProductSwiper = observer(() => {
           ))}
         </Swiper>
 
-        <button className="prod-button-next right-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full">
+        <button className="prod-button-next right-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper">
           <icons.Right />
         </button>
-        <button className="prod-button-prev left-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full">
+        <button className="prod-button-prev left-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
       </>
@@ -61,4 +79,4 @@ const ProductSwiper = observer(() => {
   );
 });
 
-export default ProductSwiper;
+export default AllProductSwiper;

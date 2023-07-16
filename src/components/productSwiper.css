@@ -1,3 +1,7 @@
+.swiper {
+  z-index: 0;
+}
+
 .product.pagination {
   width: 400px;
   position: absolute;
@@ -5,16 +9,33 @@
   margin: 0 auto;
 }
 
-.product .swiper-pagination-bullet {
+.product .swiper-pagination-bullet,
+.favourite .swiper-pagination-bullet {
+  border-radius: 50%;
   background: #939393;
   opacity: 0.2;
   width: 6px;
   height: 6px;
 }
 
-.product .swiper-pagination-bullet-active {
+.product .swiper-pagination-bullet-active,
+.favourite .swiper-pagination-bullet-active {
+  border-radius: 50%;
   background: #d21c1c;
   opacity: 1;
   width: 8px;
   height: 8px;
+}
+
+.categories .swiper {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 10px;
+}
+
+.product .swiper-slide,
+.product .swiper-slide-active,
+.favourite .swiper-slide,
+.favourite .swiper-slide-active {
+  padding: 0 10px;
 }

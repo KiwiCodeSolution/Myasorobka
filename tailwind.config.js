@@ -12,7 +12,6 @@ export default {
         "bg-main": "#424242",
         "bg-grey": "#5E5E5E",
         "bg-light-grey": "#a3a3a3",
-        "bg-dark-grey": "#282828",
         "bg-white": "#FFF5DA",
         "bg-red": "#D21C1C",
         "bg-black": "#282828",
@@ -37,6 +36,7 @@ export default {
         btnBlack: "0 0 14px 14px rgba(40,40,40,0.4)",
         btnBlackSmall: "0 0 6px 6px rgba(40,40,40,0.4)",
         btnWhite: "0 0 14px 14px rgba(255,245,218,0.4)",
+        swiper: "0 0 5px 5px rgba(255,245,218,0.4)",
       },
       gridTemplateColumns: {
         productItem: "50% 25% 20% 5%",
