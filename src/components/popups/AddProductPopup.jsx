@@ -4,6 +4,7 @@ import AddProductForm from "../Forms/AddProductForm";
 import AddImage from "../AddImage";
 
 const AddProductPopup = ({ onClose }) => {
+
   return (
     <BasePopup
       title="Додати товар"
@@ -11,13 +12,13 @@ const AddProductPopup = ({ onClose }) => {
       closeByClickOnOverlay
       onClose={onClose}
     >
-
-        <AddImage />
-        <AddProductForm />
-
+      <AddImage />
+      <AddProductForm />
+      
     </BasePopup>
   )
-}
+};
+
 export default AddProductPopup;
 
 AddProductPopup.propTypes = ({
