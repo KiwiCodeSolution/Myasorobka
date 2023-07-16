@@ -62,10 +62,10 @@ const AllProductSwiper = observer(() => {
           ))}
         </Swiper>
 
-        <button className="prod-button-next right-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full">
+        <button className="prod-button-next right-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper">
           <icons.Right />
         </button>
-        <button className="prod-button-prev left-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full">
+        <button className="prod-button-prev left-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
       </>
