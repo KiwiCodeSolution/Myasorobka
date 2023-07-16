@@ -5,10 +5,10 @@ export default function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
     if (errors.username || errors.password) return;
-    console.log("data:", data);
+    // console.log("data:", data);
     auth.loginAction(data);
   }
-  console.log("errors:", errors);
+  // console.log("errors:", errors);
   
   return (
     <form className="flex flex-col justify-center text-txt-main-white p-8" onSubmit={handleSubmit(onSubmit)}>
