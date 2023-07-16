@@ -23,10 +23,10 @@ class Auth {
     this.isLoading = bool;
   }
 
-  loginAction = async () => {
+  loginAction = async (credentials) => {
     try {
       this.isLoading = true;
-      const { message, token } = await login();
+      const { message, token } = await login(credentials);
       runInAction(() => {
         this.isLoading = false;
 
