@@ -21,16 +21,16 @@ const buttonsStyle = {
     "bg-bg-red w-[240px] h-[38px] py-2 text-base font-medium text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto",
 };
 
-const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass, btnValue }) => {
+const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass }) => {
   const handleClick = () => (clickFn ? clickFn() : null);
   const additionalStyle = btnClass || "";
 
   const currentStyle = `rounded-full ${buttonsStyle[style]} ${additionalStyle}`;
 
   return (
-    <button type={btnType || "button"} className={currentStyle} onClick={handleClick} value={btnValue || ""}>
-      {icon}
+    <button type={btnType || "button"} className={currentStyle} onClick={handleClick}>
       {children}
+      {icon}
     </button>
   );
 };
@@ -52,7 +52,6 @@ ButtonMain.propTypes = {
   icon: PropTypes.element,
   clickFn: PropTypes.func,
   btnClass: PropTypes.string,
-  btnValue: PropTypes.string,
 };
 
 export default ButtonMain;

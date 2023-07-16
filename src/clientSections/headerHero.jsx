@@ -8,9 +8,9 @@ const HeaderHero = () => {
       <div className="max-w-[1280px] mx-auto">
         <Header />
         <p className="mt-[122px] ml-[192px] w-[822px] text-[56px] font-bold leading-tight ">
-          М’ясорОбка - це завжди{" "}
+          М&apos;ясорОбка - це завжди{" "}
           <span className="text-txt-main-yellow">
-            свіже <span className="text-txt-main-white">та</span> корисне м’ясо
+            свіже <span className="text-txt-main-white">та</span> корисне м&apos;ясо
           </span>
         </p>
         <p className="mt-[32px] ml-[258px] w-[640px] text-[32px] font-bold leading-snug">

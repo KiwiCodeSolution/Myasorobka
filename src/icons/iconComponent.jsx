@@ -80,14 +80,13 @@ export const Cart = () => (
   </svg>
 );
 
-export const Line = ({ active, long, small }) => (
-  <svg
-    width={long ? "356" : (small ? "162" : "216")}
-    height="2"
-    viewBox="0 0 216 2"
-    fill="none"
-  >
-    <path d="M0 1H216" stroke={active ? "url(#paint_red_linear)" : "url(#paint_white_linear)"} strokeWidth="2" />
+export const Line = ({ active, long, small, category }) => (
+  <svg width={long ? "356" : small ? "162" : "216"} height="2" viewBox="0 0 216 2" fill="none">
+    <path
+      d="M0 1H216"
+      stroke={active ? "url(#paint_red_linear)" : category ? "url(#paint_grey_linear)" : "url(#paint_white_linear)"}
+      strokeWidth="2"
+    />
     <defs>
       <linearGradient id="paint_white_linear" x1="0" y1="1" x2="216" y2="1" gradientUnits="userSpaceOnUse">
         <stop stopColor="#F3F3F3" stopOpacity="0" />
@@ -97,6 +96,11 @@ export const Line = ({ active, long, small }) => (
       <linearGradient id="paint_red_linear" x1="0" y1="1" x2="216" y2="1" gradientUnits="userSpaceOnUse">
         <stop stopColor="#F3F3F3" stopOpacity="0" />
         <stop offset="0.503292" stopColor="#EB1A1A" />
+        <stop offset="1" stopColor="#F3F3F3" stopOpacity="0" />
+      </linearGradient>
+      <linearGradient id="paint_grey_linear" x1="0" y1="1" x2="216" y2="1" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#F3F3F3" stopOpacity="0" />
+        <stop offset="0.503292" stopColor="#8A8A8A" />
         <stop offset="1" stopColor="#F3F3F3" stopOpacity="0" />
       </linearGradient>
     </defs>
@@ -130,7 +134,6 @@ export const Right = () => (
 );
 
 export const Plus = ({ className }) => (
-
   <svg
     width="16"
     height="16"
@@ -141,14 +144,12 @@ export const Plus = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
     className={className}
   >
-    <path d="M7.71429 8H16H0"  />
+    <path d="M7.71429 8H16H0" />
     <path d="M8 8.28571L8 0L8 16" />
-
   </svg>
 );
 
 export const Minus = ({ className }) => (
-
   <svg
     width="16"
     height="2"
@@ -160,7 +161,6 @@ export const Minus = ({ className }) => (
     className={className}
   >
     <path d="M7.71429 1H16H0" />
-
   </svg>
 );
 export const Flag = () => (
