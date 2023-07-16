@@ -12,7 +12,6 @@ export default {
         "bg-main": "#424242",
         "bg-grey": "#5E5E5E",
         "bg-light-grey": "#a3a3a3",
-        "bg-dark-grey": "#282828",
         "bg-white": "#FFF5DA",
         "bg-red": "#D21C1C",
         "bg-black": "#282828",

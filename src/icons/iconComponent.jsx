@@ -200,3 +200,10 @@ export const Lock = () => (
     <path d="M4.6 12.625V4.6H16.9V9.5V9.6H17H18.25H18.35V9.5V4.5C18.35 3.75727 17.7427 3.15 17 3.15H4.5C3.75727 3.15 3.15 3.75727 3.15 4.5V12.625C3.15 15.2238 4.54476 17.5705 6.82792 18.7757C6.82806 18.7758 6.82819 18.7759 6.82832 18.7759L10.0776 20.5255L10.225 20.6049V20.4375V19V18.9407L10.173 18.9123L7.54803 17.4748L7.54807 17.4747L7.54472 17.4731C5.70542 16.5534 4.6 14.6517 4.6 12.625Z" />
   </svg>
 );
+
+export const PlusInCircle = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+    <rect width="64" height="64" rx="32" fill="#282828"/>
+    <path d="M32 16V48M16 32H48" stroke="#FFF5DA" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)

@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import auth from '../store/auth';
+import auth from '../../store/auth';
 
 export default function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
