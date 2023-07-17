@@ -24,7 +24,7 @@ const Categories = observer(({ products }) => {
   return (
     <div className={`categories ${distanceTop} ${distanceBottom}`}>
       {categories.length > 0 && (
-        <div className="flex w-[1200px] mx-auto relative justify-center gap-x-5">
+        <div className="flex max-w-[1200px] mx-auto relative justify-center gap-x-5">
           {categories.length > 6 ? (
             <>
               <Swiper
@@ -36,10 +36,10 @@ const Categories = observer(({ products }) => {
                 }}
                 breakpoints={{
                   0: {
-                    slidesPerView: 1,
+                    slidesPerView: 3,
                   },
                   639: {
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                   },
                   1000: {
                     slidesPerView: 4,
@@ -71,7 +71,7 @@ const Categories = observer(({ products }) => {
               </button>
             </>
           ) : (
-            <>
+            <div className="flex flex-wrap gap-5">
               {categories.map((el) => (
                 <ButtonMain
                   style={"categoriesBtn"}
@@ -82,7 +82,7 @@ const Categories = observer(({ products }) => {
                   {el}
                 </ButtonMain>
               ))}
-            </>
+            </div>
           )}
         </div>
       )}
