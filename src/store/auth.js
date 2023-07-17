@@ -7,21 +7,19 @@ class Auth {
   token = "";
   isLoading = false;
   error = "";
+  message = "";
 
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {name: "auth", properties: ["isAuth", "token", "error"], storage: window.localStorage})
   }
 
-  toggleIsAuth = () => {
-    this.isAuth = !this.isAuth
-  }
-  setError = (errMessage) => {
-    this.error = errMessage;
-  }
-  setIsLoading = (bool) => {
-    this.isLoading = bool;
-  }
+  setAuth = bool => this.isAuth = bool;
+  setToken = token => this.token = token;
+  setIsLoading = bool => this.isLoading = bool;
+  setError = errMessage => this.error = errMessage;
+  setMessage = message => this.message = message;
+  
 
   loginAction = async (credentials) => {
     try {
@@ -59,11 +57,11 @@ class Auth {
         this.token = "";
       })
     } catch (error) {
-      this.isLoading = false;
+      this.setIsLoading(false);
       if (error.response) { // server error
-        this.error = error.response.data.message;
-        this.isAuth = false;
-        this.token = "";
+        this.setError(error.response.data.message);
+        this.setAuth(false);
+        this.setToken("");
       } else {
         this.error = error.message;   // no internet connection
       }

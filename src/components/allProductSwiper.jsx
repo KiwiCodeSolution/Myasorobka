@@ -37,21 +37,37 @@ const AllProductSwiper = observer(() => {
             prevEl: ".prod-button-prev",
           }}
           breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 0,
-            },
-            639: {
-              slidesPerView: 2,
-              spaceBetween: 10,
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
             },
             1000: {
               slidesPerView: 3,
               spaceBetween: 20,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
             },
-            1200: {
-              slidesPerView: 4,
-              spaceBetween: 30,
+            639: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+            },
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 0,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
             },
           }}
         >
@@ -61,17 +77,16 @@ const AllProductSwiper = observer(() => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <button className="prod-button-next right-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper">
-          <icons.Right />
-        </button>
-        <button className="prod-button-prev left-[40%] bottom-[-62px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper">
-          <icons.Left />
-        </button>
       </>
 
-      <div className="w-full mt-14">
-        <div className="pagination flex justify-center gap-x-4"></div>
+      <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
+        <button className="prod-button-next w-[52px] h-[52px] p-4  bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
+          <icons.Left />
+        </button>
+        <div className="pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
+        <button className="prod-button-prev w-[52px] h-[52px] p-4 bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
+          <icons.Right />
+        </button>
       </div>
     </div>
   );
