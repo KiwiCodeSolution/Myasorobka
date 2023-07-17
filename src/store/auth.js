@@ -7,6 +7,7 @@ class Auth {
   token = "";
   isLoading = false;
   error = "";
+  message = "";
 
   constructor() {
     makeAutoObservable(this);
@@ -16,11 +17,14 @@ class Auth {
   toggleIsAuth = () => {
     this.isAuth = !this.isAuth
   }
+  setIsLoading = (bool) => {
+    this.isLoading = bool;
+  }
   setError = (errMessage) => {
     this.error = errMessage;
   }
-  setIsLoading = (bool) => {
-    this.isLoading = bool;
+  setMessage = (message) => {
+    this.message = message;
   }
 
   loginAction = async (credentials) => {

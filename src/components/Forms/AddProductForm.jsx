@@ -8,7 +8,7 @@ const AddProductForm = observer(() => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   // const categories = ["Птиця", "свинина", "телятина", "ковбаса"];
-  const { products } = productStore;
+  const { products, createProductAction } = productStore;
 
   const categories = ["+ додати нову категорію +"]
   toJS(products).forEach((el) => {
@@ -19,18 +19,31 @@ const AddProductForm = observer(() => {
   // console.log("touched:", touchedFields);
   // console.log("watched:", watch("selectCategory"));
 
-  const onSubmit = data => console.log("data:", data);
+  const onSubmit = data => {
+    console.log("data:", data);
+    const newProduct = {
+      ...data,
+      discount_price: data.info,
+      available: true,
+      favourite: false,
+      img: "",
+      archived: false
+    }
+    console.log("newProduct:", newProduct);
+    const result = createProductAction(newProduct);
+    if (result === "success") true; // закріваем модалку.
+  }
 
   return (
     <form className="flex flex-col text-txt-main-white pt-5" onSubmit={handleSubmit(onSubmit)}>
       <div className='flex flex-col mb-4'>
-        <label htmlFor='productName'>Назва товару</label>
+        <label htmlFor='name'>Назва товару</label>
         <input
           type="text"
           className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"}`}
           placeholder="Приклад: Підгорок мраморний"
-          {...register("productName", { required: true })} />
-        <p className='text-bg-orange txt-lg font-semibold'>{errors.productName?.message}</p>
+          {...register("name", { required: true })} />
+        <p className='text-bg-orange txt-lg font-semibold'>{errors.name?.message}</p>
       </div>
 
       <label htmlFor='category'>Виберіть або придумайте категорію</label>
