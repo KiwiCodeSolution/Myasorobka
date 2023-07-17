@@ -10,7 +10,7 @@ class ClientState {
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
-      name: "client",
+      name: "clientState",
       properties: ["isLoading", "error", "message"],
       storage: window.localStorage,
     })

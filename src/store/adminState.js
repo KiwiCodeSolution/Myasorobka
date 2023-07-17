@@ -10,7 +10,7 @@ class AdminState {
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
-      name: "client",
+      name: "adminState",
       properties: ["isLoading", "error", "message"],
       storage: window.localStorage,
     })
