@@ -80,7 +80,7 @@ const AllProductSwiper = observer(() => {
       </>
 
       <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
-        <button className="prod-button-prev w-[52px] h-[52px] p-4  bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
+        <button className="prod-button-prev w-[52px] h-[52px] p-4 bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
           <icons.Left />
         </button>
         <div className="pagination flex justify-center gap-x-4 w-[200px] h-full "></div>

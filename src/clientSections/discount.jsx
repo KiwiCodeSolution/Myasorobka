@@ -4,7 +4,7 @@ const Discount = () => {
   return (
     <div className="bg-bg-white min-h-[458px] pt-[68px] pb-[100px] relative">
       <div className="max-w-[1440px] mx-auto px-[120px]">
-        <div className="w-[669px] mx-auto text-center text-txt-main-black font-medium">
+        <div className="w-[335px] md:w-[470px] lg:w-[669px] mx-auto text-center text-txt-main-black font-medium">
           <h3 className="text-5xl mb-4">
             Отримай знижку <span className="text-txt-marine">5% </span>на третє замовлення
           </h3>

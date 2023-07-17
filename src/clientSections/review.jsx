@@ -34,7 +34,7 @@ const Review = () => {
         <img
           src="/src/images/rosemary-big.png"
           alt="rosemary"
-          className="h-[137px] w-[800px] absolute bottom-[-100px] left-[295px] z-[2]"
+          className="h-[60px] w-[360px] md:h-[82px] md:w-[480px] lg:h-[137px] lg:w-[800px] absolute bottom-[-50px] left-[125px] md:bottom-[-80px] md:left-[200px] lg:bottom-[-100px] lg:left-[295px]  z-[2]"
         />
       </div>
     </div>

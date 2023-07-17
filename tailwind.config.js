@@ -9,6 +9,7 @@ export default {
         "txt-main-black": "#282828",
         "txt-main-yellow": "#FBDD3D",
         "txt-grey": "#A3A3A3",
+        "txt-light-grey": "#A9A393",
         "txt-marine": "#227D94",
         "bg-main": "#424242",
         "bg-grey": "#5E5E5E",
