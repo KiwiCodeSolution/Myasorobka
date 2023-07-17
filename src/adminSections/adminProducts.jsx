@@ -8,6 +8,7 @@ const AdminProducts = observer(() => {
   const [addProductPopup, setAddProductPopup] = useState(false);
 
   useEffect(() => {
+    console.log("getting products ..")
     productStore.getProductsAction();
   }, []);
 

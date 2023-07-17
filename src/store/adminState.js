@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 
-class ClientState {
+class AdminState {
   isLoading = false;
   error = "";
   message = "";
@@ -25,4 +25,4 @@ class ClientState {
     this.message = message;
   }
 }
-export default new ClientState();
+export default new AdminState();
