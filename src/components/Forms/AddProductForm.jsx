@@ -10,7 +10,7 @@ const AddProductForm = observer(() => {
   // const categories = ["Птиця", "свинина", "телятина", "ковбаса"];
   const { products } = productStore;
 
-  const categories = [" + "]
+  const categories = ["+ + + додати нову категорію + + +"]
   toJS(products).forEach((el) => {
     if (!categories.includes(el.category)) {
       categories.push(el.category);
@@ -36,7 +36,7 @@ const AddProductForm = observer(() => {
         <select {...register("selectCategory")} className="bg-bg-main w-[282px]">
           {categories.map(category => <option key={category} value={category}>{category}</option>)}
         </select>
-        {watch("selectCategory") === " + " ?
+        {watch("selectCategory")?.includes("+") ?
           (
             <>
               <input

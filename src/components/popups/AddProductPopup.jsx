@@ -8,13 +8,11 @@ const AddProductPopup = ({ onClose }) => {
   return (
     <BasePopup
       title="Додати товар"
-      closeByPressEsc
-      closeByClickOnOverlay
       onClose={onClose}
     >
       <AddImage />
       <AddProductForm />
-      
+
     </BasePopup>
   )
 };
