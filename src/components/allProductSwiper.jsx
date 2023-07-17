@@ -17,7 +17,7 @@ const AllProductSwiper = observer(() => {
       : productStore.products.filter((product) => product.category === filterStore.category);
 
   return (
-    <div className="h-[780px] w-full py-4 px-[120px] relative product">
+    <div className="h-[780px] w-full py-4 relative product">
       <>
         <Swiper
           modules={[Navigation, Grid, Pagination]}
@@ -80,11 +80,11 @@ const AllProductSwiper = observer(() => {
       </>
 
       <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
-        <button className="prod-button-next w-[52px] h-[52px] p-4  bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
+        <button className="prod-button-prev w-[52px] h-[52px] p-4  bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
           <icons.Left />
         </button>
         <div className="pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
-        <button className="prod-button-prev w-[52px] h-[52px] p-4 bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
+        <button className="prod-button-next w-[52px] h-[52px] p-4 bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
           <icons.Right />
         </button>
       </div>

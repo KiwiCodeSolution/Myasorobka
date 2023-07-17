@@ -22,12 +22,20 @@ const REVIEWS = [
 
 const Review = () => {
   return (
-    <div className="bg-bg-white min-h-[1440px] pt-10 pb-14">
-      <div className="max-w-[1280px] mx-auto ">
+    <div className="bg-bg-white min-h-[530px] pt-10 pb-14 relative">
+      <img src="/src/images/hot-pepper_1.png" alt="hot pepper" className="absolute top-[-40px] right-0" />
+      <div className="max-w-[1440px] mx-auto px-[120px] relative">
         <h2 className="text-4xl font-bold text-txt-main-black mb-20">Відгуки про нашу працю</h2>
-        {REVIEWS.map((review) => (
-          <ReviewCard review={review} key={review.name} />
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 justify-between ">
+          {REVIEWS.map((review) => (
+            <ReviewCard review={review} key={review.name} />
+          ))}
+        </div>
+        <img
+          src="/src/images/rosemary-big.png"
+          alt="rosemary"
+          className="h-[137px] w-[800px] absolute bottom-[-100px] left-[295px] z-[2]"
+        />
       </div>
     </div>
   );

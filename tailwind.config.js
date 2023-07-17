@@ -9,6 +9,7 @@ export default {
         "txt-main-black": "#282828",
         "txt-main-yellow": "#FBDD3D",
         "txt-grey": "#A3A3A3",
+        "txt-marine": "#227D94",
         "bg-main": "#424242",
         "bg-grey": "#5E5E5E",
         "bg-light-grey": "#a3a3a3",
@@ -22,7 +23,7 @@ export default {
       },
       fontFamily: {
         basic: "Roboto, sans-serif",
-        review: "Nunito', sans-serif",
+        review: "Nunito, sans-serif",
       },
       backgroundImage: {
         hero: "url('images/hero.jpg')",
