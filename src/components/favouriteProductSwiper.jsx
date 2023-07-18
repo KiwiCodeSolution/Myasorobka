@@ -12,7 +12,7 @@ const FavouriteProductSwiper = observer(() => {
   const favouriteProducts = productStore.products.filter((product) => product.favourite === true);
 
   return (
-    <div className="w-full py-4 px-[120px] relative favourite">
+    <div className="w-full py-4 relative favourite">
       <>
         <Swiper
           modules={[Navigation, Pagination]}
@@ -35,13 +35,14 @@ const FavouriteProductSwiper = observer(() => {
               slidesPerView: 2,
               spaceBetween: 10,
             },
-            1000: {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
+
             1200: {
               slidesPerView: 4,
               spaceBetween: 30,
+            },
+            1000: {
+              slidesPerView: 3,
+              spaceBetween: 20,
             },
           }}
         >
@@ -51,17 +52,15 @@ const FavouriteProductSwiper = observer(() => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <button className="fav-button-next right-[40%] bottom-[-4px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper">
-          <icons.Right />
-        </button>
-        <button className="fav-button-prev left-[40%] bottom-[-4px] w-[52px] h-[52px] p-4 absolute bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper">
+      </>
+      <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
+        <button className="fav-button-prev w-[52px] h-[52px] p-4 bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[1]">
           <icons.Left />
         </button>
-      </>
-
-      <div className="w-full mt-14">
-        <div className="fav-pagination flex justify-center gap-x-4"></div>
+        <div className="fav-pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
+        <button className="fav-button-next w-[52px] h-[52px] p-4  bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[1]">
+          <icons.Right />
+        </button>
       </div>
     </div>
   );

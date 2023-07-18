@@ -6,7 +6,7 @@ import LoginForm from "./components/Forms/loginForm";
 import logo from "./images/logo.png";
 
 const AdminLogin = observer(() => {
-  console.log("isAuth:", auth.isAuth);
+  // console.log("isAuth:", auth.isAuth);
 
   return (
     <div className="flex justify-center items-center h-screen">

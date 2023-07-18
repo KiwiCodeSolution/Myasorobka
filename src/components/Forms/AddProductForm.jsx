@@ -8,9 +8,9 @@ const AddProductForm = observer(() => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   // const categories = ["Птиця", "свинина", "телятина", "ковбаса"];
-  const { products } = productStore;
+  const { products, createProductAction } = productStore;
 
-  const categories = [" + "]
+  const categories = ["+ додати нову категорію +"]
   toJS(products).forEach((el) => {
     if (!categories.includes(el.category)) {
       categories.push(el.category);
@@ -19,24 +19,39 @@ const AddProductForm = observer(() => {
   // console.log("touched:", touchedFields);
   // console.log("watched:", watch("selectCategory"));
 
-  const onSubmit = data => console.log("data:", data);
+  const onSubmit = data => {
+    console.log("data:", data);
+    const newProduct = {
+      ...data,
+      discount_price: data.info,
+      available: true,
+      favourite: false,
+      img: "",
+      archived: false
+    }
+    console.log("newProduct:", newProduct);
+    const result = createProductAction(newProduct);
+    if (result === "success") true; // закріваем модалку.
+  }
 
   return (
-    <form className="flex flex-col justify-center text-txt-main-white pt-5" onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor='productName'>Назва товару</label>
-      <input
-        type="text"
-        className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"}`}
-        placeholder="Приклад: Підгорок мраморний"
-        {...register("productName", { required: true })} />
-      <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.productName?.message}</p>
+    <form className="flex flex-col text-txt-main-white pt-5" onSubmit={handleSubmit(onSubmit)}>
+      <div className='flex flex-col mb-4'>
+        <label htmlFor='name'>Назва товару</label>
+        <input
+          type="text"
+          className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"}`}
+          placeholder="Приклад: Підгорок мраморний"
+          {...register("name", { required: true })} />
+        <p className='text-bg-orange txt-lg font-semibold'>{errors.name?.message}</p>
+      </div>
 
       <label htmlFor='category'>Виберіть або придумайте категорію</label>
-      <div className='flex gap-3'>
-        <select {...register("selectCategory")} className="bg-bg-main w-[282px]">
+      <div className='flex justify-between mb-4'>
+        <select {...register("selectCategory")} className="bg-bg-main w-[282px] text-center">
           {categories.map(category => <option key={category} value={category}>{category}</option>)}
         </select>
-        {watch("selectCategory") === " + " ?
+        {watch("selectCategory")?.includes("+") ?
           (
             <>
               <input
@@ -50,7 +65,7 @@ const AddProductForm = observer(() => {
             <>
               <input
                 type="text"
-                className={`p-1 ${errors.password ? "bg-bg-orange" : "bg-bg-main"} w-[282px]`}
+                className={`p-1 ${errors.password ? "bg-bg-orange" : "bg-bg-main"} ml-1 w-[282px]`}
                 placeholder="Назвіть категорію"
                 value={watch("selectCategory")}
                 {...register("category", { required: true })} />
@@ -59,6 +74,39 @@ const AddProductForm = observer(() => {
           )
         }
       </div>
+
+      <div className='flex gap-4'>
+        <div>
+          <label htmlFor='price'>Ціна та одиниця виміру</label>
+          <div className='flex gap-2'>
+            <input
+              type="text"
+              className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"} w-[128px]`}
+              placeholder="100"
+              {...register("price", { required: true })} />
+            <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.price?.message}</p>
+
+            <input
+              type="text"
+              className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"} w-[128px]`}
+              placeholder="шматок"
+              {...register("unit", { required: true })} />
+            <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.unit?.message}</p>
+          </div>
+        </div>
+        <div>
+          <label htmlFor='info'>Доп інфо</label>
+            <input
+              type="text"
+              className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"} w-[282px]`}
+              placeholder="100"
+              {...register("info", { required: false })} />
+            <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.price?.message}</p>
+        </div>
+      </div>
+
+      <label htmlFor='info'>Придумайте опис</label>
+      <textarea {...register("description")} className="bg-bg-main mb-4"></textarea>
 
       <input
         type="submit"

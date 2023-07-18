@@ -1,14 +1,20 @@
 import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
 import SideBar from "./adminSections/sideBar";
 import { observer } from "mobx-react-lite";
-import auth from "./store/auth";
+import authStore from "./store/auth";
 import AlertPopup from "./components/UIKit/AlertPopup";
 import RingLoader from "react-spinners/RingLoader";
 
 const AdminPage = observer(() => {
+  const { token, isLoading, error, setError, getCurrentAction } = authStore;
+  
+  useEffect(() => {
+    if (token) getCurrentAction()
+  }, []);
 
   return (
-      auth.isLoading ?
+      isLoading ?
         (<div className="flex justify-center items-center">
           <RingLoader color="red" loading size={120} />
         </div>) :
@@ -17,9 +23,9 @@ const AdminPage = observer(() => {
           <SideBar />
           <Outlet />
         </div>
-        {auth.error &&
-        <AlertPopup onOk={() => auth.setError("")}>
-          <h1>{auth.error}</h1>
+        {authStore.error &&
+        <AlertPopup onOk={() => setError("")}>
+          <h1>{error}</h1>
         </AlertPopup>}
       </>)
   );

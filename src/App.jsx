@@ -1,9 +1,9 @@
 // import Test from "./components/test";
 import { Routes, Route } from 'react-router-dom';
 
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import authStore from "./store/auth";
+// import authStore from "./store/auth";
 
 import ClientPage from './clientPage';
 import AdminLogin from './adminLogin';
@@ -15,9 +15,9 @@ import AdminProducts from './adminSections/adminProducts';
 
 const App = observer(() => {
 
-  useEffect(() => {
-    if (authStore.token) authStore.getCurrentAction()
-  }, []);
+  // useEffect(() => {
+  //   if (authStore.token) authStore.getCurrentAction()
+  // }, []);
 
   return (
     <Routes >
