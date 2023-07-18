@@ -5,7 +5,7 @@ import { SocialLinksBlock } from "../components/socBlock";
 const HeaderHero = () => {
   return (
     <div className="bg-hero bg-no-repeat bg-cover min-h-[764px] text-txt-main-white relative">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-[1440px] mx-auto px-[120px]">
         <Header />
         <p className="mt-[122px] ml-[192px] w-[822px] text-[56px] font-bold leading-tight ">
           М&apos;ясорОбка - це завжди{" "}
