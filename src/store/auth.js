@@ -40,10 +40,10 @@ class Auth {
       })
     }
     catch (error) {
-      this.isLoading = false;
+      this.setIsLoading(false);
       error.response ?  
-      this.error = error.response.data.message : // server error
-      this.error = error.message;   // no internet connection
+      this.setError(error.message):   // no internet connection
+      this.setError(error.response.data.message) // server error
     }
   }
 
@@ -63,7 +63,7 @@ class Auth {
         this.setAuth(false);
         this.setToken("");
       } else {
-        this.error = error.message;   // no internet connection
+        this.setError(error.message);   // no internet connection
       }
     }
   }
@@ -76,11 +76,11 @@ class Auth {
     } catch (error) {
       this.isLoading = false;
       if (error.response) { // server error
-        this.error = error.response.data.message;
-        this.isAuth = false;
-        this.token = "";
+        this.setError(error.response.data.message);
+        this.setIsAuth(false);
+        this.setToken("");
       } else {
-        this.error = error.message;   // no internet connection
+        this.setError(error.message);   // no internet connection
       }
     }
   }

@@ -1,9 +1,6 @@
+import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import productStore from "../store/products";
-import { useEffect } from "react";
-import auth from "../store/auth";
-// import ButtonMain from "../components/UIKit/button";
-// import orders from "../store/orders";
 import ProductList from "../components/productList";
 import Categories from "../components/categories";
 
@@ -15,7 +12,6 @@ const Products = observer(() => {
   return (
     <>
       <div className="pt-8 bg-bg-black">
-        {auth.isLoading && <p>is loading ...</p>}
         <div className="max-w-[1280px] mx-auto">
           <h2 className="text-4xl font-bold text-txt-main-white">Категорії товарів</h2>
           <Categories products={productStore.products} />

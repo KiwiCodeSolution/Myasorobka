@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import clientStore from "./client";
-import authStore from "./auth";
+import adminState from "./adminState";
 import { getProducts, createProduct } from "../API/productsAPI";
 
 class Products {
@@ -26,19 +26,19 @@ class Products {
     })
   }
   createProductAction = async (product) => {
-    authStore.setIsLoading(true);
+    adminState.setIsLoading(true);
     const result = await createProduct(product);
 
     runInAction(() => {
-      authStore.setIsLoading(false);
+      adminState.setIsLoading(false);
       if (result.error) {
-        authStore.setError(result.error);
+        adminState.setError(result.error);
         return;
       }
     })
     this.getProductsAction();
-    // authStore.setMessage("Продукт додан успішно")
-    return "success";
+    adminState.setMessage("Продукт додан успішно")
+    return;
   }
 }
 export default new Products();

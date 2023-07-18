@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate, useLocation } from "react-router-dom";
 import auth from "../store/auth";
 import logo from "../images/logo.png";
 import * as icon from "../icons/iconComponent";
@@ -6,7 +6,8 @@ import * as icon from "../icons/iconComponent";
 const SideBar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-console.log("sidebar mounted")
+  console.log("sidebar mounted");
+  
   return (
     <div className="flex flex-col w-[356px] h-screen text-txt-main-white text-center font font-medium border-r-2 border-[#FBDD3D] rounded-3xl">
       <img src={logo} alt="logo" className="px-24 py-8" />
