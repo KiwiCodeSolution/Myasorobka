@@ -12,7 +12,6 @@ const Products = observer(() => {
   return (
     <>
       <div className="pt-8 bg-bg-black">
-        {auth.isLoading && <p>is loading ...</p>}
         <div className="max-w-[1440px] mx-auto px-[120px]">
           <h2 className="text-4xl font-bold text-txt-main-white">Категорії товарів</h2>
           <Categories products={productStore.products} />
