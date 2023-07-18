@@ -15,7 +15,7 @@ const Orders = observer(() => {
 
   return (
     <div className="">
-      <h2 className="w-[1080px] mx-auto my-8 text-center text-3xl text-txt-main-white font-medium">Список замовлень</h2>
+      <h2 className="w-[1080px] my-8 text-center text-3xl text-txt-main-white font-medium">Список замовлень</h2>
       {adminState.isLoading ? (
         <div className="flex h-2/4 justify-center items-center">
           <RingLoader color="red" loading size={120} />
