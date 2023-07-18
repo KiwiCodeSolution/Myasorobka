@@ -12,20 +12,26 @@ const ProductCard = ({ product }) => {
   // const { pathname } = useLocation();
   // const admin = pathname.endsWith("admin/authorized/products");
   // console.log("admin ? :", admin);
-  
+
   const addToCart = () => {
-    ordersStore.addToCart( product, qttyBtn);
-  }
+    ordersStore.addToCart(product, qttyBtn);
+  };
 
   return (
-    <div className="h-[356px] w-[216px] rounded-3xl bg-bg-white">
+    <div className="h-[356px] w-[216px] rounded-3xl bg-bg-white mx-auto">
       <img src={product.img || testPicture} alt={"product image"} className={"h-[168px] rounded-t-3xl"} />
       <p className="px-2 py-1 text-center font-bold">{product.name}</p>
       <icons.Line active />
-      <p className="px-2 py-1 text-center font-basic">{product.price} грн / {product.unit}</p>
-      {product.discount_price ?
-        <p className="px-2 py-1 text-center text-txt-grey font-basic">{product.discount_price} грн / {product.unit}</p> :
-        <p className="px-2 py-1 text-center text-txt-grey font-basic">_________________</p>}
+      <p className="px-2 py-1 text-center font-basic">
+        {product.price} грн / {product.unit}
+      </p>
+      {product.discount_price ? (
+        <p className="px-2 py-1 text-center text-txt-grey font-basic">
+          {product.discount_price} грн / {product.unit}
+        </p>
+      ) : (
+        <p className="px-2 py-1 text-center text-txt-grey font-basic">_________________</p>
+      )}
       <RoundNumbers activeBtn={qttyBtn} setQtty={setQttyBtn} />
       <div className="flex justify-center">
         <ButtonMain style={"addToCart"} clickFn={addToCart}>
@@ -33,7 +39,7 @@ const ProductCard = ({ product }) => {
         </ButtonMain>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProductCard;
