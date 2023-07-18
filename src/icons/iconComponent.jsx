@@ -203,7 +203,13 @@ export const Lock = () => (
 
 export const PlusInCircle = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-    <rect width="64" height="64" rx="32" fill="#282828"/>
-    <path d="M32 16V48M16 32H48" stroke="#FFF5DA" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+    <rect width="64" height="64" rx="32" fill="#282828" />
+    <path d="M32 16V48M16 32H48" stroke="#FFF5DA" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const ArrowDown = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#424242" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18 10.6154L10 18L2 10.6154M10 16.9744L10 2" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 )

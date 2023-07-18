@@ -21,7 +21,7 @@ class AdminOrders {
     const result = await getOrders();
 
     runInAction(() => {
-      // authStore.setIsLoading(false);
+      adminState.setIsLoading(false);
       if (result.error) {
         adminState.setError(result.error);
         return;
