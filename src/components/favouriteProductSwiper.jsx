@@ -12,7 +12,7 @@ const FavouriteProductSwiper = observer(() => {
   const favouriteProducts = productStore.products.filter((product) => product.favourite === true);
 
   return (
-    <div className="w-full py-4 relative favourite">
+    <div className="w-full py-4 relative mx-auto favourite">
       <>
         <Swiper
           modules={[Navigation, Pagination]}
@@ -33,16 +33,16 @@ const FavouriteProductSwiper = observer(() => {
             },
             639: {
               slidesPerView: 2,
-              spaceBetween: 10,
+              // spaceBetween: 10,
             },
 
             1200: {
               slidesPerView: 4,
-              spaceBetween: 30,
+              // spaceBetween: 30,
             },
             1000: {
               slidesPerView: 3,
-              spaceBetween: 20,
+              // spaceBetween: 20,
             },
           }}
         >
