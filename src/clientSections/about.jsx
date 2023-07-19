@@ -4,11 +4,11 @@ import logo from "../images/logo.png";
 
 const About = () => {
   return (
-    <div className="bg-about bg-no-repeat bg-cover h-[920px] relative">
+    <div className="bg-about bg-no-repeat bg-cover h-[920px] relative" id="about">
       <img src={leftImg} alt="spice" className="absolute top-[-190px]" />
       <img src={logo} alt="logo" className="absolute top-[50px] right-[45px]" />
       <h2 className="pl-[120px] pt-[60px] text-txt-main-white text-3xl">Трохи про М&apos;ясорОбку</h2>
-      <div className="bg-bg-orange w-[420px] rounded-3xl absolute top-[176px] left-[120px] py-3 px-5">
+      <div className="bg-bg-orange max-w-[420px] rounded-3xl absolute top-[176px] left-[120px] py-3 px-5">
         <div className="flex justify-center">
           <icons.Flag />
           <p className="text-center text-xl font-medium pl-1 pb-2 underline">Початок</p>
@@ -20,7 +20,7 @@ const About = () => {
           зростала, і Джеймс почав думати про способи поділитися своїми кулінарними талантами з більшим колом людей.
         </p>
       </div>
-      <div className="bg-bg-light-orange w-[468px] rounded-3xl absolute top-[586px] left-[300px] py-3 px-6">
+      <div className="bg-bg-light-orange max-w-[468px] rounded-3xl absolute top-[586px] left-[300px] py-3 px-6">
         <div className="flex justify-center">
           <icons.Lamp />
           <p className="text-center text-xl font-medium pl-1 pb-2 underline">Ідея</p>
@@ -31,7 +31,7 @@ const About = () => {
           мрії. Він об&apos;єднався з місцевими фермерами, які забезпечували найкращу якість м&apos;яса.
         </p>
       </div>
-      <div className="bg-bg-brown w-[428px] rounded-3xl absolute top-[385px] right-[143px] py-3 px-6 text-txt-main-white">
+      <div className="bg-bg-brown max-w-[428px] rounded-3xl absolute top-[385px] right-[143px] py-3 px-6 text-txt-main-white">
         <div className="flex justify-center">
           <icons.Lock />
           <p className="text-center text-xl font-medium pl-1 pb-2 underline">Правила</p>
