@@ -10,9 +10,9 @@ const buttonsStyle = {
   addToCart:
     "bg-bg-red w-[176px] h-[28px] py-1 px-3 text-sm font-medium text-txt-main-white hover:shadow-btnRedS focus:shadow-btnRedS mx-auto",
   blackSmall:
-    "bg-bg-black w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-btnBlack focus:shadow-btnBlack mx-auto",
+    "bg-bg-black w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-btnWhite focus:shadow-btnWhite mx-auto",
   blackMedium:
-    "bg-bg-black w-[240px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-btnBlack focus:shadow-btnBlack mx-auto",
+    "bg-bg-black w-[240px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-btnWhite focus:shadow-btnWhite mx-auto",
   categoriesBtn:
     "bg-bg-white w-[162px] h-[56px] py-3 text-base font-semibold text-txt-main-black hover:shadow-btnWhite focus:shadow-btnWhite mx-auto",
   whiteSmall:

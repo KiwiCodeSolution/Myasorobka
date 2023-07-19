@@ -210,6 +210,32 @@ export const PlusInCircle = () => (
 
 export const ArrowDown = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#424242" xmlns="http://www.w3.org/2000/svg">
-    <path d="M18 10.6154L10 18L2 10.6154M10 16.9744L10 2" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M18 10.6154L10 18L2 10.6154M10 16.9744L10 2"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
-)
+);
+
+export const ArrowUp = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M2 9.38462L10 2L18 9.38462M10 3.02564V18"
+      stroke="#282828"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const Trash = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M2 18C1.45 18 0.979002 17.804 0.587002 17.412C0.195002 17.02 -0.000664969 16.5493 1.69779e-06 16V3.50001C1.69779e-06 3.25001 0.0416684 3.02501 0.125002 2.82501C0.208335 2.62501 0.316668 2.43334 0.450002 2.25001L1.85 0.550007C1.98333 0.366674 2.15 0.229007 2.35 0.137007C2.55 0.0450073 2.76667 -0.000659472 3 7.19423e-06H15C15.2333 7.19423e-06 15.45 0.045674 15.65 0.137007C15.85 0.228341 16.0167 0.366007 16.15 0.550007L17.55 2.25001C17.6833 2.43334 17.7917 2.62501 17.875 2.82501C17.9583 3.02501 18 3.25001 18 3.50001V16C18 16.55 17.804 17.021 17.412 17.413C17.02 17.805 16.5493 18.0007 16 18H2ZM2.4 3.00001H15.6L14.75 2.00001H3.25L2.4 3.00001ZM2 5.00001V16H16V5.00001H2ZM9 15L13 11L11.6 9.60001L10 11.2V7.00001H8V11.2L6.4 9.60001L5 11L9 15Z"
+      fill="#FFF5DA"
+    />
+  </svg>
+);

@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { format } from "date-fns";
-import { ArrowDown } from "../icons/iconComponent";
+import { ArrowDown, ArrowUp } from "../icons/iconComponent";
 import OrderItemProductList from "./OrderItemProductList";
 
-const OrderItem = ({order: { order_number, order_date, customer_name, phone_number, total_amount, delivery_address, products }}) => {
+const OrderItem = ({
+  order: { order_number, order_date, customer_name, phone_number, total_amount, delivery_address, products },
+}) => {
   const [orderIsOpened, setOrderIsOpened] = useState(false);
-      console.log("products:", products)
+  console.log("products:", products);
   return (
     <>
       <div className="flex flex-row">
@@ -18,16 +20,19 @@ const OrderItem = ({order: { order_number, order_date, customer_name, phone_numb
         <p className="w-[240px] text-center p-2">{delivery_address}</p>
         <p className="w-[40px] flex justify-center items-center">
           <button
-            className="w-8 h-8 rounded-full bg-bg-white flex justify-center items-center"
-            onClick={() => setOrderIsOpened(!orderIsOpened)}>
-            <ArrowDown />
+            className="w-[52px] h-[52px] p-4 my-2 rounded-full bg-bg-white flex justify-center items-center"
+            onClick={() => setOrderIsOpened(!orderIsOpened)}
+          >
+            {orderIsOpened ? <ArrowUp /> : <ArrowDown />}
           </button>
         </p>
       </div>
 
       {orderIsOpened && (
         <div className="py-4">
-          <div className="flex pl-4 text-base font-normal"> {/*producl list header*/}
+          <div className="flex pl-4 text-base font-normal">
+            {" "}
+            {/*producl list header*/}
             <p className="w-[400px] text-base font-normal text-left">Наіменування</p>
             <p className="w-[120px] text-base font-normal text-center">Кількість</p>
             <p className="w-[120px] text-right">Сума</p>
@@ -36,7 +41,7 @@ const OrderItem = ({order: { order_number, order_date, customer_name, phone_numb
         </div>
       )}
     </>
-  )
+  );
 };
 
 export default OrderItem;
