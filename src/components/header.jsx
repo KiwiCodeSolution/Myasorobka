@@ -4,11 +4,11 @@ import Menu from "./menu";
 
 const Header = () => {
   return (
-    <div className="max-w-[1440px] h-20 mx-auto flex justify-between text-txt-main-white pt-2">
-      <img src={logo} alt="Logo" className="w-[76px] h-[76px] ml-20" />
-      <div className="flex py-5 items-center">
-        <nav className="mr-11">
-          <Menu section={"header"} styles={"h-20"} />
+    <div className="h-20 mx-auto flex justify-between gap-x-3 text-txt-main-white pt-2">
+      <img src={logo} alt="Logo" className="w-[76px] h-[76px] lg:ml-[70px]" />
+      <div className="flex flex-col lg:flex-row py-5 items-center lg:mr-[122px]">
+        <nav className="mr-3 lg:mr-11">
+          <Menu section={"header"} />
         </nav>
         <ButtonMain style="redCustom">Замовити смаколики</ButtonMain>
       </div>

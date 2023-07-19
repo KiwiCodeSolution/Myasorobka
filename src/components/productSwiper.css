@@ -1,5 +1,6 @@
 .swiper {
   z-index: 6;
+  margin: 0 auto;
 }
 
 .product.pagination {
@@ -33,9 +34,13 @@
   padding-left: 10px;
 }
 
-.product .swiper-slide,
+/* .product .swiper-slide,
 .product .swiper-slide-active,
 .favourite .swiper-slide,
 .favourite .swiper-slide-active {
   padding: 0 10px;
-}
+} */
+
+/* .swiper-wrapper {
+  margin: 0 auto;
+} */

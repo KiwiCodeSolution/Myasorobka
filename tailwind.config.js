@@ -43,6 +43,17 @@ export default {
       gridTemplateColumns: {
         productItem: "50% 25% 20% 5%",
       },
+      keyframes: {
+        rotate: {
+          "0%": {
+            transform: "rotate(0) translateY(0)",
+          },
+          "100%": { transform: "rotate(180deg) translateY(-40px)"},
+        },
+      },
+      animation: {
+        rotate: "rotate 1s forwards",
+      }
     },
   },
   plugins: [],

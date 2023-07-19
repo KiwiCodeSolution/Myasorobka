@@ -24,7 +24,7 @@ const Categories = observer(({ products }) => {
   return (
     <div className={`categories ${distanceTop} ${distanceBottom}`}>
       {categories.length > 0 && (
-        <div className="flex max-w-[1200px] mx-auto relative justify-center gap-x-5">
+        <div className="flex max-w-full mx-auto relative justify-center gap-x-5">
           {categories.length > 6 ? (
             <>
               <Swiper

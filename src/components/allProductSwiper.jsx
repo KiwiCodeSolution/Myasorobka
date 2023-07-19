@@ -19,7 +19,7 @@ const AllProductSwiper = observer(() => {
         );
 
   return (
-    <div className="h-[780px] w-full py-4 relative product">
+    <div className="h-[780px] w-full py-4 relative product mx-auto">
       <>
         <Swiper
           modules={[Navigation, Grid, Pagination]}
@@ -65,7 +65,7 @@ const AllProductSwiper = observer(() => {
             },
             0: {
               slidesPerView: 1,
-              spaceBetween: 0,
+              spaceBetween: 10,
               grid: {
                 rows: 2,
                 fill: "row",

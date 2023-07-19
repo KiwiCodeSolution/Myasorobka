@@ -10,7 +10,7 @@ const styleContactsEffect = "hover:text-txt-main-yellow focus:text-txt-main-yell
 
 const ContactList = () => {
   return (
-    <ul className="flex flex-col lg:flex-row gap-x-8 min-w-[600px]">
+    <ul className="flex flex-col lg:flex-row lg:flex-wrap gap-x-8 w-[300px] md:w-[450px] lg:w-[500px] xl:min-w-[600px] mx-auto">
       <li className={`${styleContactsTitle} w-[110px]`}>
         Телефон
         {TEL_NUMBERS.map((tel) => (
