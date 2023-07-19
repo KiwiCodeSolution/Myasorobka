@@ -208,8 +208,8 @@ export const PlusInCircle = () => (
   </svg>
 );
 
-export const ArrowDown = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#424242" xmlns="http://www.w3.org/2000/svg">
+export const ArrowDown = ({ rotation }) => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#424242" className={rotation && "animate-rotate"}>
     <path d="M18 10.6154L10 18L2 10.6154M10 16.9744L10 2" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 )
