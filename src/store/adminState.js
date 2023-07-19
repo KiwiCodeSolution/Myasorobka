@@ -5,13 +5,16 @@ class AdminState {
   isLoading = false;
   error = "";
   message = "";
+  addProduct = {
+    img: ""
+  }
   // language = "";
   // theme = "";
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
       name: "adminState",
-      properties: ["isLoading", "error", "message"],
+      properties: ["isLoading", "error", "message", "addProduct"],
       storage: window.localStorage,
     })
   }

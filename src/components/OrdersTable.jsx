@@ -3,8 +3,9 @@ import { PropTypes } from "prop-types";
 import OrderItem from "./OrderItem";
 
   
-const OrdersTable = ({ orders }) => {
-
+const OrdersTable = ({ orders, archivedFilter }) => {
+  const filteredOrders = orders.filter(order => order.archived === archivedFilter)
+  
   return (
     <div className="text-txt-main-white text-center w-full flex flex-col gap-4">
       <div className="flex text-lg bg-bg-grey">  {/*header*/} 
@@ -16,7 +17,7 @@ const OrdersTable = ({ orders }) => {
         <p className="w-[240px]">Адреса доставки</p>
         <p className="w-[40px]"></p>
       </div>
-      {orders.length && orders.map(order => (
+      {filteredOrders.length && filteredOrders.map(order => (
         <div key={order.order_number} className="flex flex-col bg-bg-grey">
           <OrderItem order={order} />
         </div>
