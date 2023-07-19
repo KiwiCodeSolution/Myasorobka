@@ -6,7 +6,7 @@ const buttonsStyle = {
   redMedium:
     "bg-bg-red w-[240px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto",
   redLarge:
-    "bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto",
+    "bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto disabled:opacity-50 disabled:hover:shadow-none",
   addToCart:
     "bg-bg-red w-[176px] h-[28px] py-1 px-3 text-sm font-medium text-txt-main-white hover:shadow-btnRedS focus:shadow-btnRedS mx-auto",
   blackSmall:
@@ -21,14 +21,27 @@ const buttonsStyle = {
     "bg-bg-red w-[240px] h-[38px] py-2 text-base font-medium text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto",
 };
 
-const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass }) => {
+const ButtonMain = ({
+  children,
+  style,
+  btnType,
+  icon,
+  clickFn,
+  btnClass,
+  ...restProps
+}) => {
   const handleClick = () => (clickFn ? clickFn() : null);
   const additionalStyle = btnClass || "";
 
   const currentStyle = `rounded-full ${buttonsStyle[style]} ${additionalStyle}`;
 
   return (
-    <button type={btnType || "button"} className={currentStyle} onClick={handleClick}>
+    <button
+      type={btnType || "button"}
+      className={currentStyle}
+      onClick={handleClick}
+      {...restProps}
+    >
       {children}
       {icon}
     </button>

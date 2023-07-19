@@ -9,7 +9,7 @@ import ordersStore from "../../store/orders";
 
 const CartPopup = observer(({ onClose, onGoToTheOrder }) => {
   const isCartEmpty = ordersStore.products.length === 0;
-
+  const isOrderExist = ordersStore.totalQuantity !== 0;
   return (
     <BasePopup
       title="Кошик"
@@ -34,7 +34,11 @@ const CartPopup = observer(({ onClose, onGoToTheOrder }) => {
               <CartProductList products={toJS(ordersStore.products)} />
             </div>
             <div className="mt-8">
-              <ButtonMain style="redLarge" clickFn={onGoToTheOrder}>
+              <ButtonMain
+                style="redLarge"
+                clickFn={onGoToTheOrder}
+                disabled={!isOrderExist}
+              >
                 Перейти до замовлення
               </ButtonMain>
               {/* <ButtonMain clickFn={() => ordersStore.placeOrderAction()} style="redLarge">

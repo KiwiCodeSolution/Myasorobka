@@ -55,10 +55,10 @@ const PopupOverlay = ({
     <>
       <Portal>
         <div
-          className={`fixed inset-0 flex justify-center items-center cursor-pointer z-[1]  ${overlayStyles}`}
+          className={`fixed inset-0 flex justify-center items-center z-[100] cursor-pointer ${overlayStyles}`}
           onClick={onOverlayClick}
         >
-          {children}
+          <div className="cursor-default">{children}</div>
         </div>
       </Portal>
     </>
