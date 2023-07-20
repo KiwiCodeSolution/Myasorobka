@@ -7,7 +7,7 @@ import logoSrc from "../../images/logo.png";
 const AlertPopup = ({ onOk, children }) => {
   return (
     <PopupOverlay onClose={onOk}>
-      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
+      <div className="w-[640px] rounded-3xl overflow-hidden bg-bg-black">
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px] ">
@@ -20,8 +20,8 @@ const AlertPopup = ({ onOk, children }) => {
           <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#ACACAC00] via-[#EB1A1A] to-[#ACACAC00]"></div>
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
-        <div className="px-8 py-6 text-white flex flex-col items-center">
-          {children}
+        <div className="px-8 pb-16 text-white flex flex-col items-center">
+          <div className="h-[208px]">{children}</div>
           <div className="mt-11">
             <ButtonMain style="redLarge" clickFn={onOk}>
               OK

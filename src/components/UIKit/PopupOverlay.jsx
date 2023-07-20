@@ -8,6 +8,7 @@ const PopupOverlay = ({
   closeByClickOnOverlay, // true if you need it
   closeByPressEsc, // true if you need it
   onClose, // fn changing state - show modal
+  overlayStyles = "",
   children,
 }) => {
   const [blockScroll, unblockScroll] = useScrollBlock();
@@ -25,9 +26,7 @@ const PopupOverlay = ({
   };
 
   useEffect(() => {
-    blockScroll();
-
-    if (!closeByPressEsc) {
+    if (closeByPressEsc) {
       return;
     }
 
@@ -40,19 +39,26 @@ const PopupOverlay = ({
     window.addEventListener("keydown", onPressEsc);
 
     return () => {
-      unblockScroll();
       window.removeEventListener("keydown", onPressEsc);
     };
-  }, [closeByPressEsc, onClose, blockScroll, unblockScroll]);
+  }, [closeByPressEsc, onClose]);
+
+  useEffect(() => {
+    blockScroll();
+
+    return () => {
+      unblockScroll();
+    };
+  }, [blockScroll, unblockScroll]);
 
   return (
     <>
       <Portal>
         <div
-          className="fixed inset-0 flex justify-center items-center bg-slate-400 cursor-pointer"
+          className={`fixed inset-0 flex justify-center items-center z-[100] cursor-pointer ${overlayStyles}`}
           onClick={onOverlayClick}
         >
-          {children}
+          <div className="cursor-default">{children}</div>
         </div>
       </Portal>
     </>
@@ -63,6 +69,7 @@ PopupOverlay.propTypes = {
   closeByClickOnOverlay: PropTypes.bool,
   closeByPressEsc: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
+  overlayStyles: PropTypes.string,
   children: PropTypes.node,
 };
 

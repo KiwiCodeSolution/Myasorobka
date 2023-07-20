@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import { getOrders } from "../API/ordersAPI";
+import { getOrders, updateOrder } from "../API/ordersAPI";
 import adminState from "./adminState";
 
 class AdminOrders {
@@ -27,6 +27,19 @@ class AdminOrders {
         return;
       }
       this.orders = result.data;
+    })
+  }
+
+  updateAdminOrderAction = async (order) => {
+    adminState.setIsLoading(true);
+    const result = await updateOrder(order);
+
+    runInAction(() => {
+      adminState.setIsLoading(false);
+      if (result.error) {
+        adminState.setError(result.error);
+        return;
+      }
     })
   }
 }

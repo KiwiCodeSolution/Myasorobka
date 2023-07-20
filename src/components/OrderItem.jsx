@@ -1,14 +1,22 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { format } from "date-fns";
-import { ArrowDown, ArrowUp } from "../icons/iconComponent";
+import { ArrowDown, Archive } from "../icons/iconComponent";
 import OrderItemProductList from "./OrderItemProductList";
+import ButtonMain from "./UIKit/button";
+import adminOrders from "../store/adminOrders";
+import { toJS } from "mobx";
 
-const OrderItem = ({
-  order: { order_number, order_date, customer_name, phone_number, total_amount, delivery_address, products },
-}) => {
+const OrderItem = ({ order }) => {
+  const { order_number, order_date, customer_name, phone_number, total_amount, delivery_address, products } = order;
   const [orderIsOpened, setOrderIsOpened] = useState(false);
-  console.log("products:", products);
+
+  const toArchive = () => {
+    const newOrder = toJS(order);
+    newOrder.archived = true;
+    adminOrders.updateAdminOrderAction(newOrder);
+  };
+
   return (
     <>
       <div className="flex flex-row">
@@ -20,24 +28,32 @@ const OrderItem = ({
         <p className="w-[240px] text-center p-2">{delivery_address}</p>
         <p className="w-[40px] flex justify-center items-center">
           <button
-            className="w-[52px] h-[52px] p-4 my-2 rounded-full bg-bg-white flex justify-center items-center"
+            className={`w-8 h-8 rounded-full bg-bg-white flex justify-center items-center ${
+              orderIsOpened && "animate-rotate"
+            }`}
             onClick={() => setOrderIsOpened(!orderIsOpened)}
           >
-            {orderIsOpened ? <ArrowUp /> : <ArrowDown />}
+            <ArrowDown />
           </button>
         </p>
       </div>
 
       {orderIsOpened && (
-        <div className="py-4">
+        <div className="py-4 relative w-[840px]">
           <div className="flex pl-4 text-base font-normal">
             {" "}
             {/*producl list header*/}
-            <p className="w-[400px] text-base font-normal text-left">Наіменування</p>
+            <p className="w-[300px] text-base font-normal text-left">Наіменування</p>
             <p className="w-[120px] text-base font-normal text-center">Кількість</p>
             <p className="w-[120px] text-right">Сума</p>
           </div>
           <OrderItemProductList products={products} />
+          <ButtonMain style="redSmall" btnClass={"absolute right-20 bottom-4"} clickFn={toArchive}>
+            <span className="flex justify-center gap-2 pr-8">
+              <Archive />
+              Архів
+            </span>
+          </ButtonMain>
         </div>
       )}
     </>
