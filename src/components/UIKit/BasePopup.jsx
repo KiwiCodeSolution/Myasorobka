@@ -5,9 +5,21 @@ import { Prev } from "../../icons/iconComponent";
 import ClosePopupBtn from "./buttons/ClosePopupBtn";
 import logoSrc from "../../images/logo.png";
 
-const BasePopup = ({ title, onClose, onPrevBtnClick, closeByClickOnOverlay, closeByPressEsc, children }) => {
+const BasePopup = ({
+  title,
+  onClose,
+  onPrevBtnClick,
+  closeByClickOnOverlay,
+  closeByPressEsc,
+  children,
+}) => {
   return (
-    <PopupOverlay onClose={onClose} closeByClickOnOverlay={closeByClickOnOverlay} closeByPressEsc={closeByPressEsc}>
+    <PopupOverlay
+      onClose={onClose}
+      closeByClickOnOverlay={closeByClickOnOverlay}
+      closeByPressEsc={closeByPressEsc}
+      overlayStyles="bg-[#000000aa]"
+    >
       <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
         {/* ------------------------POPUP HEADER------------------------ */}
 
@@ -19,7 +31,9 @@ const BasePopup = ({ title, onClose, onPrevBtnClick, closeByClickOnOverlay, clos
               className="group absolute left-8 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-end gap-x-3 text-bg-light-grey"
             >
               <Prev />
-              <span className="text-base font-bold group-hover:underline group-focus:underline ">Повернутися</span>
+              <span className="text-base font-bold group-hover:underline group-focus:underline ">
+                Повернутися
+              </span>
             </button>
           )}
           {title ? (

@@ -7,9 +7,9 @@ import ButtonMain from "../UIKit/button";
 import CartProductList from "../CartProductList";
 import ordersStore from "../../store/orders";
 
-const CartPopup = observer(({ onClose }) => {
+const CartPopup = observer(({ onClose, onGoToTheOrder }) => {
   const isCartEmpty = ordersStore.products.length === 0;
-
+  const isOrderExist = ordersStore.totalQuantity !== 0;
   return (
     <BasePopup
       title="Кошик"
@@ -34,9 +34,16 @@ const CartPopup = observer(({ onClose }) => {
               <CartProductList products={toJS(ordersStore.products)} />
             </div>
             <div className="mt-8">
-                <ButtonMain clickFn={() => ordersStore.placeOrderAction()} style="redLarge">
+              <ButtonMain
+                style="redLarge"
+                clickFn={onGoToTheOrder}
+                disabled={!isOrderExist}
+              >
+                Перейти до замовлення
+              </ButtonMain>
+              {/* <ButtonMain clickFn={() => ordersStore.placeOrderAction()} style="redLarge">
                   Перейти до замовлення
-                </ButtonMain>
+                </ButtonMain> */}
             </div>
             <p className="mt-4 text-white text-sm">
               * Товар ваговий. Вказано середню вагу упаковки продукту. Можливе
@@ -53,6 +60,7 @@ const CartPopup = observer(({ onClose }) => {
 
 CartPopup.propTypes = {
   onClose: PropTypes.func.isRequired,
+  onGoToTheOrder: PropTypes.func.isRequired,
 };
 
 export default CartPopup;

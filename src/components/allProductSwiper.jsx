@@ -14,7 +14,9 @@ const AllProductSwiper = observer(() => {
   const filteredProducts =
     filterStore.category === "Всі продукти" || ""
       ? productStore.products
-      : productStore.products.filter((product) => product.category === filterStore.category);
+      : productStore.products.filter(
+          (product) => product.category === filterStore.category
+        );
 
   return (
     <div className="h-[780px] w-full py-4 relative product mx-auto">
