@@ -22,17 +22,21 @@ const Orders = observer(() => {
       {/* <h2 className="w-[1080px] my-8 text-center text-3xl text-txt-main-white font-medium">Список замовлень</h2> */}
       <div className="flex mb-7">
         <div className="w-[240px]"></div>
-        <h2 className="mx-auto mt-8 text-3xl text-txt-main-white text-center font-medium">{archived ? "Архів замовлень" : "Список замовлень"}</h2>
-        <ButtonMain style="redMedium" btnClass={"mt-6 mx-0"} clickFn={() => setArchived(!archived)}>{archived ? "До каталогу" : "Архів" }</ButtonMain>
+        <h2 className="mx-auto mt-8 text-3xl text-txt-main-white text-center font-medium">
+          {archived ? "Архів замовлень" : "Список замовлень"}
+        </h2>
+        <ButtonMain style="redMedium" btnClass={"mt-6 mx-0"} clickFn={() => setArchived(!archived)}>
+          {archived ? "До каталогу" : "Архів"}
+        </ButtonMain>
       </div>
       {adminState.isLoading ? (
         <div className="flex h-2/4 justify-center items-center">
           <RingLoader color="red" loading size={120} />
         </div>
-        ) : (
-          <>
-            <OrdersTable orders={adminOrdersStore.orders} archivedFilter={archived} />
-          {adminState.error &&
+      ) : (
+        <>
+          <OrdersTable orders={adminOrdersStore.orders} archivedFilter={archived} />
+          {adminState.error && (
             <AlertPopup onOk={() => adminState.setError("")}>
               <h1>{adminState.error}</h1>
             </AlertPopup>
