@@ -8,28 +8,29 @@ import RingLoader from "react-spinners/RingLoader";
 
 const AdminPage = observer(() => {
   const { token, isLoading, error, setError, getCurrentAction } = authStore;
-  
+
   useEffect(() => {
-    if (token) getCurrentAction()
+    if (token) getCurrentAction();
   }, []);
 
-  return (
-      isLoading ?
-        (<div className="flex justify-center items-center">
-          <RingLoader color="red" loading size={120} />
-        </div>) :
-        (<>
-        <div className="flex bg-bg-black w-[1440px]">
-          <SideBar />
-          <Outlet />
-        </div>
-        
-        {authStore.error &&
+  return isLoading ? (
+    <div className="flex justify-center items-center">
+      <RingLoader color="red" loading size={120} />
+    </div>
+  ) : (
+    <>
+      <div className="flex bg-bg-black h-screen">
+        <SideBar />
+        <Outlet />
+      </div>
+
+      {authStore.error && (
         <AlertPopup onOk={() => setError("")}>
           <h1>{error}</h1>
-        </AlertPopup>}
-      </>)
+        </AlertPopup>
+      )}
+    </>
   );
-})
-  
+});
+
 export default AdminPage;
