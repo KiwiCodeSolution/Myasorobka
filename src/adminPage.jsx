@@ -15,11 +15,11 @@ const AdminPage = observer(() => {
 
   return (
       isLoading ?
-        (<div className="flex justify-center items-center w-[1440px]">
+        (<div className="flex justify-center items-center">
           <RingLoader color="red" loading size={120} />
         </div>) :
         (<>
-        <div className="flex bg-bg-black">
+        <div className="flex bg-bg-black w-[1440px]">
           <SideBar />
           <Outlet />
         </div>

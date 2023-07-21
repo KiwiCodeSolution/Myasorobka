@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import testPicture from "../tempPicture/unsplash_6JQMjhqpVhE.jpg";
-import {Line, FavouriteIcon, TrashIcon} from "../icons/iconComponent";
+import {Line, FavouriteIcon, Trash} from "../icons/iconComponent";
 import RoundNumbers from "./roundNumbers";
 import ButtonMain from "./UIKit/button";
 import ordersStore from "../store/orders";
@@ -50,7 +50,7 @@ const ProductCard = ({ product }) => {
             </ButtonMain>
           </div>
           <button className="absolute top-[132px] right-6 w-6 h-6 bg-bg-black rounded" onClick={addToFavourite}><FavouriteIcon /></button>
-          <button className="absolute top-3 right-6 w-6 h-6 bg-bg-black rounded" onClick={deleteProduct}><TrashIcon/></button>
+          <button className="absolute top-3 right-6 w-6 h-6 bg-bg-black rounded" onClick={deleteProduct}><Trash/></button>
         </>
       ) : (
         <>
