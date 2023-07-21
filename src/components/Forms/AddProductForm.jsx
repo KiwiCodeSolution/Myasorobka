@@ -3,11 +3,10 @@ import { observer } from "mobx-react-lite";
 import { toJS } from 'mobx';
 import productStore from "../../store/products";
 
-const AddProductForm = observer(() => {
+const AddProductForm = observer(({closePopup}) => {
 // const AddProductForm = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-  // const categories = ["Птиця", "свинина", "телятина", "ковбаса"];
   const { products, createProductAction } = productStore;
 
   const categories = ["+ додати нову категорію +"]
@@ -20,9 +19,10 @@ const AddProductForm = observer(() => {
   // console.log("watched:", watch("selectCategory"));
 
   const onSubmit = data => {
-    console.log("data:", data);
+    // console.log("data:", data);
     const newProduct = {
       ...data,
+      price: Number(data.price),
       discount_price: data.info,
       available: true,
       favourite: false,
@@ -31,7 +31,7 @@ const AddProductForm = observer(() => {
     }
     console.log("newProduct:", newProduct);
     const result = createProductAction(newProduct);
-    if (result === "success") true; // закріваем модалку.
+    if (result === "success") closePopup(); // закріваем модалку.
   }
 
   return (

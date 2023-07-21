@@ -14,7 +14,7 @@ class Auth {
     makePersistable(this, {name: "auth", properties: ["isAuth", "token", "error"], storage: window.localStorage})
   }
 
-  setAuth = bool => this.isAuth = bool;
+  setIsAuth = bool => this.isAuth = bool;
   setToken = token => this.token = token;
   setIsLoading = bool => this.isLoading = bool;
   setError = errMessage => this.error = errMessage;
@@ -60,7 +60,7 @@ class Auth {
       this.setIsLoading(false);
       if (error.response) { // server error
         this.setError(error.response.data.message);
-        this.setAuth(false);
+        this.setIsAuth(false);
         this.setToken("");
       } else {
         this.setError(error.message);   // no internet connection

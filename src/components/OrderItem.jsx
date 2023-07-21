@@ -25,7 +25,7 @@ const OrderItem = ({ order }) => {
         <p className="w-[168px] text-center p-2">{customer_name}</p>
         <p className="w-[180px] text-right p-2">{phone_number}</p>
         <p className="w-[120px] text-right p-2">{total_amount}</p>
-        <p className="w-[240px] text-center p-2">{delivery_address}</p>
+        <p className="w-[320px] text-center p-2">{delivery_address}</p>
         <p className="w-[40px] flex justify-center items-center">
           <button
             className={`w-8 h-8 rounded-full bg-bg-white flex justify-center items-center ${orderIsOpened && "animate-rotate"}`}
