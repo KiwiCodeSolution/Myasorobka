@@ -25,7 +25,7 @@ const Orders = observer(() => {
           {archived ? "Архів замовлень" : "Список замовлень"}
         </h2>
         <ButtonMain style="redMedium" btnClass={"mt-6 mx-0"} clickFn={() => setArchived(!archived)}>
-          {archived ? "До каталогу" : "Архів"}
+          {archived ? "До замовлень" : "Архів"}
         </ButtonMain>
       </div>
       {adminState.isLoading ? (

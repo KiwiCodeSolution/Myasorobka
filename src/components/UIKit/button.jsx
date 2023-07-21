@@ -19,29 +19,18 @@ const buttonsStyle = {
     "bg-bg-white w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-black border border-2 border-bg-black hover:shadow-btnWhite focus:shadow-btnWhite mx-auto",
   redCustom:
     "hidden lg:inline bg-bg-red w-[240px] h-[38px] py-2 text-base font-medium text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto",
+  transparent:
+    "min-w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-btnWhiteS focus:shadow-btnWhiteS mx-auto",
 };
 
-const ButtonMain = ({
-  children,
-  style,
-  btnType,
-  icon,
-  clickFn,
-  btnClass,
-  ...restProps
-}) => {
+const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass, ...restProps }) => {
   const handleClick = () => (clickFn ? clickFn() : null);
   const additionalStyle = btnClass || "";
 
   const currentStyle = `rounded-full ${buttonsStyle[style]} ${additionalStyle}`;
 
   return (
-    <button
-      type={btnType || "button"}
-      className={currentStyle}
-      onClick={handleClick}
-      {...restProps}
-    >
+    <button type={btnType || "button"} className={currentStyle} onClick={handleClick} {...restProps}>
       {children}
       {icon}
     </button>
@@ -60,6 +49,7 @@ ButtonMain.propTypes = {
     "whiteSmall",
     "redCustom",
     "categoriesBtn",
+    "transparent",
   ]).isRequired,
   btnType: PropTypes.string,
   icon: PropTypes.element,

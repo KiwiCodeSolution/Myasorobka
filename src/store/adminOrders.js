@@ -1,10 +1,9 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import { getOrders, updateOrder } from "../API/ordersAPI";
+import { getOrders, updateOrder, deleteOrder } from "../API/ordersAPI";
 import adminState from "./adminState";
 
 class AdminOrders {
-
   orders = [];
 
   constructor() {
@@ -13,10 +12,10 @@ class AdminOrders {
       name: "adminOrders",
       properties: ["orders"],
       storage: window.localStorage,
-    })
+    });
   }
 
-  getAdminOrdersAction = async() => {
+  getAdminOrdersAction = async () => {
     adminState.setIsLoading(true);
     const result = await getOrders();
 
@@ -27,8 +26,8 @@ class AdminOrders {
         return;
       }
       this.orders = result.data;
-    })
-  }
+    });
+  };
 
   updateAdminOrderAction = async (order) => {
     adminState.setIsLoading(true);
@@ -41,8 +40,23 @@ class AdminOrders {
         return;
       }
       this.getAdminOrdersAction();
-    })
-  }
+    });
+  };
+
+  deleteAdminOrderAction = async (order) => {
+    console.log("deleteAdminOrderAction", order);
+    adminState.setIsLoading(true);
+    const result = await deleteOrder(order);
+
+    runInAction(() => {
+      adminState.setIsLoading(false);
+      if (result.error) {
+        adminState.setError(result.error);
+        return;
+      }
+      this.getAdminOrdersAction();
+    });
+  };
 }
 
 export default new AdminOrders();
