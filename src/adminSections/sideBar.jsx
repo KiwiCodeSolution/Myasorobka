@@ -28,7 +28,7 @@ const SideBar = () => {
 
       <button
         type="button"
-        className="w-[240px] mx-auto mt-auto mb-8 text-xl border rounded-full px-[90px] py-[14px]"
+        className="w-[240px] mx-auto mt-auto mb-8 text-xl border rounded-full px-[90px] py-[14px] hover:shadow-btnWhiteS focus:shadow-btnWhiteS"
         onClick={() => auth.logoutAction()}
       >
         Вийти

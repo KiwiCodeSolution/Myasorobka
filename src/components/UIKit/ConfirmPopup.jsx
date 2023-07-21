@@ -3,10 +3,15 @@ import PropTypes from "prop-types";
 import PopupOverlay from "./PopupOverlay";
 import ButtonMain from "./button";
 import logoSrc from "../../images/logo.png";
+import ClosePopupBtn from "./buttons/ClosePopupBtn";
 
 const ConfirmPopup = ({ primaryBtnText, onPrimaryBtnClick, secondaryBtnText, onSecondaryBtnClick, children }) => {
   return (
-    <PopupOverlay onClose={onSecondaryBtnClick}>
+    <PopupOverlay
+      onClose={onSecondaryBtnClick}
+      overlayStyles={"bg-[#000000aa]"}
+      closeByClickOnOverlay={onSecondaryBtnClick}
+    >
       <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
         {/* ------------------------POPUP HEADER------------------------ */}
 
@@ -16,7 +21,9 @@ const ConfirmPopup = ({ primaryBtnText, onPrimaryBtnClick, secondaryBtnText, onS
             alt="app logo"
             className="absolute left-1/2 bottom-1/2 -translate-x-1/2 translate-y-1/2 w-[60px] h-[60px] "
           />
-
+          <div className="absolute right-8 bottom-[45%] translate-y-1/2">
+            <ClosePopupBtn onClick={onSecondaryBtnClick} />
+          </div>
           <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#ACACAC00] via-[#EB1A1A] to-[#ACACAC00]"></div>
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
