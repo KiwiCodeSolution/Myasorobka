@@ -5,12 +5,12 @@ import RoundNumbers from "./roundNumbers";
 import ButtonMain from "./UIKit/button";
 import ordersStore from "../store/orders";
 import { useState } from "react";
-// import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const [qttyBtn, setQttyBtn] = useState(1);
-  // const { pathname } = useLocation();
-  // const admin = pathname.endsWith("admin/authorized/products");
+  const { pathname } = useLocation();
+  const admin = pathname.endsWith("admin/authorized/products");
   // console.log("admin ? :", admin);
 
   const addToCart = () => {

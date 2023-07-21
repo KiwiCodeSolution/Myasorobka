@@ -46,12 +46,10 @@ export default {
       keyframes: {
         rotate: {
           "0%": {
-            transform: "rotate(0) translateY(0)",
-            transformOrigin: 'center',
+            transform: "translateY(0) rotate(0) ",
           },
           "100%": {
-            transform: "rotate(180deg) translateY(-40px)",
-            transformOrigin: 'center',
+            transform: "translateY(40px) rotate(180deg)",
           }
         },
       },
