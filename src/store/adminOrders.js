@@ -40,6 +40,7 @@ class AdminOrders {
         adminState.setError(result.error);
         return;
       }
+      this.getAdminOrdersAction();
     })
   }
 }

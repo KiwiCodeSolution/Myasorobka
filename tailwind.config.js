@@ -47,12 +47,16 @@ export default {
         rotate: {
           "0%": {
             transform: "rotate(0) translateY(0)",
+            transformOrigin: 'center',
           },
-          "100%": { transform: "rotate(180deg) translateY(-40px)"},
+          "100%": {
+            transform: "rotate(180deg) translateY(-40px)",
+            transformOrigin: 'center',
+          }
         },
       },
       animation: {
-        rotate: "rotate 1s forwards",
+        rotate: "rotate 1s forwards"
       }
     },
   },

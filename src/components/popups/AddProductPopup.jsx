@@ -11,7 +11,7 @@ const AddProductPopup = ({ onClose }) => {
       onClose={onClose}
     >
       <AddImage />
-      <AddProductForm />
+      <AddProductForm closePopup={onClose} />
 
     </BasePopup>
   )

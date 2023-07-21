@@ -18,11 +18,10 @@ const Orders = observer(() => {
   }, []);
 
   return (
-    <div className="">
-      {/* <h2 className="w-[1080px] my-8 text-center text-3xl text-txt-main-white font-medium">Список замовлень</h2> */}
+    <div>
       <div className="flex mb-7">
-        <div className="w-[240px]"></div>
-        <h2 className="mx-auto mt-8 text-3xl text-txt-main-white text-center font-medium">
+        <div className="mx-auto w-[240px]"></div>
+        <h2 className="mt-8 text-3xl text-txt-main-white text-center font-medium">
           {archived ? "Архів замовлень" : "Список замовлень"}
         </h2>
         <ButtonMain style="redMedium" btnClass={"mt-6 mx-0"} clickFn={() => setArchived(!archived)}>
@@ -36,6 +35,7 @@ const Orders = observer(() => {
       ) : (
         <>
           <OrdersTable orders={adminOrdersStore.orders} archivedFilter={archived} />
+
           {adminState.error && (
             <AlertPopup onOk={() => adminState.setError("")}>
               <h1>{adminState.error}</h1>

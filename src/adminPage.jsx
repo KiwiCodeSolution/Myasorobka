@@ -15,7 +15,7 @@ const AdminPage = observer(() => {
 
   return (
       isLoading ?
-        (<div className="flex justify-center items-center">
+        (<div className="flex justify-center items-center w-[1440px]">
           <RingLoader color="red" loading size={120} />
         </div>) :
         (<>
@@ -23,6 +23,7 @@ const AdminPage = observer(() => {
           <SideBar />
           <Outlet />
         </div>
+        
         {authStore.error &&
         <AlertPopup onOk={() => setError("")}>
           <h1>{error}</h1>

@@ -14,7 +14,7 @@ const OrdersTable = ({ orders, archivedFilter }) => {
         <p className="w-[168px]">Замовник</p>
         <p className="w-[180px]">Номмер телефону</p>
         <p className="w-[120px]">Сума</p>
-        <p className="w-[240px]">Адреса доставки</p>
+        <p className="w-[320px]">Адреса доставки</p>
         <p className="w-[40px]"></p>
       </div>
       {filteredOrders.length && filteredOrders.map(order => (
