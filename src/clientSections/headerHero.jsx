@@ -1,8 +1,10 @@
 import ButtonMain from "../components/UIKit/button";
 import Header from "../components/header";
 import { SocialLinksBlock } from "../components/socBlock";
+import { scrollToTProducts } from "../helpers/scrollFunctions";
 
 const HeaderHero = () => {
+
   return (
     <div className="bg-hero bg-no-repeat bg-cover min-h-[764px] text-txt-main-white relative">
       <div className="max-w-[1440px] mx-auto px-[10px]">
@@ -16,7 +18,11 @@ const HeaderHero = () => {
         <p className="mt-[32px] ml-0 lg:ml-[258px] max-w-[640px] text-[32px] font-bold leading-snug">
           Доставка по місту Запоріжжя бескоштовна при замовленні від 3000грн
         </p>
-        <ButtonMain style="redLarge" btnClass="ml-[10px] mt-[32px] mb-[82px] lg:ml-[424px] lg:mt-[72px] lg:mb-0">
+        <ButtonMain
+          style="redLarge"
+          btnClass="ml-[10px] mt-[32px] mb-[82px] lg:ml-[424px] lg:mt-[72px] lg:mb-0"
+          clickFn={scrollToTProducts}
+        >
           Замовити смаколики
         </ButtonMain>
       </div>

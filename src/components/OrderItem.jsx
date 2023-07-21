@@ -1,21 +1,27 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { format } from "date-fns";
-import { ArrowDown, Archive } from "../icons/iconComponent";
+import { ArrowDown, Archive, Active, Trash } from "../icons/iconComponent";
 import OrderItemProductList from "./OrderItemProductList";
 import ButtonMain from "./UIKit/button";
 import adminOrders from "../store/adminOrders";
 import { toJS } from "mobx";
 
 const OrderItem = ({ order }) => {
-  const { order_number, order_date, customer_name, phone_number, total_amount, delivery_address, products } = order;
+  const { order_number, order_date, customer_name, phone_number, total_amount, delivery_address, products, archived } =
+    order;
   const [orderIsOpened, setOrderIsOpened] = useState(false);
 
   const toArchive = () => {
     const newOrder = toJS(order);
-    newOrder.archived = true;
+    newOrder.archived = !archived;
     adminOrders.updateAdminOrderAction(newOrder);
-  }
+  };
+
+  const toRemove = () => {
+    const newOrder = toJS(order);
+    adminOrders.deleteAdminOrderAction(newOrder);
+  };
 
   return (
     <>
@@ -28,8 +34,11 @@ const OrderItem = ({ order }) => {
         <p className="w-[320px] text-center p-2">{delivery_address}</p>
         <p className="w-[40px] flex justify-center items-center">
           <button
-            className={`w-8 h-8 rounded-full bg-bg-white flex justify-center items-center ${orderIsOpened && "animate-rotate"}`}
-            onClick={() => setOrderIsOpened(!orderIsOpened)}>
+            className={`w-8 h-8 rounded-full bg-bg-white flex justify-center items-center ${
+              orderIsOpened && "animate-rotate"
+            }`}
+            onClick={() => setOrderIsOpened(!orderIsOpened)}
+          >
             <ArrowDown />
           </button>
         </p>
@@ -37,20 +46,39 @@ const OrderItem = ({ order }) => {
 
       {orderIsOpened && (
         <div className="py-4 relative w-[840px]">
-          <div className="flex pl-4 text-base font-normal"> {/*producl list header*/}
+          <div className="flex pl-4 text-base font-normal">
+            {" "}
+            {/*producl list header*/}
             <p className="w-[300px] text-base font-normal text-left">Наіменування</p>
             <p className="w-[120px] text-base font-normal text-center">Кількість</p>
             <p className="w-[120px] text-right">Сума</p>
           </div>
           <OrderItemProductList products={products} />
-          <ButtonMain style="redSmall" btnClass={"absolute right-20 bottom-4"} clickFn={toArchive}>
-            <span className="flex justify-center gap-2 pr-8"><Archive/>Архів</span>
-          </ButtonMain>
-
+          <div className="min-w-[300px] flex justify-center items-center gap-x-4 absolute right-[-125px] bottom-4">
+            <ButtonMain style="redSmall" clickFn={toRemove}>
+              <span className="flex justify-center gap-x-2 px-4">
+                <Trash />
+                Видалити
+              </span>
+            </ButtonMain>
+            <ButtonMain style="transparent" clickFn={toArchive}>
+              {archived ? (
+                <span className="flex justify-center gap-x-2 px-4">
+                  <Active />
+                  Повернути з архіву
+                </span>
+              ) : (
+                <span className="flex justify-center gap-x-2 pr-6">
+                  <Archive />
+                  Архів
+                </span>
+              )}
+            </ButtonMain>
+          </div>
         </div>
       )}
     </>
-  )
+  );
 };
 
 export default OrderItem;

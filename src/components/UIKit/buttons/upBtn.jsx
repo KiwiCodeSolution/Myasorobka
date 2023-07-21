@@ -1,8 +1,6 @@
-const UpBtn = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+import { scrollToTop } from "../../../helpers/scrollFunctions";
 
+const UpBtn = () => {
   return (
     <button
       type="button"
