@@ -19,7 +19,7 @@ const Orders = observer(() => {
 
   return (
     <div>
-      <div className="flex mb-7">
+      <div className="flex mb-7 w-[1080px]">
         <div className="mx-auto w-[240px]"></div>
         <h2 className="mt-8 text-3xl text-txt-main-white text-center font-medium">
           {archived ? "Архів замовлень" : "Список замовлень"}
