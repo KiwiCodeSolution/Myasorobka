@@ -1,6 +1,7 @@
 import ButtonMain from "./UIKit/button";
 import logo from "../images/logo.png";
 import Menu from "./menu";
+import { scrollToTProducts } from "../helpers/scrollFunctions";
 
 const Header = () => {
   return (
@@ -10,7 +11,9 @@ const Header = () => {
         <nav className="mr-3 lg:mr-11">
           <Menu section={"header"} />
         </nav>
-        <ButtonMain style="redCustom">Замовити смаколики</ButtonMain>
+        <ButtonMain style="redCustom" clickFn={scrollToTProducts}>
+          Замовити смаколики
+        </ButtonMain>
       </div>
     </div>
   );
