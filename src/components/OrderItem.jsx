@@ -6,11 +6,13 @@ import OrderItemProductList from "./OrderItemProductList";
 import ButtonMain from "./UIKit/button";
 import adminOrders from "../store/adminOrders";
 import { toJS } from "mobx";
+import ConfirmPopup from "./UIKit/ConfirmPopup";
 
 const OrderItem = ({ order }) => {
   const { order_number, order_date, customer_name, phone_number, total_amount, delivery_address, products, archived } =
     order;
   const [orderIsOpened, setOrderIsOpened] = useState(false);
+  const [popUpIsOpened, setPopUpIsOpened] = useState(false);
 
   const toArchive = () => {
     const newOrder = toJS(order);
@@ -32,7 +34,7 @@ const OrderItem = ({ order }) => {
         <p className="w-[180px] text-right p-2">{phone_number}</p>
         <p className="w-[120px] text-right p-2">{total_amount}</p>
         <p className="w-[320px] text-center p-2">{delivery_address}</p>
-        <p className="w-[40px] flex justify-center items-center">
+        <p className="w-[40px] flex justify-center items-center mr-6">
           <button
             className={`w-8 h-8 rounded-full bg-bg-white flex justify-center items-center ${
               orderIsOpened && "animate-rotate"
@@ -55,12 +57,15 @@ const OrderItem = ({ order }) => {
           </div>
           <OrderItemProductList products={products} />
           <div className="min-w-[300px] flex justify-center items-center gap-x-4 absolute right-[-125px] bottom-4">
-            <ButtonMain style="redSmall" clickFn={toRemove}>
-              <span className="flex justify-center gap-x-2 px-4">
-                <Trash />
-                Видалити
-              </span>
-            </ButtonMain>
+            {archived && (
+              <ButtonMain style="redSmall" clickFn={() => setPopUpIsOpened(!popUpIsOpened)}>
+                <span className="flex justify-center gap-x-2 px-4">
+                  <Trash />
+                  Видалити
+                </span>
+              </ButtonMain>
+            )}
+
             <ButtonMain style="transparent" clickFn={toArchive}>
               {archived ? (
                 <span className="flex justify-center gap-x-2 px-4">
@@ -76,6 +81,21 @@ const OrderItem = ({ order }) => {
             </ButtonMain>
           </div>
         </div>
+      )}
+      {popUpIsOpened && (
+        <ConfirmPopup
+          primaryBtnText={"Видалити"}
+          secondaryBtnText={"Закрити"}
+          onPrimaryBtnClick={toRemove}
+          onSecondaryBtnClick={() => setPopUpIsOpened(false)}
+        >
+          <div className="mt-[78px] text-txt-main-white mb-[52px]">
+            <p className="text-[32px] mb-4">Ви впевнені що хочете видалити?</p>
+            <p className="text-sm text-white">
+              * Видалення картки з товаром видалить всі додані зображення та інформацію без можливості поверння.
+            </p>
+          </div>
+        </ConfirmPopup>
       )}
     </>
   );

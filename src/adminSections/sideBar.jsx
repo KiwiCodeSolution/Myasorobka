@@ -6,7 +6,7 @@ import * as icon from "../icons/iconComponent";
 const SideBar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  
+
   return (
     <div className="flex flex-col w-[356px] min-h-[858px] text-txt-main-white text-center font font-medium border-r-2 border-[#FBDD3D] rounded-3xl">
       <img src={logo} alt="logo" className="px-24 py-8" />
@@ -26,11 +26,16 @@ const SideBar = () => {
         <icon.Line active={pathname.endsWith("orders")} long />
       </div>
 
-      <button type="button" className="w-[240px] mx-auto mt-auto mb-8 text-xl border rounded-full px-[90px] py-[14px]" onClick={() => auth.logoutAction()}>
+      <button
+        type="button"
+        className="w-[240px] mx-auto mt-auto mb-8 text-xl border rounded-full px-[90px] py-[14px] hover:shadow-btnWhiteS focus:shadow-btnWhiteS"
+        onClick={() => auth.logoutAction()}
+      >
         Вийти
-      </button><hr />
+      </button>
+      <hr />
     </div>
-  )
+  );
 };
 
 export default SideBar;
