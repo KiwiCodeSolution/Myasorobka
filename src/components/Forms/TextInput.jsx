@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useController } from "react-hook-form";
 
-const IS_REQUIRED = "Це поле обов'язкове";
+const IS_REQUIRED = "Обов'язкове поле!";
 
 const TextInput = ({ name, label, control }) => {
   const {
@@ -11,7 +11,7 @@ const TextInput = ({ name, label, control }) => {
     name,
     control,
     rules: {
-      required: IS_REQUIRED,
+      // required: IS_REQUIRED,
     },
   });
 
@@ -28,7 +28,7 @@ const TextInput = ({ name, label, control }) => {
             className="w-full h-8 px-4 bg-bg-main outline-none "
           />
           {error && (
-            <p className="absolute text-xs font-normal text-[red]">
+            <p className="absolute text-xs font-bold text-[red]">
               {error.message}
             </p>
           )}

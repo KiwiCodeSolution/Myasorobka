@@ -13,16 +13,20 @@ class ClientState {
       name: "clientState",
       properties: ["isLoading", "error", "message"],
       storage: window.localStorage,
-    })
+    });
   }
   setIsLoading = (bool) => {
     this.isLoading = bool;
-  }
+  };
   setError = (errMessage) => {
     this.error = errMessage;
-  }
+  };
   setMessage = (message) => {
     this.message = message;
+  };
+
+  get orderNumber() {
+    return this.message;
   }
 }
 export default new ClientState();

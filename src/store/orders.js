@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction, toJS } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import clientStore from "../store/client";
+import meta from "./meta";
 // import auth from "./auth";
 import { placeOrder } from "../API/ordersAPI";
 
@@ -19,7 +20,9 @@ class Orders {
   }
 
   addToCart = (productToAdd, quantity) => {
-    const foundProduct = this.order.products.find(({ product }) => product.name === productToAdd.name);
+    const foundProduct = this.order.products.find(
+      ({ product }) => product.name === productToAdd.name
+    );
 
     if (foundProduct) {
       console.log("Такой товар уже в корзине");
@@ -75,31 +78,52 @@ class Orders {
     this.products[productIndex].quantity = newQuantity;
   }
 
-  placeOrderAction = async () => {
+  placeOrderAction = async (customerData) => {
     clientStore.setIsLoading(true);
-    // временное .. начало
     const order = {
-      "customer_name": "Test_name",
-      "phone_number": "+123456789",
-      "delivery_address": "34 Fullton Street",
-      "total_amount": 5555,
-      ...toJS(this.order)
-    }
-    console.log("placingOrder:", order);
-    const result = await placeOrder(order);
-    //  временное .. стоп
+      ...customerData,
+      total_amount: this.totalPrice,
+      ...toJS(this.order),
+    };
 
-    // const result = await placeOrder(toJS(this.order));
-
-    runInAction(() => {
+    try {
+      const result = await placeOrder(order);
+      meta.resetFormFieldValues();
+      runInAction(() => {
+        this.order = { products: [] };
+      });
+      clientStore.setMessage(result.data.order_number);
+    } catch (err) {
+      clientStore.setError(err.message);
+      throw new Error(err.message);
+    } finally {
       clientStore.setIsLoading(false);
-      if (result.error) {
-        clientStore.setError(result.error);
-        return;
-      }
-      this.order = { products: [] };
-      clientStore.setMessage(result.data.order_number)
-    })
-  }
+    }
+  };
+
+  // placeOrderAction = async (customerData) => {
+  //   clientStore.setIsLoading(true);
+  //   // временное .. начало
+  //   const order = {
+  //     ...customerData,
+  //     total_amount: this.totalPrice,
+  //     ...toJS(this.order),
+  //   };
+  //   console.log("placingOrder:", order);
+  //   const result = await placeOrder(order);
+  //   //  временное .. стоп
+
+  //   // const result = await placeOrder(toJS(this.order));
+
+  //   runInAction(() => {
+  //     clientStore.setIsLoading(false);
+  //     if (result.error) {
+  //       clientStore.setError(result.error);
+  //       return;
+  //     }
+  //     this.order = { products: [] };
+  //     clientStore.setMessage(result.data.order_number);
+  //   });
+  // };
 }
 export default new Orders();

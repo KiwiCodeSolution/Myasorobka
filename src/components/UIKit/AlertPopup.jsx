@@ -21,7 +21,9 @@ const AlertPopup = ({ onOk, children }) => {
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
         <div className="px-8 pb-16 text-white flex flex-col items-center">
-          <div className="h-[208px]">{children}</div>
+          <div className="w-full h-[208px] flex justify-center items-center">
+            {children}
+          </div>
           <div className="mt-11">
             <ButtonMain style="redLarge" clickFn={onOk}>
               OK
