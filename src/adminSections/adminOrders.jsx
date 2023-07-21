@@ -31,10 +31,11 @@ const Orders = observer(() => {
         ) : (
         <>
           <OrdersTable orders={adminOrdersStore.orders} archivedFilter={archived} />
+          
           {adminState.error &&
-            <AlertPopup onOk={() => adminState.setError("")}>
-              <h1>{adminState.error}</h1>
-            </AlertPopup>}
+          <AlertPopup onOk={() => adminState.setError("")}>
+            <h1>{adminState.error}</h1>
+          </AlertPopup>}
         </>
       )}
     </div>
