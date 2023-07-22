@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import { useController } from "react-hook-form";
 
-// const IS_REQUIRED = "Обов'язкове поле!";
+import metaStore from "../../store/meta";
+
+const IS_REQUIRED = "Обов'язкове поле!";
 
 const TextInput = ({ name, label, placeholder, control }) => {
   const {
@@ -11,9 +13,15 @@ const TextInput = ({ name, label, placeholder, control }) => {
     name,
     control,
     rules: {
-      // required: IS_REQUIRED,
+      required: IS_REQUIRED,
     },
   });
+
+  const onChange = (e) => {
+    const { name, value } = e.currentTarget;
+    field.onChange(e);
+    metaStore.setOrderFormField(name, value);
+  };
 
   return (
     <div>
@@ -23,7 +31,7 @@ const TextInput = ({ name, label, placeholder, control }) => {
         </span>
         <div className="relative">
           <input
-            {...field}
+            {...{ ...field, onChange }}
             placeholder={placeholder}
             autoComplete="off"
             className="w-full h-8 px-4 text-base font-normal bg-bg-main outline-none  placeholder:text-bg-grey"
