@@ -1,13 +1,13 @@
-import { makeAutoObservable, runInAction, toJS } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import clientStore from "../store/client";
-import meta from "./meta";
-// import auth from "./auth";
 import { placeOrder } from "../API/ordersAPI";
 
 class Orders {
   order = {
     products: [], // { product, quantity }
+    order_number: null,
+    isOrderProcessing: false,
+    error: null,
   };
 
   constructor() {
@@ -36,24 +36,6 @@ class Orders {
     this.order.products.push({ product: productToAdd, quantity });
   };
 
-  get products() {
-    return this.order.products;
-  }
-
-  get totalQuantity() {
-    return this.order.products.reduce(
-      (acc, product) => acc + product.quantity,
-      0
-    );
-  }
-
-  get totalPrice() {
-    return this.order.products.reduce(
-      (acc, { product, quantity }) => acc + product.price * quantity,
-      0
-    );
-  }
-
   deleteProduct(productName) {
     const productIndex = this.order.products.findIndex(
       ({ product }) => product.name === productName
@@ -78,8 +60,30 @@ class Orders {
     this.products[productIndex].quantity = newQuantity;
   }
 
+  get products() {
+    return this.order.products;
+  }
+
+  get totalQuantity() {
+    return this.order.products.reduce(
+      (acc, product) => acc + product.quantity,
+      0
+    );
+  }
+
+  get totalPrice() {
+    return this.order.products.reduce(
+      (acc, { product, quantity }) => acc + product.price * quantity,
+      0
+    );
+  }
+
+  clearOrderedProductList() {
+    this.order["products"] = [];
+  }
+
   placeOrderAction = async (customerData) => {
-    clientStore.setIsLoading(true);
+    this.setIsOrderProcessing(true);
     const order = {
       ...customerData,
       total_amount: this.totalPrice,
@@ -88,18 +92,38 @@ class Orders {
 
     try {
       const result = await placeOrder(order);
-      meta.resetFormFieldValues();
-      runInAction(() => {
-        this.order = { products: [] };
-      });
-      clientStore.setMessage(result.data.order_number);
+      this.setOrderNumber(result.data.order_number);
+      this.clearOrderedProductList();
     } catch (err) {
-      clientStore.setError(err.message);
-      throw new Error(err.message);
+      this.setError(err.message);
     } finally {
-      clientStore.setIsLoading(false);
+      this.setIsOrderProcessing(true);
     }
   };
+
+  get isOrderProcessing() {
+    return this.order.setIsOrderProcessing;
+  }
+
+  get order_number() {
+    return this.order.order_number;
+  }
+
+  get error() {
+    return this.order.error;
+  }
+
+  setIsOrderProcessing(value) {
+    this.order.isOrderProcessing = value;
+  }
+
+  setOrderNumber(num) {
+    this.order.order_number = num;
+  }
+
+  setError(err) {
+    this.order.error = err;
+  }
 
   // placeOrderAction = async (customerData) => {
   //   clientStore.setIsLoading(true);

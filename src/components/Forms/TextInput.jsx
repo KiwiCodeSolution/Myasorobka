@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import { useController } from "react-hook-form";
 
-const IS_REQUIRED = "Обов'язкове поле!";
+// const IS_REQUIRED = "Обов'язкове поле!";
 
-const TextInput = ({ name, label, control }) => {
+const TextInput = ({ name, label, placeholder, control }) => {
   const {
     field,
     fieldState: { error },
@@ -24,8 +24,9 @@ const TextInput = ({ name, label, control }) => {
         <div className="relative">
           <input
             {...field}
+            placeholder={placeholder}
             autoComplete="off"
-            className="w-full h-8 px-4 bg-bg-main outline-none "
+            className="w-full h-8 px-4 text-base font-normal bg-bg-main outline-none  placeholder:text-bg-grey"
           />
           {error && (
             <p className="absolute text-xs font-bold text-[red]">
@@ -41,6 +42,7 @@ const TextInput = ({ name, label, control }) => {
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   control: PropTypes.object,
 };
 
