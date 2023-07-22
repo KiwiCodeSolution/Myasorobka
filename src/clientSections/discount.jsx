@@ -1,4 +1,5 @@
 import ButtonMain from "../components/UIKit/button";
+import { scrollToTProducts } from "../helpers/scrollFunctions";
 
 const Discount = () => {
   return (
@@ -12,7 +13,9 @@ const Discount = () => {
             Наш консультант підкаже яке м&apos;ясо підійде вам як найкраще. <br />
             Не зволікай - заявку залишай!
           </p>
-          <ButtonMain style="redLarge">Замовити смаколики</ButtonMain>
+          <ButtonMain style="redLarge" clickFn={scrollToTProducts}>
+            Замовити смаколики
+          </ButtonMain>
         </div>
       </div>
     </div>
