@@ -1,12 +1,10 @@
 import Proptypes from "prop-types";
-import { useState } from "react";
+import { observer } from "mobx-react-lite";
 
 import BasePopup from "../UIKit/BasePopup";
 import OrderForm from "../Forms/OrderForm";
 
-const OrderPopup = ({ onClose, onBackToTheCart }) => {
-  useState(false);
-
+const OrderPopup = observer(({ onClose, onBackToTheCart }) => {
   return (
     <BasePopup onClose={onClose} onPrevBtnClick={onBackToTheCart}>
       <div className="flex flex-col items-center">
@@ -14,7 +12,7 @@ const OrderPopup = ({ onClose, onBackToTheCart }) => {
       </div>
     </BasePopup>
   );
-};
+});
 
 OrderPopup.propTypes = {
   onClose: Proptypes.func.isRequired,

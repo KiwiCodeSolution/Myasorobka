@@ -26,7 +26,7 @@ const PopupOverlay = ({
   };
 
   useEffect(() => {
-    if (closeByPressEsc) {
+    if (!closeByPressEsc) {
       return;
     }
 

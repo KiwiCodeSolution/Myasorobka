@@ -1,12 +1,13 @@
-import { makeAutoObservable, runInAction, toJS } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import { makePersistable } from "mobx-persist-store";
-import clientStore from "../store/client";
-// import auth from "./auth";
 import { placeOrder } from "../API/ordersAPI";
 
 class Orders {
   order = {
     products: [], // { product, quantity }
+    order_number: null,
+    isOrderProcessing: false,
+    error: null,
   };
 
   constructor() {
@@ -19,7 +20,9 @@ class Orders {
   }
 
   addToCart = (productToAdd, quantity) => {
-    const foundProduct = this.order.products.find(({ product }) => product.name === productToAdd.name);
+    const foundProduct = this.order.products.find(
+      ({ product }) => product.name === productToAdd.name
+    );
 
     if (foundProduct) {
       console.log("Такой товар уже в корзине");
@@ -32,24 +35,6 @@ class Orders {
 
     this.order.products.push({ product: productToAdd, quantity });
   };
-
-  get products() {
-    return this.order.products;
-  }
-
-  get totalQuantity() {
-    return this.order.products.reduce(
-      (acc, product) => acc + product.quantity,
-      0
-    );
-  }
-
-  get totalPrice() {
-    return this.order.products.reduce(
-      (acc, { product, quantity }) => acc + product.price * quantity,
-      0
-    );
-  }
 
   deleteProduct(productName) {
     const productIndex = this.order.products.findIndex(
@@ -75,31 +60,94 @@ class Orders {
     this.products[productIndex].quantity = newQuantity;
   }
 
-  placeOrderAction = async () => {
-    clientStore.setIsLoading(true);
-    // временное .. начало
-    const order = {
-      "customer_name": "Test_name",
-      "phone_number": "+123456789",
-      "delivery_address": "34 Fullton Street",
-      "total_amount": 5555,
-      ...toJS(this.order)
-    }
-    console.log("placingOrder:", order);
-    const result = await placeOrder(order);
-    //  временное .. стоп
-
-    // const result = await placeOrder(toJS(this.order));
-
-    runInAction(() => {
-      clientStore.setIsLoading(false);
-      if (result.error) {
-        clientStore.setError(result.error);
-        return;
-      }
-      this.order = { products: [] };
-      clientStore.setMessage(result.data.order_number)
-    })
+  get products() {
+    return this.order.products;
   }
+
+  get totalQuantity() {
+    return this.order.products.reduce(
+      (acc, product) => acc + product.quantity,
+      0
+    );
+  }
+
+  get totalPrice() {
+    return this.order.products.reduce(
+      (acc, { product, quantity }) => acc + product.price * quantity,
+      0
+    );
+  }
+
+  clearOrderedProductList() {
+    this.order["products"] = [];
+  }
+
+  placeOrderAction = async (customerData) => {
+    this.setIsOrderProcessing(true);
+    const order = {
+      ...customerData,
+      total_amount: this.totalPrice,
+      ...toJS(this.order),
+    };
+
+    try {
+      const result = await placeOrder(order);
+      this.setOrderNumber(result.data.order_number);
+      this.clearOrderedProductList();
+    } catch (err) {
+      this.setError(err.message);
+    } finally {
+      this.setIsOrderProcessing(true);
+    }
+  };
+
+  get isOrderProcessing() {
+    return this.order.setIsOrderProcessing;
+  }
+
+  get order_number() {
+    return this.order.order_number;
+  }
+
+  get error() {
+    return this.order.error;
+  }
+
+  setIsOrderProcessing(value) {
+    this.order.isOrderProcessing = value;
+  }
+
+  setOrderNumber(num) {
+    this.order.order_number = num;
+  }
+
+  setError(err) {
+    this.order.error = err;
+  }
+
+  // placeOrderAction = async (customerData) => {
+  //   clientStore.setIsLoading(true);
+  //   // временное .. начало
+  //   const order = {
+  //     ...customerData,
+  //     total_amount: this.totalPrice,
+  //     ...toJS(this.order),
+  //   };
+  //   console.log("placingOrder:", order);
+  //   const result = await placeOrder(order);
+  //   //  временное .. стоп
+
+  //   // const result = await placeOrder(toJS(this.order));
+
+  //   runInAction(() => {
+  //     clientStore.setIsLoading(false);
+  //     if (result.error) {
+  //       clientStore.setError(result.error);
+  //       return;
+  //     }
+  //     this.order = { products: [] };
+  //     clientStore.setMessage(result.data.order_number);
+  //   });
+  // };
 }
 export default new Orders();

@@ -1,38 +1,64 @@
-// import Proptypes from "prop-types";
 import { useForm } from "react-hook-form";
-import { toJS } from "mobx";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
 import orderStore from "../../store/orders";
+
+import CompleteOrderPopup from "../popups/CompleteOrderPopup";
+import AlertPopup from "../UIKit/AlertPopup";
 import ButtonMain from "../UIKit/button";
 import TextInput from "./TextInput";
+import metaStore from "../../store/meta";
 
 const formFields = [
-  { name: "customer_name", label: "Прiзвище та Iм'я" },
-  { name: "phone_number", label: "Номер телефону одержувача" },
-  { name: "delivery_address", label: "Адреса доставки вiддiлення Нової Пошти" },
+  {
+    name: "customer_name",
+    label: "Прiзвище та Iм'я",
+    placeholder: "приклад: Гайденко Тарас Бульбович",
+  },
+  {
+    name: "phone_number",
+    label: "Номер телефону одержувача",
+    placeholder: "приклад: +38066-135-12-24",
+  },
+  {
+    name: "delivery_address",
+    label: "Адреса доставки вiддiлення Нової Пошти",
+    placeholder:
+      "приклад: м. Харків вул.Пушкінська 79б відділення нової почти №135",
+  },
 ];
 
-const initialValues = {
+const resetValues = {
   customer_name: "",
   phone_number: "",
   delivery_address: "",
 };
 
-const OrderForm = () => {
-  const { handleSubmit, control } = useForm({
-    defaultValues: initialValues,
-    mode: "onTouched",
+const OrderForm = observer(() => {
+  const { handleSubmit, control, getValues, reset } = useForm({
+    defaultValues: metaStore._orderFormFieldValues,
   });
 
-  const onFormSubmit = (fieldValues) => {
-    const order = {
-      ...fieldValues,
-      total_amount: orderStore.totalPrice,
-      products: toJS(orderStore.products),
-    };
+  const onFormSubmit = async (fieldValues) => {
+    await orderStore.placeOrderAction(fieldValues);
+    if (orderStore.error) {
+      return;
+    }
 
-    console.log("order: ", order);
+    reset(resetValues);
   };
+
+  const onOrderComplete = () => {
+    orderStore.setOrderNumber(null);
+    metaStore.toggleOrderPopupShown();
+  };
+
+  useEffect(() => {
+    return () => {
+      metaStore.orderFormFieldValues = getValues();
+    };
+  }, [getValues]);
 
   return (
     <>
@@ -46,19 +72,29 @@ const OrderForm = () => {
               <TextInput
                 name={field.name}
                 label={field.label}
+                placeholder={field.placeholder}
                 control={control}
               />
             </li>
           ))}
         </ul>
         <ButtonMain style="redLarge" btnType="submit">
-          Замовити
+          {orderStore.isOrderProcessing ? "В обробцi..." : "Замовити"}
         </ButtonMain>
       </form>
+      {orderStore.order_number && (
+        <CompleteOrderPopup
+          orderNumber={orderStore.order_number}
+          onComplete={onOrderComplete}
+        />
+      )}
+      {orderStore.error && (
+        <AlertPopup onOk={() => orderStore.setError(null)}>
+          <h1 className="text-2xl">{orderStore.error}</h1>
+        </AlertPopup>
+      )}
     </>
   );
-};
-
-OrderForm.propTypes = {};
+});
 
 export default OrderForm;
