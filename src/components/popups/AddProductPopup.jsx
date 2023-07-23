@@ -3,15 +3,15 @@ import BasePopup from "../UIKit/BasePopup";
 import AddProductForm from "../Forms/AddProductForm";
 import AddImage from "../AddImage";
 
-const AddProductPopup = ({ onClose }) => {
+const AddProductPopup = ({ onClose, editProduct }) => {
 
   return (
     <BasePopup
-      title="Додати товар"
+      title={editProduct ? "Редагувати товар" : "Додати товар"}
       onClose={onClose}
     >
       <AddImage />
-      <AddProductForm closePopup={onClose} />
+      <AddProductForm closePopup={onClose} editProduct={editProduct} />
 
     </BasePopup>
   )
@@ -20,5 +20,13 @@ const AddProductPopup = ({ onClose }) => {
 export default AddProductPopup;
 
 AddProductPopup.propTypes = ({
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  editProduct: PropTypes.shape({
+    name: PropTypes.string,
+    category: PropTypes.string,
+    price: PropTypes.number,
+    unit: PropTypes.string,
+    discount_price: PropTypes.string,
+    favourite: PropTypes.bool
+  })
 })

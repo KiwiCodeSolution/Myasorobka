@@ -1,23 +1,24 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import testPicture from "../tempPicture/unsplash_6JQMjhqpVhE.jpg";
 import {Line, FavouriteIcon, Trash} from "../icons/iconComponent";
 import RoundNumbers from "./roundNumbers";
 import ButtonMain from "./UIKit/button";
 import ordersStore from "../store/orders";
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import productStore from "../store/products";
 
 const ProductCard = ({ product }) => {
   const [qttyBtn, setQttyBtn] = useState(1);
   const { pathname } = useLocation();
   const admin = pathname.endsWith("admin/authorized/products");
-  // console.log("admin ? :", admin);
 
   const addToCart = () => {
     ordersStore.addToCart(product, qttyBtn);
   };
   const editProduct = () => {
     console.log("edit product");
+    productStore.setEditProduct(product);
   };
   const deleteProduct = () => {
     console.log("delete product");
@@ -36,7 +37,8 @@ const ProductCard = ({ product }) => {
       </p>
       {product.discount_price ?
         (<p className="px-2 py-1 text-center text-txt-grey font-basic">
-          {product.discount_price} грн / {product.unit}
+          {product.discount_price}
+          {/* {product.discount_price} грн / {product.unit} */}
         </p>)
         :
         (<p className="px-2 py-1 text-center text-txt-grey font-basic">_________________</p>)

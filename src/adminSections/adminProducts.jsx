@@ -9,14 +9,24 @@ const AdminProducts = observer(() => {
   const [addProductPopup, setAddProductPopup] = useState(false);
 
   useEffect(() => {
+    setAddProductPopup(productStore.editProduct ? true : false);
+  }, [productStore.editProduct]);
+
+
+  useEffect(() => {
     // console.log("getting products ..")
     productStore.getProductsAction();
   }, []);
 
+  const closePopup = () => {
+    productStore.unsetEditProduct();
+    setAddProductPopup(false);
+  }
+
   return (
     <>
       {addProductPopup ?
-      <AddProductPopup onClose={() => setAddProductPopup(false)} /> :
+      <AddProductPopup onClose={closePopup} /> :
       <div>
         <div className="flex mb-7">
           <div className="mx-auto w-[240px]"></div>
