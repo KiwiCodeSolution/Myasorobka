@@ -24,6 +24,10 @@ class Meta {
     });
   }
 
+  setOrderFormField(name, value) {
+    this._orderFormFieldValues[name] = value;
+  }
+
   resetFormFieldValues() {
     this._orderFormFieldValues = {
       customer_name: "",
@@ -32,11 +36,11 @@ class Meta {
     };
   }
 
-  toggleOrderPopupShown() {
+  toggleOrderPopup() {
     this._isOrderPopupShown = !this._isOrderPopupShown;
   }
 
-  toggleCartPopupShown() {
+  toggleCartPopup() {
     this._isCartPopupShown = !this._isCartPopupShown;
   }
 

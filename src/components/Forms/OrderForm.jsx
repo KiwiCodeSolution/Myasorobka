@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 
 import orderStore from "../../store/orders";
 
@@ -29,14 +28,8 @@ const formFields = [
   },
 ];
 
-const resetValues = {
-  customer_name: "",
-  phone_number: "",
-  delivery_address: "",
-};
-
 const OrderForm = observer(() => {
-  const { handleSubmit, control, getValues, reset } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: metaStore._orderFormFieldValues,
   });
 
@@ -46,19 +39,13 @@ const OrderForm = observer(() => {
       return;
     }
 
-    reset(resetValues);
+    metaStore.resetFormFieldValues();
   };
 
   const onOrderComplete = () => {
     orderStore.setOrderNumber(null);
-    metaStore.toggleOrderPopupShown();
+    metaStore.toggleOrderPopup();
   };
-
-  useEffect(() => {
-    return () => {
-      metaStore.orderFormFieldValues = getValues();
-    };
-  }, [getValues]);
 
   return (
     <>
@@ -73,6 +60,7 @@ const OrderForm = observer(() => {
                 name={field.name}
                 label={field.label}
                 placeholder={field.placeholder}
+                mask={field.mask}
                 control={control}
               />
             </li>

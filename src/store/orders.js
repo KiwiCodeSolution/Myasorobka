@@ -25,7 +25,6 @@ class Orders {
     );
 
     if (foundProduct) {
-      console.log("Такой товар уже в корзине");
       // this.changeProductQuantity(
       //   productToAdd.product.name,
       //   quantity + foundProduct.quantity
