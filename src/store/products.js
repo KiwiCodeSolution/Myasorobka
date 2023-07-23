@@ -7,14 +7,22 @@ import { getProducts, createProduct, updateProduct } from "../API/productsAPI";
 class Products {
   products = [];
   editProduct = null;
+  uploadedImages = [];
 
   constructor() {
     makeAutoObservable(this);
-    makePersistable(this, { name: "products", properties: ["products", "editProduct"], storage: window.localStorage });
+    makePersistable(this, {
+      name: "products",
+      properties: ["products", "editProduct", "uploadedImages"],
+      storage: window.localStorage
+    });
   }
 
   setEditProduct = product => this.editProduct = product;
   unsetEditProduct = () => this.editProduct = null;
+
+  setUploadedImages = imgUrl => this.uploadedImages = imgUrl;
+  unsetUploadedImages = () => this.uploadedImages = null;
 
   getProductsAction = async () => {
     clientStore.setIsLoading(true);

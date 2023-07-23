@@ -41,9 +41,9 @@ class Auth {
     }
     catch (error) {
       this.setIsLoading(false);
-      error.response ?  
-      this.setError(error.message):   // no internet connection
-      this.setError(error.response.data.message) // server error
+      error.response ? 
+      this.setError(error.response.data.message) : // server error  
+      this.setError(error.message)  // no internet connection
     }
   }
 

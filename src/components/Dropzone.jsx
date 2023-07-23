@@ -1,22 +1,28 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
+import { PlusInCircle } from "../icons/iconComponent";
+import ProductStore from "../store/products";
+import { observer } from "mobx-react-lite";
 
-const DropzoneExample = () => {
-  const [uploadedImages, setUploadedImages] = useState([]);
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("uploadedImages"));
-    if (Array.isArray(storedData)) {
-      setUploadedImages(storedData);
-    }
-  }, []);
+const DropzoneExample = observer(() => {
+  // const [uploadedImages, setUploadedImages] = useState([]);
+  const { uploadedImages, setUploadedImages } = ProductStore;
+
+  // useEffect(() => {
+  //   const storedData = JSON.parse(localStorage.getItem("uploadedImages"));
+  //   if (Array.isArray(storedData)) {
+  //     setUploadedImages(storedData);
+  //   }
+  // }, []);
+
   const handleDrop = async (acceptedFiles, productName) => {
     try {
       const formData = new FormData();
       acceptedFiles.forEach((file) => {
         formData.append("image", file);
       });
-      const url = `http://localhost:5000/upload?productName=${encodeURIComponent(
+      const url = `http://localhost:5000/uploads?productName=${encodeURIComponent(
         productName
       )}`;
       const response = await axios.post(url, formData, {
@@ -37,19 +43,15 @@ const DropzoneExample = () => {
   return (
     <div
       {...getRootProps()}
-      style={{
-        width: "100px",
-        height: "150px",
-        border: "2px dashed #ddd",
-        padding: "10px",
-        textAlign: "center",
-        cursor: "pointer",
-      }}
+      className="bg-bg-white w-[162px] h-[192px] rounded-3xl py-4"
     >
       <input {...getInputProps()} />
-      <p>Перетащите изображения сюда или кликните для выбора файлов.</p>
+      <div className="py-4 flex justify-center">
+        <PlusInCircle />
+      </div>
+      <p className="text-center text-xl">Додати зображення</p>
     </div>
   );
-};
+});
 
 export default DropzoneExample;

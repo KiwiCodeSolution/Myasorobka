@@ -1,16 +1,19 @@
 import PropTypes from "prop-types";
 import BasePopup from "../UIKit/BasePopup";
 import AddProductForm from "../Forms/AddProductForm";
-import AddImage from "../AddImage";
-
+import DropzoneExample from "../Dropzone";
+import PreviewImgField from "../PreviewImgField";
 const AddProductPopup = ({ onClose, editProduct }) => {
 
   return (
     <BasePopup
       title={editProduct ? "Редагувати товар" : "Додати товар"}
       onClose={onClose}
-    >
-      <AddImage />
+    > 
+      <div className="flex gap-4">
+        <DropzoneExample />
+        <PreviewImgField />
+      </div>
       <AddProductForm closePopup={onClose} editProduct={editProduct} />
 
     </BasePopup>
