@@ -17,13 +17,13 @@ import OrderPopup from "./components/popups/OrderPopup";
 
 const ClientPage = observer(() => {
   const toggleSwitchFromCartToOrder = () => {
-    meta.toggleOrderPopupShown();
-    meta.toggleCartPopupShown();
+    meta.toggleOrderPopup();
+    meta.toggleCartPopup();
   };
 
   return (
     <>
-      <Cart onClick={() => meta.toggleCartPopupShown()} />
+      <Cart onClick={() => meta.toggleCartPopup()} />
       <HeaderHero />
       <Products />
       <Favourite />
@@ -32,13 +32,13 @@ const ClientPage = observer(() => {
       <Discount />
       {meta._isCartPopupShown && (
         <CartPopup
-          onClose={() => meta.toggleCartPopupShown()}
+          onClose={() => meta.toggleCartPopup()}
           onGoToTheOrder={toggleSwitchFromCartToOrder}
         />
       )}
       {meta._isOrderPopupShown && (
         <OrderPopup
-          onClose={() => meta.toggleOrderPopupShown()}
+          onClose={() => meta.toggleOrderPopup()}
           onBackToTheCart={toggleSwitchFromCartToOrder}
         />
       )}

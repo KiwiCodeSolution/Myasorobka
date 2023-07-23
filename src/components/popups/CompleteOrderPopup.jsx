@@ -9,7 +9,7 @@ const CompleteOrderPopup = ({ orderNumber, onComplete }) => {
         <p className="text-3xl font-medium">Дякуемо!</p>
         <p className="mt-4 text-2xl font-medium">{`Ваше замовлення №${orderNumber} прийнято!`}</p>
         <p className="text-2xl font-medium">
-          Очiкуйте двiнок вiд нашого менеджера.
+          Очiкуйте дзвiнок вiд нашого менеджера.
         </p>
       </div>
     </AlertPopup>
