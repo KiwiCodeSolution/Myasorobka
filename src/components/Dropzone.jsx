@@ -5,7 +5,7 @@ import { PlusInCircle } from "../icons/iconComponent";
 import ProductStore from "../store/products";
 import { observer } from "mobx-react-lite";
 
-const DropzoneExample = observer(() => {
+const Dropzone = observer(() => {
   // const [uploadedImages, setUploadedImages] = useState([]);
   const { uploadedImages, setUploadedImages } = ProductStore;
 
@@ -54,4 +54,4 @@ const DropzoneExample = observer(() => {
   );
 });
 
-export default DropzoneExample;
+export default Dropzone;

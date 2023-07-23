@@ -8,12 +8,13 @@ class Products {
   products = [];
   editProduct = null;
   uploadedImages = [];
+  selectedImageIdx = null;
 
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
       name: "products",
-      properties: ["products", "editProduct", "uploadedImages"],
+      properties: ["products", "editProduct", "uploadedImages", "selectedImageIdx"],
       storage: window.localStorage
     });
   }
@@ -23,6 +24,9 @@ class Products {
 
   setUploadedImages = imgUrl => this.uploadedImages = imgUrl;
   unsetUploadedImages = () => this.uploadedImages = null;
+
+  setSelectedImageIdx = (idx) => this.selectedImage = idx;
+  unsetSelectedImageIndex = () => this.selectedImage = null;
 
   getProductsAction = async () => {
     clientStore.setIsLoading(true);

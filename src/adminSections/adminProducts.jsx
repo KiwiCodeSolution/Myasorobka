@@ -26,7 +26,7 @@ const AdminProducts = observer(() => {
   return (
     <>
       {addProductPopup ?
-      <AddProductPopup onClose={closePopup} /> :
+      <AddProductPopup onClose={closePopup} editProduct={productStore.editProduct} /> :
       <div>
         <div className="flex mb-7">
           <div className="mx-auto w-[240px]"></div>

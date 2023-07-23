@@ -3,9 +3,10 @@ import { observer } from "mobx-react-lite";
 import { toJS } from 'mobx';
 import productStore from "../../store/products";
 import ButtonMain from '../UIKit/button';
+import { baseServerURL } from '../../config/url';
 
 const AddProductForm = observer(({ closePopup }) => {
-  const { editProduct, products, createProductAction, updateProductAction } = productStore;
+  const { editProduct, products, uploadedImages, createProductAction, updateProductAction } = productStore;
 
   const defaultValues = {
     name: editProduct?.name || "",
@@ -33,7 +34,12 @@ const AddProductForm = observer(({ closePopup }) => {
       discount_price: data.info,
       available: true,
       favourite: false,
-      img: data.img || "",
+      img: uploadedImages.at(-1) ?
+        (baseServerURL + uploadedImages.at(-1)) :
+        (editProduct?.img || ""),
+      // img: (editProduct?.img && !uploadedImages.at(-1)) ||
+      //   (uploadedImages.at(-1) && baseServerURL + uploadedImages.at(-1)) ||
+      //   "",
       archived: false
     }
     console.log("newProduct:", newProduct);
