@@ -43,7 +43,7 @@ class Products {
     })
     this.getProductsAction();
     adminState.setMessage("Продукт додан успішно")
-    return;
+    return true;
   }
 
   updateProductAction = async (product) => {
