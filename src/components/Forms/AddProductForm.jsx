@@ -45,9 +45,6 @@ const AddProductForm = observer(({ closePopup }) => {
       img: uploadedImages.at(-1) ?
         (baseServerURL + uploadedImages.at(-1)) :
         (editProduct?.img || ""),
-      // img: (editProduct?.img && !uploadedImages.at(-1)) ||
-      //   (uploadedImages.at(-1) && baseServerURL + uploadedImages.at(-1)) ||
-      //   "",
       archived: false
     }
     console.log("newProduct:", newProduct);
