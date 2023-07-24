@@ -6,7 +6,15 @@ import ButtonMain from '../UIKit/button';
 import { baseServerURL } from '../../config/url';
 
 const AddProductForm = observer(({ closePopup }) => {
-  const { editProduct, products, uploadedImages, createProductAction, updateProductAction } = productStore;
+  const {
+    editProduct,
+    products,
+    uploadedImages,
+    createProductAction,
+    updateProductAction,
+    unsetSelectedImageIdx,
+    unsetUploadedImages
+  } = productStore;
 
   const defaultValues = {
     name: editProduct?.name || "",
@@ -52,7 +60,11 @@ const AddProductForm = observer(({ closePopup }) => {
     }
     
     console.log("submit result:", result);
-    if (result) closePopup(); // закріваем модалку.
+    if (result) {
+      unsetUploadedImages();
+      unsetSelectedImageIdx();
+      closePopup();
+    }
   }
 
   return (

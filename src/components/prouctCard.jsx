@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import testPicture from "../tempPicture/unsplash_6JQMjhqpVhE.jpg";
+import BlankImg from "../images/BlankPic.jpg";
 import {Line, FavouriteIcon, Trash} from "../icons/iconComponent";
 import RoundNumbers from "./roundNumbers";
 import ButtonMain from "./UIKit/button";
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className={`${admin ? "h-[316px]" : "h-[356px]"} w-[216px] rounded-3xl bg-bg-white mx-auto`}>
-      <img src={product.img || testPicture} alt={"product image"} className={"h-[168px] rounded-t-3xl"} />
+      <img src={product.img || BlankImg} alt={"product image"} className={"h-[168px] w-full object-contain rounded-t-3xl"} />
       <p className="px-2 py-1 text-center font-bold">{product.name}</p>
       <Line active />
       <p className="px-2 py-1 text-center font-basic">

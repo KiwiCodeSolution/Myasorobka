@@ -17,16 +17,16 @@ class Products {
       properties: ["products", "editProduct", "uploadedImages", "selectedImageIdx"],
       storage: window.localStorage
     });
-  }
+  }3
 
   setEditProduct = product => this.editProduct = product;
   unsetEditProduct = () => this.editProduct = null;
 
   setUploadedImages = imgUrl => this.uploadedImages = imgUrl;
-  unsetUploadedImages = () => this.uploadedImages = null;
+  unsetUploadedImages = () => this.uploadedImages = [];
 
   setSelectedImageIdx = (idx) => this.selectedImage = idx;
-  unsetSelectedImageIndex = () => this.selectedImage = null;
+  unsetSelectedImageIdx = () => this.selectedImage = null;
 
   getProductsAction = async () => {
     clientStore.setIsLoading(true);
