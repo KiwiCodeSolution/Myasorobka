@@ -7,6 +7,7 @@ import RoundNumbers from "./roundNumbers";
 import ButtonMain from "./UIKit/button";
 import ordersStore from "../store/orders";
 import productStore from "../store/products";
+import { toJS } from "mobx";
 
 const ProductCard = ({ product }) => {
   const [qttyBtn, setQttyBtn] = useState(1);
@@ -25,24 +26,22 @@ const ProductCard = ({ product }) => {
   };
   const addToFavourite = () => {
     console.log("addToFavourite");
+    const newProduct = toJS(product);
+    productStore.updateProductAction({...newProduct, favourite: !newProduct.favourite})
   }
 
   return (
     <div className={`${admin ? "h-[316px]" : "h-[356px]"} w-[216px] rounded-3xl bg-bg-white mx-auto`}>
-      <img src={product.img || BlankImg} alt={"product image"} className={"h-[168px] w-full object-contain rounded-t-3xl"} />
+      <img src={product.img || BlankImg} alt={"product image"} className={"h-[168px] w-full object-cover rounded-t-3xl"} />
       <p className="px-2 py-1 text-center font-bold">{product.name}</p>
       <Line active />
       <p className="px-2 py-1 text-center font-basic">
         {product.price} грн / {product.unit}
       </p>
-      {product.discount_price ?
-        (<p className="px-2 py-1 text-center text-txt-grey font-basic">
-          {product.discount_price}
-          {/* {product.discount_price} грн / {product.unit} */}
-        </p>)
-        :
-        (<p className="px-2 py-1 text-center text-txt-grey font-basic">_________________</p>)
-      }
+
+      <p className="px-2 py-1 text-center text-txt-grey font-basic">
+          {product.discount_price ? product.discount_price : "_____________"}
+      </p>
       
       {admin ? (
         <>
@@ -51,7 +50,7 @@ const ProductCard = ({ product }) => {
               Редагувати
             </ButtonMain>
           </div>
-          <button className="absolute top-[132px] right-6 w-6 h-6 bg-bg-black rounded" onClick={addToFavourite}><FavouriteIcon /></button>
+          <button className="absolute top-[132px] right-6 w-6 h-6 bg-bg-black rounded" onClick={addToFavourite}><FavouriteIcon filled={product.favourite} /></button>
           <button className="absolute top-3 right-6 w-6 h-6 bg-bg-black rounded" onClick={deleteProduct}><Trash/></button>
         </>
       ) : (

@@ -231,8 +231,8 @@ export const Trash = () => (
   </svg>
 )
 
-export const FavouriteIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+export const FavouriteIcon = ({ filled }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill={filled ? "#D21C1C" : "none"} stroke={filled ? "#D21C1C" : "white"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
     <path d="M9.00016 6.6665C6.97516 6.6665 5.3335 8.30817 5.3335 10.3332C5.3335 13.9998 9.66683 17.3332 12.0002 18.1085C14.3335 17.3332 18.6668 13.9998 18.6668 10.3332C18.6668 8.30817 17.0252 6.6665 15.0002 6.6665C13.7602 6.6665 12.6635 7.28217 12.0002 8.2245C11.6621 7.74291 11.2129 7.34987 10.6907 7.07867C10.1685 6.80747 9.58859 6.66609 9.00016 6.6665Z"/>
   </svg>
 )
