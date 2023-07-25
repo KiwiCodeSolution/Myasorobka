@@ -1,45 +1,46 @@
 import { useForm } from "react-hook-form";
 import { observer } from "mobx-react-lite";
-
-import orderStore from "../../store/orders";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import CompleteOrderPopup from "../popups/CompleteOrderPopup";
 import AlertPopup from "../UIKit/AlertPopup";
 import ButtonMain from "../UIKit/button";
 import TextInput from "./TextInput";
 import metaStore from "../../store/meta";
+import orderStore from "../../store/orders";
+import constants from "../../helpers/constants";
+import orderShema from "../../store/validationSchemas/orderShema";
 
 const formFields = [
   {
     name: "customer_name",
     label: "Прiзвище та Iм'я",
     placeholder: "приклад: Гайденко Тарас Бульбович",
+    mask: false,
   },
   {
     name: "phone_number",
     label: "Номер телефону одержувача",
     placeholder: "приклад: +38066-135-12-24",
+    mask: constants.PHONE_MASK,
   },
   {
     name: "delivery_address",
     label: "Адреса доставки вiддiлення Нової Пошти",
     placeholder:
       "приклад: м. Харків вул.Пушкінська 79б відділення нової почти №135",
+    mask: false,
   },
 ];
 
 const OrderForm = observer(() => {
   const { handleSubmit, control } = useForm({
     defaultValues: metaStore._orderFormFieldValues,
+    resolver: yupResolver(orderShema),
   });
 
   const onFormSubmit = async (fieldValues) => {
     await orderStore.placeOrderAction(fieldValues);
-    if (orderStore.error) {
-      return;
-    }
-
-    metaStore.resetFormFieldValues();
   };
 
   const onOrderComplete = () => {
