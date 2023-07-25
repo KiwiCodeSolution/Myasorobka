@@ -48,11 +48,11 @@ const OrderItem = ({ order }) => {
 
       {orderIsOpened && (
         <div className="py-4 relative w-[840px]">
-          <div className="flex pl-4 text-base font-normal">
+          <div className="flex pl-4">
             {" "}
             {/*producl list header*/}
-            <p className="w-[300px] text-base font-normal text-left">Наіменування</p>
-            <p className="w-[120px] text-base font-normal text-center">Кількість</p>
+            <p className="w-[300px] text-left">Наіменування</p>
+            <p className="w-[120px] text-center">Кількість</p>
             <p className="w-[120px] text-right">Сума</p>
           </div>
           <OrderItemProductList products={products} />
@@ -82,6 +82,7 @@ const OrderItem = ({ order }) => {
           </div>
         </div>
       )}
+      
       {popUpIsOpened && (
         <ConfirmPopup
           primaryBtnText={"Видалити"}

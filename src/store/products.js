@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import clientStore from "./client";
 import adminState from "./adminState";
-import { getProducts, createProduct, updateProduct } from "../API/productsAPI";
+import { getProducts, createProduct, updateProduct, deleteProduct } from "../API/productsAPI";
 
 class Products {
   products = [];
@@ -17,7 +17,7 @@ class Products {
       properties: ["products", "editProduct", "uploadedImages", "selectedImageIdx"],
       storage: window.localStorage
     });
-  }3
+  } 3
 
   setEditProduct = product => this.editProduct = product;
   unsetEditProduct = () => this.editProduct = null;
@@ -73,5 +73,22 @@ class Products {
     adminState.setMessage("Продукт змінен успішно")
     return true;
   }
+
+  deleteProductAction = async (product) => {
+    adminState.setIsLoading(true);
+    const result = await deleteProduct(product);
+
+    runInAction(() => {
+      adminState.setIsLoading(false);
+      if (result.error) {
+        adminState.setError(result.error);
+        return;
+      }
+    })
+    this.getProductsAction();
+    adminState.setMessage("Продукт змінен успішно")
+    return true;
+  }
 }
+
 export default new Products();

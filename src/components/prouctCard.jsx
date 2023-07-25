@@ -1,16 +1,19 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { toJS } from "mobx";
+
 import BlankImg from "../images/BlankPic.jpg";
 import {Line, FavouriteIcon, Trash} from "../icons/iconComponent";
 import RoundNumbers from "./roundNumbers";
 import ButtonMain from "./UIKit/button";
+import ConfirmPopup from "./UIKit/ConfirmPopup";
 import ordersStore from "../store/orders";
 import productStore from "../store/products";
-import { toJS } from "mobx";
 
 const ProductCard = ({ product }) => {
   const [qttyBtn, setQttyBtn] = useState(1);
+  const [popUpIsOpened, setPopUpIsOpened] = useState(false);
   const { pathname } = useLocation();
   const admin = pathname.endsWith("admin/authorized/products");
 
@@ -18,14 +21,16 @@ const ProductCard = ({ product }) => {
     ordersStore.addToCart(product, qttyBtn);
   };
   const editProduct = () => {
-    console.log("edit product");
+    // console.log("edit product");
     productStore.setEditProduct(product);
   };
-  const deleteProduct = () => {
+  const deleteProduct = async() => {
     console.log("delete product");
+    productStore.deleteProductAction(product);
+    setPopUpIsOpened(false);
   };
-  const addToFavourite = () => {
-    console.log("addToFavourite");
+  const toggleFavourite = () => {
+    // console.log("addToFavourite");
     const newProduct = toJS(product);
     productStore.updateProductAction({...newProduct, favourite: !newProduct.favourite})
   }
@@ -50,8 +55,8 @@ const ProductCard = ({ product }) => {
               Редагувати
             </ButtonMain>
           </div>
-          <button className="absolute top-[132px] right-6 w-6 h-6 bg-bg-black rounded" onClick={addToFavourite}><FavouriteIcon filled={product.favourite} /></button>
-          <button className="absolute top-3 right-6 w-6 h-6 bg-bg-black rounded" onClick={deleteProduct}><Trash/></button>
+          <button className="absolute top-[132px] right-6 w-6 h-6 bg-bg-black rounded" onClick={toggleFavourite}><FavouriteIcon filled={product.favourite} /></button>
+          <button className="absolute top-3 right-6 w-6 h-6 bg-bg-black rounded" onClick={() => setPopUpIsOpened(true)}><Trash/></button>
         </>
       ) : (
         <>
@@ -64,6 +69,22 @@ const ProductCard = ({ product }) => {
         </>
       )}
         
+      {popUpIsOpened && (
+        <ConfirmPopup
+          primaryBtnText={"Видалити"}
+          secondaryBtnText={"Закрити"}
+          onPrimaryBtnClick={deleteProduct}
+          onSecondaryBtnClick={() => setPopUpIsOpened(false)}
+        >
+          <div className="mt-[78px] text-txt-main-white mb-[52px]">
+            <p className="text-[32px] mb-4">Ви впевнені що хочете видалити?</p>
+            <p className="text-sm text-white">
+              * Видалення картки з товаром видалить всі додані зображення та інформацію без можливості поверння.
+            </p>
+          </div>
+        </ConfirmPopup>
+      )}
+
     </div>
     
   );

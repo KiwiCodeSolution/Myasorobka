@@ -12,7 +12,6 @@ const AdminProducts = observer(() => {
     setAddProductPopup(productStore.editProduct ? true : false);
   }, [productStore.editProduct]);
 
-
   useEffect(() => {
     // console.log("getting products ..")
     productStore.getProductsAction();
