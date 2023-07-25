@@ -2,12 +2,30 @@ import { useForm } from 'react-hook-form';
 import { observer } from "mobx-react-lite";
 import { toJS } from 'mobx';
 import productStore from "../../store/products";
+import ButtonMain from '../UIKit/button';
+import { baseServerURL } from '../../config/url';
 
-const AddProductForm = observer(({closePopup}) => {
-// const AddProductForm = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+const AddProductForm = observer(({ closePopup }) => {
+  const {
+    editProduct,
+    products,
+    uploadedImages,
+    createProductAction,
+    updateProductAction,
+    unsetSelectedImageIdx,
+    unsetUploadedImages
+  } = productStore;
 
-  const { products, createProductAction } = productStore;
+  const defaultValues = {
+    name: editProduct?.name || "",
+    category:editProduct?.category || "",
+    price: editProduct?.price || "",
+    unit: editProduct?.unit || "",
+    info:  editProduct?.discount_price || "",
+    description: editProduct?.description || "",
+  }
+
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ defaultValues });
 
   const categories = ["+ додати нову категорію +"]
   toJS(products).forEach((el) => {
@@ -15,10 +33,8 @@ const AddProductForm = observer(({closePopup}) => {
       categories.push(el.category);
     }
   });
-  // console.log("touched:", touchedFields);
-  // console.log("watched:", watch("selectCategory"));
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     // console.log("data:", data);
     const newProduct = {
       ...data,
@@ -26,12 +42,26 @@ const AddProductForm = observer(({closePopup}) => {
       discount_price: data.info,
       available: true,
       favourite: false,
-      img: "",
+      img: uploadedImages.at(-1) ?
+        (baseServerURL + uploadedImages.at(-1)) :
+        (editProduct?.img || ""),
       archived: false
     }
     console.log("newProduct:", newProduct);
-    const result = createProductAction(newProduct);
-    if (result === "success") closePopup(); // закріваем модалку.
+    
+    let result;
+    if (editProduct) {
+      result = await updateProductAction({ _id: toJS(editProduct)._id, ...newProduct });
+    } else {
+      result = await createProductAction(newProduct);
+    }
+    
+    console.log("submit result:", result);
+    if (result) {
+      unsetUploadedImages();
+      unsetSelectedImageIdx();
+      closePopup();
+    }
   }
 
   return (
@@ -105,12 +135,15 @@ const AddProductForm = observer(({closePopup}) => {
         </div>
       </div>
 
-      <label htmlFor='info'>Придумайте опис</label>
+      <label htmlFor='description'>Придумайте опис</label>
       <textarea {...register("description")} className="bg-bg-main mb-4"></textarea>
 
-      <input
+        <ButtonMain style="redLarge" btnType="submit">
+          {editProduct? "Редагувати" : "Додати"}
+        </ButtonMain>
+      {/* <input
         type="submit"
-        className="bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto rounded-full" />
+        className="bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto rounded-full" /> */}
     </form>
   )
 // };

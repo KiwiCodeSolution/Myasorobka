@@ -41,9 +41,9 @@ class Auth {
     }
     catch (error) {
       this.setIsLoading(false);
-      error.response ?  
-      this.setError(error.message):   // no internet connection
-      this.setError(error.response.data.message) // server error
+      error.response ? 
+      this.setError(error.response.data.message) : // server error  
+      this.setError(error.message)  // no internet connection
     }
   }
 
@@ -71,12 +71,15 @@ class Auth {
   getCurrentAction = async () => {
     try {
       console.log("getCurrentAction - token:", this.token);
-      if (this.token) await getCurrent(this.token);
+      if (this.token) {
+        await getCurrent(this.token);
+        // this.setError("");
+      }
 
     } catch (error) {
       this.isLoading = false;
       if (error.response) { // server error
-        this.setError(error.response.data.message);
+        // this.setError(error.response.data.message);
         this.setIsAuth(false);
         this.setToken("");
       } else {

@@ -7,7 +7,7 @@ import Counter from "./UIKit/Counter";
 import DeleteBtn from "./UIKit/buttons/DeleteBtn";
 
 const CartProductItem = observer(({ name, quantity, price }) => {
-  console.log("quantity: ", quantity);
+  // console.log("quantity: ", quantity);
 
   return (
     <div className="w-full h-12 grid grid-cols-productItem items-center  ">
