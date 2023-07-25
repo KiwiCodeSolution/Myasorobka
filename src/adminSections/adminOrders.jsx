@@ -9,12 +9,9 @@ import ButtonMain from "../components/UIKit/button";
 
 const Orders = observer(() => {
   const [archived, setArchived] = useState(false);
-  console.log("archived:", archived);
 
   useEffect(() => {
-    // console.log("getting orders..");
     adminOrdersStore.getAdminOrdersAction();
-    // return () => console.log("unMount admin Orders component")
   }, []);
 
   return (

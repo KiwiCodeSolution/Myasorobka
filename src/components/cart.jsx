@@ -4,27 +4,28 @@ import * as icons from "../icons/iconComponent";
 import { observer } from "mobx-react-lite";
 import { toJS } from "mobx";
 import ordersStore from "../store/orders";
-import Portal from "./UIKit/Portal";
 
 const Cart = observer(({ onClick }) => {
-  console.log("Orders store:", toJS(ordersStore.order))
+  console.log("Orders store:", toJS(ordersStore.order));
   const cartProductsNum = ordersStore.order.products.length;
   const isCartEmpty = cartProductsNum === 0;
 
   return (
-    <Portal>
-      <button type="button" onClick={onClick} className="fixed bottom-[60px] right-[60px] z-50">
-        <icons.Cart />
-        {!isCartEmpty && (
-          <p
-            className="absolute bottom-4 right-4 bg-bg-red w-8 h-8 py-[2px] 
+    <button
+      type="button"
+      onClick={onClick}
+      className="fixed bottom-[60px] left-[86vw] z-50"
+    >
+      <icons.Cart />
+      {!isCartEmpty && (
+        <p
+          className="absolute bottom-4 right-4 bg-bg-red w-8 h-8 py-[2px] 
       rounded-full text-xl text-center text-txt-main-white"
-          >
-            {cartProductsNum}
-          </p>
-        )}
-      </button>
-    </Portal>
+        >
+          {cartProductsNum}
+        </p>
+      )}
+    </button>
   );
 });
 

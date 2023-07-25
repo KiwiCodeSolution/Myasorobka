@@ -1,26 +1,22 @@
 import PropTypes from "prop-types";
 import { useController } from "react-hook-form";
+import MaskedInput from "react-text-mask";
 
 import metaStore from "../../store/meta";
 
-const IS_REQUIRED = "Обов'язкове поле!";
-
-const TextInput = ({ name, label, placeholder, control }) => {
+const TextInput = ({ name, label, placeholder, control, mask = false }) => {
   const {
-    field,
+    // eslint-disable-next-line no-unused-vars
+    field: { ref, ...field },
     fieldState: { error },
   } = useController({
     name,
     control,
-    rules: {
-      required: IS_REQUIRED,
-    },
   });
 
   const onChange = (e) => {
-    const { name, value } = e.currentTarget;
     field.onChange(e);
-    metaStore.setOrderFormField(name, value);
+    metaStore.setOrderFormField(name, e.currentTarget.value);
   };
 
   return (
@@ -30,8 +26,11 @@ const TextInput = ({ name, label, placeholder, control }) => {
           {label}
         </span>
         <div className="relative">
-          <input
-            {...{ ...field, onChange }}
+          <MaskedInput
+            mask={mask}
+            showMask
+            {...field}
+            onChange={onChange}
             placeholder={placeholder}
             autoComplete="off"
             className="w-full h-8 px-4 text-base font-normal bg-bg-main outline-none  placeholder:text-bg-grey"
@@ -52,6 +51,7 @@ TextInput.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   control: PropTypes.object,
+  mask: PropTypes.oneOfType([PropTypes.array, PropTypes.func, PropTypes.bool]),
 };
 
 export default TextInput;
