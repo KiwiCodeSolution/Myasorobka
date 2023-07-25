@@ -28,6 +28,7 @@ const Orders = observer(() => {
           {archived ? "До замовлень" : "Архів"}
         </ButtonMain>
       </div>
+      
       {adminState.isLoading ? (
         <div className="flex h-2/4 justify-center items-center">
           <RingLoader color="red" loading size={120} />
