@@ -93,7 +93,7 @@ const OrderItem = ({ order }) => {
           <div className="mt-[78px] text-txt-main-white mb-[52px]">
             <p className="text-[32px] mb-4">Ви впевнені що хочете видалити?</p>
             <p className="text-sm text-white">
-              * Видалення картки з товаром видалить всі додані зображення та інформацію без можливості поверння.
+              * Видалення замовлення без можливості поверння !
             </p>
           </div>
         </ConfirmPopup>
