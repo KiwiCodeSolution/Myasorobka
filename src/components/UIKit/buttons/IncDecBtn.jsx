@@ -6,12 +6,13 @@ const BTN_SIZES = {
   m: "w-12 h-12",
 };
 
-const IncDecBtn = ({ type, onClick, size, outlined }) => {
+const IncDecBtn = ({ type, onClick, size, outlined, disabled }) => {
   const styles = `${BTN_SIZES[size]} ${outlined && "border border-white"}`;
 
   return (
     <button
       type="button"
+      disabled={disabled}
       className={`flex justify-center items-center rounded-lg bg-bg-black ${styles}`}
       onClick={onClick}
     >
@@ -26,6 +27,7 @@ IncDecBtn.propTypes = {
   onClick: PropTypes.func.isRequired,
   size: PropTypes.oneOf(["s", "m"]).isRequired, //s-small, m-medium
   outlined: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default IncDecBtn;
