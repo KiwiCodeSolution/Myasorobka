@@ -14,9 +14,7 @@ const AllProductSwiper = observer(() => {
   const filteredProducts =
     filterStore.category === "Всі продукти" || ""
       ? productStore.products
-      : productStore.products.filter(
-          (product) => product.category === filterStore.category
-        );
+      : productStore.products.filter((product) => product.category === filterStore.category);
 
   return (
     <div className="h-[780px] w-full py-4 relative product mx-auto">
@@ -24,8 +22,6 @@ const AllProductSwiper = observer(() => {
         <Swiper
           modules={[Navigation, Grid, Pagination]}
           rewind={true}
-          slidesPerView={4}
-          spaceBetween={30}
           grid={{
             rows: 2,
             fill: "row",
@@ -41,28 +37,21 @@ const AllProductSwiper = observer(() => {
           breakpoints={{
             1200: {
               slidesPerView: 4,
-              spaceBetween: 30,
+              spaceBetween: 10,
               grid: {
                 rows: 2,
                 fill: "row",
               },
             },
-            1000: {
-              slidesPerView: 3,
-              spaceBetween: 20,
+            760: {
+              slidesPerView: 4,
+              spaceBetween: 10,
               grid: {
                 rows: 2,
                 fill: "row",
               },
             },
-            639: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-              grid: {
-                rows: 2,
-                fill: "row",
-              },
-            },
+
             0: {
               slidesPerView: 1,
               spaceBetween: 10,

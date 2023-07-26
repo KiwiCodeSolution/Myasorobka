@@ -17,7 +17,7 @@ const FavouriteProductSwiper = observer(() => {
         <Swiper
           modules={[Navigation, Pagination]}
           rewind={true}
-          slidesPerView={4}
+          // slidesPerView={4}
           pagination={{
             clickable: true,
             el: ".fav-pagination",
@@ -29,20 +29,12 @@ const FavouriteProductSwiper = observer(() => {
           breakpoints={{
             0: {
               slidesPerView: 1,
-              spaceBetween: 0,
             },
-            639: {
-              slidesPerView: 2,
-              // spaceBetween: 10,
-            },
-
-            1200: {
-              slidesPerView: 4,
-              // spaceBetween: 30,
+            760: {
+              slidesPerView: 3,
             },
             1000: {
-              slidesPerView: 3,
-              // spaceBetween: 20,
+              slidesPerView: 4,
             },
           }}
         >

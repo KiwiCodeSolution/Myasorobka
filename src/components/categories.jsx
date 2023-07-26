@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import filterStore from "../store/filter";
 
 const Categories = observer(({ products }) => {
-  const categories = ["Всі продукти"];
+  const categories = ["Всі продукти", "Всі продукти", "Всі продукти"];
   products.forEach((el) => {
     if (!categories.includes(el.category)) {
       categories.push(el.category);
@@ -29,14 +29,16 @@ const Categories = observer(({ products }) => {
             <>
               <Swiper
                 modules={[Navigation]}
-                slidesPerView={6}
                 navigation={{
                   nextEl: ".button-next",
                   prevEl: ".button-prev",
                 }}
                 breakpoints={{
                   0: {
-                    slidesPerView: 3,
+                    slidesPerView: 1,
+                  },
+                  430: {
+                    slidesPerView: 2,
                   },
                   639: {
                     slidesPerView: 3,
@@ -48,10 +50,11 @@ const Categories = observer(({ products }) => {
                     slidesPerView: 6,
                   },
                 }}
+                className="categoriesSwiper"
               >
                 {categories.map((el) => (
                   <SwiperSlide key={el}>
-                    <div className="px-4">
+                    <div className="px-4 mx-auto w-full ml-14 lg:ml-0">
                       <ButtonMain
                         style={"categoriesBtn"}
                         clickFn={() => filterStore.setText(el)}
@@ -63,10 +66,10 @@ const Categories = observer(({ products }) => {
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <button className="button-next right-[-32px] top-9 w-8 h-8 absolute">
+              <button className="button-next right-[5%] md:right-[3%] top-9 w-8 h-8 absolute z-[7]">
                 <icons.SwipeRight />
               </button>
-              <button className="button-prev left-[-32px] top-9 w-8 h-8 absolute">
+              <button className="button-prev left-[5%] md:left-[3%] top-9 w-8 h-8 absolute z-[7]">
                 <icons.SwipeLeft />
               </button>
             </>
