@@ -14,6 +14,7 @@ const PopupOverlay = ({
   const [blockScroll, unblockScroll] = useScrollBlock();
 
   const onOverlayClick = (e) => {
+    e.stopPropagation();
     if (!closeByClickOnOverlay) {
       return;
     }

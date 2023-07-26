@@ -13,13 +13,14 @@ const CONTAINER_STYLES = {
   m: "gap-x-4",
 };
 
-const Counter = ({ initialValue, onChange, size, outlinedControls }) => {
+const Counter = ({
+  initialValue = 0,
+  onChange,
+  size,
+  outlinedControls,
+  disabled,
+}) => {
   const [count, setCount] = useState(initialValue);
-
-  // const [count, setCount] = useState(() => {
-  //   const parsedValue = parseInt(initialValue);
-  //   return isNaN(parsedValue) || parsedValue < 0 ? 0 : parsedValue;
-  // });
 
   const onInputChange = ({ currentTarget: { value } }) => {
     const parsedValue = Number(value);
@@ -31,11 +32,16 @@ const Counter = ({ initialValue, onChange, size, outlinedControls }) => {
   }, [count, onChange]);
 
   return (
-    <div className={`w-fit flex items-center ${CONTAINER_STYLES[size]}`}>
+    <div
+      className={`w-fit flex items-center ${CONTAINER_STYLES[size]} ${
+        disabled && "opacity-[0.5]"
+      }`}
+    >
       <IncDecBtn
         size={size}
         type="dec"
         outlined={outlinedControls}
+        disabled={disabled}
         onClick={() =>
           setCount((prevState) => {
             if (prevState < 1) {
@@ -51,6 +57,7 @@ const Counter = ({ initialValue, onChange, size, outlinedControls }) => {
         maxLength={7}
         size={3}
         value={count}
+        disabled={disabled}
         onChange={onInputChange}
         className={`bg-transparent ${COUNTER_STYLES[size]} font-bold rounded-lg border border-transparent focus:border-white placeholder: text-center focus: outline-none`}
       />
@@ -58,6 +65,7 @@ const Counter = ({ initialValue, onChange, size, outlinedControls }) => {
         size={size}
         type="inc"
         outlined={outlinedControls}
+        disabled={disabled}
         onClick={() => setCount((prevState) => prevState + 1)}
       />
     </div>
@@ -69,6 +77,7 @@ Counter.propTypes = {
   onChange: PropTypes.func.isRequired, //recieve one parametr(changed value)
   size: PropTypes.oneOf(["s", "m"]).isRequired, //s-small, m-medium
   outlinedControls: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default Counter;

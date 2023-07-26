@@ -19,16 +19,16 @@ class Orders {
     });
   }
 
-  addToCart = (productToAdd, quantity) => {
+  checkProductInCart(productToAdd) {
     const foundProduct = this.order.products.find(
       ({ product }) => product.name === productToAdd.name
     );
 
-    if (foundProduct) {
-      // this.changeProductQuantity(
-      //   productToAdd.product.name,
-      //   quantity + foundProduct.quantity
-      // );
+    return foundProduct ? true : false;
+  }
+
+  addToCart = (productToAdd, quantity) => {
+    if (this.checkProductInCart(productToAdd)) {
       return;
     }
 
