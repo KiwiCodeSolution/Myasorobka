@@ -30,8 +30,10 @@ const AdminProducts = observer(() => {
         <div className="flex mb-7">
           <div className="mx-auto w-[240px]"></div>
           <h2 className="mt-8 text-3xl text-txt-main-white text-center font-medium">Каталог Товарів</h2>
-          <ButtonMain style="redMedium" btnClass={"mt-6 mx-0"} clickFn={() => setAddProductPopup(true)}>Додати товар</ButtonMain>
+          <ButtonMain style="redMedium" btnClass={"mt-6 mx-0"}
+            clickFn={() => setAddProductPopup(true)}>Додати товар</ButtonMain>
         </div>
+          
         <div className="max-w-[1080px] mx-auto min-h-[858px]">
           <ProductList />
         </div>

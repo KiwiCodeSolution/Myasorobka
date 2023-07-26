@@ -9,12 +9,9 @@ import ButtonMain from "../components/UIKit/button";
 
 const Orders = observer(() => {
   const [archived, setArchived] = useState(false);
-  console.log("archived:", archived);
 
   useEffect(() => {
-    // console.log("getting orders..");
     adminOrdersStore.getAdminOrdersAction();
-    // return () => console.log("unMount admin Orders component")
   }, []);
 
   return (
@@ -28,6 +25,7 @@ const Orders = observer(() => {
           {archived ? "До замовлень" : "Архів"}
         </ButtonMain>
       </div>
+      
       {adminState.isLoading ? (
         <div className="flex h-2/4 justify-center items-center">
           <RingLoader color="red" loading size={120} />

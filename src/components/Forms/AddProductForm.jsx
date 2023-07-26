@@ -26,7 +26,6 @@ const AddProductForm = observer(({ closePopup }) => {
   }
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ defaultValues });
-
   const categories = ["+ додати нову категорію +"]
   toJS(products).forEach((el) => {
     if (!categories.includes(el.category)) {
@@ -35,10 +34,11 @@ const AddProductForm = observer(({ closePopup }) => {
   });
 
   const onSubmit = async data => {
+
     // console.log("data:", data);
     const newProduct = {
       ...data,
-      price: Number(data.price),
+      price: data.price,
       discount_price: data.info,
       available: true,
       favourite: false,
@@ -47,7 +47,7 @@ const AddProductForm = observer(({ closePopup }) => {
         (editProduct?.img || ""),
       archived: false
     }
-    console.log("newProduct:", newProduct);
+    // console.log("newProduct:", newProduct);
     
     let result;
     if (editProduct) {
@@ -56,7 +56,7 @@ const AddProductForm = observer(({ closePopup }) => {
       result = await createProductAction(newProduct);
     }
     
-    console.log("submit result:", result);
+    // console.log("submit result:", result);
     if (result) {
       unsetUploadedImages();
       unsetSelectedImageIdx();
@@ -72,12 +72,13 @@ const AddProductForm = observer(({ closePopup }) => {
           type="text"
           className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"}`}
           placeholder="Приклад: Підгорок мраморний"
-          {...register("name", { required: true })} />
-        <p className='text-bg-orange txt-lg font-semibold'>{errors.name?.message}</p>
+          {...register("name", { required: "Це поле обов`язкове", maxLength: 20 })} />
+        {errors.name?.type === 'maxLength' && <p className='text-bg-orange txt-lg font-semibold'>максимально 20 букв</p>}
+        <p className='text-bg-orange font-semibold'>{errors.name?.message}</p>
       </div>
 
       <label htmlFor='category'>Виберіть або придумайте категорію</label>
-      <div className='flex justify-between mb-4'>
+      <div className='flex justify-between'>
         <select {...register("selectCategory")} className="bg-bg-main w-[282px] text-center">
           {categories.map(category => <option key={category} value={category}>{category}</option>)}
         </select>
@@ -88,8 +89,7 @@ const AddProductForm = observer(({ closePopup }) => {
                 type="text"
                 className={`p-1 ${errors.password ? "bg-bg-orange" : "bg-bg-main"} w-[282px]`}
                 placeholder="Назвіть категорію"
-                {...register("category", { required: true })} />
-              <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.category?.message}</p>
+                {...register("category", { required: "Це поле обов`язкове" })} />
             </>
           ) : (
             <>
@@ -98,32 +98,38 @@ const AddProductForm = observer(({ closePopup }) => {
                 className={`p-1 ${errors.password ? "bg-bg-orange" : "bg-bg-main"} ml-1 w-[282px]`}
                 placeholder="Назвіть категорію"
                 value={watch("selectCategory")}
-                {...register("category", { required: true })} />
-              <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.category?.message}</p>
+                {...register("category", { required: "Це поле обов`язкове", maxLength: 20 })} />
             </>
           )
         }
       </div>
+      {errors.category?.type === 'maxLength' && <p className='text-bg-orange font-semibold ml-[294px]'>максимально 15 букв</p>}
+      <p className='text-bg-orange font-semibold ml-[294px] mb-4'>{errors.category?.message}</p>
 
       <div className='flex gap-4'>
         <div>
           <label htmlFor='price'>Ціна та одиниця виміру</label>
           <div className='flex gap-2'>
-            <input
-              type="text"
-              className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"} w-[128px]`}
-              placeholder="100"
-              {...register("price", { required: true })} />
-            <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.price?.message}</p>
+            <div className='flex flex-col'>
+              <input
+                type="number"
+                className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"} w-[128px]`}
+                placeholder="100"
+                {...register("price", { required: "Обов`язкове" })} />
+              <p className='text-bg-orange font-semibold mb-4'>{errors.price?.message}</p>
+            </div>
 
-            <input
-              type="text"
-              className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"} w-[128px]`}
-              placeholder="шматок"
-              {...register("unit", { required: true })} />
-            <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.unit?.message}</p>
+            <div className='flex flex-col'>
+              <input
+                type="text"
+                className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"} w-[128px]`}
+                placeholder="шматок"
+                {...register("unit", { required: "Обов`язкове" })} />
+              <p className='text-bg-orange font-semibold mb-4'>{errors.unit?.message}</p>
+            </div>
           </div>
         </div>
+
         <div>
           <label htmlFor='info'>Доп інфо</label>
             <input
@@ -131,7 +137,7 @@ const AddProductForm = observer(({ closePopup }) => {
               className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"} w-[282px]`}
               placeholder="100"
               {...register("info", { required: false })} />
-            <p className='text-bg-orange txt-lg font-semibold mb-8'>{errors.price?.message}</p>
+            <p className='text-bg-orange txt-lg font-semibold'>{errors.info?.message}</p>
         </div>
       </div>
 
