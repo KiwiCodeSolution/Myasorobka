@@ -29,7 +29,6 @@ const ProductCard = observer(({ product }) => {
     productStore.setEditProduct(product);
   };
   const deleteProduct = async () => {
-    console.log("delete product");
     productStore.deleteProductAction(product);
     setPopUpIsOpened(false);
   };
