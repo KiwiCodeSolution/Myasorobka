@@ -6,7 +6,7 @@ import { toJS } from "mobx";
 import ordersStore from "../store/orders";
 
 const Cart = observer(({ onClick }) => {
-  console.log("Orders store:", toJS(ordersStore.order));
+  // console.log("Orders store:", toJS(ordersStore.order));
   const cartProductsNum = ordersStore.order.products.length;
   const isCartEmpty = cartProductsNum === 0;
 
