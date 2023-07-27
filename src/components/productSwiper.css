@@ -60,12 +60,24 @@
     padding-bottom: 24px;
     max-width: 1200px;
   }
+}
+
+@media (min-width: 1400px) {
   .admin-product .swiper {
-    max-width: 90%;
+    width: 100%;
   }
 }
 
-/* .categories .swiper-slide,
-.categories .swiper-slide-active {
-  margin: 0 auto;
-} */
+.admin-prod-button-prev,
+.admin-prod-button-next,
+.prod-button-prev,
+.prod-button-next,
+.fav-button-prev,
+.fav-button-next {
+  width: 52px;
+  height: 52px;
+  padding: 16px;
+  background: #fff5da;
+  border-radius: 50%;
+  z-index: 32;
+}

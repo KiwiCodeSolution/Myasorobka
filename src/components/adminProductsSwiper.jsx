@@ -33,14 +33,6 @@ const AdminProductsSwiper = observer(() => {
                 fill: "row",
               },
             },
-            1200: {
-              slidesPerView: 5,
-              spaceBetween: 10,
-              grid: {
-                rows: 2,
-                fill: "row",
-              },
-            },
             1000: {
               slidesPerView: 4,
               spaceBetween: 10,
@@ -84,11 +76,11 @@ const AdminProductsSwiper = observer(() => {
       </>
 
       <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
-        <button className="admin-prod-button-prev w-[52px] h-[52px] p-4 bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
+        <button className="admin-prod-button-prev hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
         <div className="admin-pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
-        <button className="admin-prod-button-next w-[52px] h-[52px] p-4 bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[32]">
+        <button className="admin-prod-button-next hover:shadow-swiper focus:shadow-swiper">
           <icons.Right />
         </button>
       </div>
