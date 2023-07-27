@@ -4,6 +4,7 @@ import axios from "axios";
 import { PlusInCircle } from "../icons/iconComponent";
 import ProductStore from "../store/products";
 import { observer } from "mobx-react-lite";
+import { baseServerURL } from "../config/url";
 
 const Dropzone = observer(() => {
   // const [uploadedImages, setUploadedImages] = useState([]);
@@ -22,7 +23,7 @@ const Dropzone = observer(() => {
       acceptedFiles.forEach((file) => {
         formData.append("image", file);
       });
-      const url = `http://localhost:5000/uploads?productName=${encodeURIComponent(
+      const url = `${baseServerURL}uploads?productName=${encodeURIComponent(
         productName
       )}`;
       const response = await axios.post(url, formData, {
@@ -30,9 +31,9 @@ const Dropzone = observer(() => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log("Images uploaded successfully");
+
       console.log("Server response:", response.data);
-      const newUploadedImages = [...uploadedImages, response.data.image_url];
+      const newUploadedImages = [...uploadedImages, response.data.img_url];
       setUploadedImages(newUploadedImages);
       localStorage.setItem("uploadedImages", JSON.stringify(newUploadedImages));
     } catch (error) {
