@@ -50,7 +50,7 @@
     max-width: 1000px;
   }
   .admin-product .swiper {
-    max-width: 1000px;
+    max-width: 1100px;
   }
 }
 
@@ -60,11 +60,14 @@
     padding-bottom: 24px;
     max-width: 1200px;
   }
+  .admin-product .swiper {
+    max-width: 1300px;
+  }
 }
 
 @media (min-width: 1400px) {
   .admin-product .swiper {
-    width: 100%;
+    max-width: 1400px;
   }
 }
 

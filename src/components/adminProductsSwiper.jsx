@@ -11,7 +11,7 @@ import productStore from "../store/products";
 
 const AdminProductsSwiper = observer(() => {
   return (
-    <div className="relative admin-product mx-auto">
+    <div className="relative admin-product mx-auto w-full">
       <>
         <Swiper
           modules={[Navigation, Grid, Pagination]}
@@ -24,10 +24,22 @@ const AdminProductsSwiper = observer(() => {
             nextEl: ".admin-prod-button-next",
             prevEl: ".admin-prod-button-prev",
           }}
+          grid={{
+            rows: 2,
+            fill: "row",
+          }}
           breakpoints={{
             1400: {
               slidesPerView: 6,
-              spaceBetween: 10,
+              spaceBetween: 20,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+            },
+            1200: {
+              slidesPerView: 5,
+              spaceBetween: 15,
               grid: {
                 rows: 2,
                 fill: "row",
