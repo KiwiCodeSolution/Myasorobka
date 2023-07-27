@@ -24,8 +24,6 @@ const AdminProducts = observer(() => {
 
   return (
     <>
-      {addProductPopup ?
-      <AddProductPopup onClose={closePopup} editProduct={productStore.editProduct} /> :
       <div>
         <div className="flex mb-7">
           <div className="mx-auto w-[240px]"></div>
@@ -38,7 +36,8 @@ const AdminProducts = observer(() => {
           <ProductList />
         </div>
       </div>
-      }
+      {addProductPopup &&
+        <AddProductPopup onClose={closePopup} editProduct={productStore.editProduct} />}
     </>
   )
 });
