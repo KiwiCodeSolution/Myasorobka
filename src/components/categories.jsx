@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import filterStore from "../store/filter";
 
 const Categories = observer(({ products }) => {
-  const categories = ["Всі продукти", "Всі продукти", "Всі продукти"];
+  const categories = ["Всі продукти"];
   products.forEach((el) => {
     if (!categories.includes(el.category)) {
       categories.push(el.category);
