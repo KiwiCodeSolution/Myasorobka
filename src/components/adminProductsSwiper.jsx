@@ -91,7 +91,7 @@ const AdminProductsSwiper = observer(() => {
         <button className="admin-prod-button-prev hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
-        <div className="admin-pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
+        <div className="admin-pagination flex justify-center gap-x-4 min-w-[200px] h-full "></div>
         <button className="admin-prod-button-next hover:shadow-swiper focus:shadow-swiper">
           <icons.Right />
         </button>
