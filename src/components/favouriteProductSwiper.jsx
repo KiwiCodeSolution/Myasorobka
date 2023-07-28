@@ -17,7 +17,6 @@ const FavouriteProductSwiper = observer(() => {
         <Swiper
           modules={[Navigation, Pagination]}
           rewind={true}
-          slidesPerView={4}
           pagination={{
             clickable: true,
             el: ".fav-pagination",
@@ -29,20 +28,12 @@ const FavouriteProductSwiper = observer(() => {
           breakpoints={{
             0: {
               slidesPerView: 1,
-              spaceBetween: 0,
             },
-            639: {
-              slidesPerView: 2,
-              // spaceBetween: 10,
-            },
-
-            1200: {
-              slidesPerView: 4,
-              // spaceBetween: 30,
+            760: {
+              slidesPerView: 3,
             },
             1000: {
-              slidesPerView: 3,
-              // spaceBetween: 20,
+              slidesPerView: 4,
             },
           }}
         >
@@ -54,11 +45,11 @@ const FavouriteProductSwiper = observer(() => {
         </Swiper>
       </>
       <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
-        <button className="fav-button-prev w-[52px] h-[52px] p-4 bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[1]">
+        <button className="fav-button-prev hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
         <div className="fav-pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
-        <button className="fav-button-next w-[52px] h-[52px] p-4  bg-bg-white rounded-full hover:shadow-swiper focus:shadow-swiper z-[1]">
+        <button className="fav-button-next hover:shadow-swiper focus:shadow-swiper">
           <icons.Right />
         </button>
       </div>

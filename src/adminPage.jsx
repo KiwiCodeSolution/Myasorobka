@@ -19,7 +19,7 @@ const AdminPage = observer(() => {
     </div>
   ) : (
     <>
-      <div className="flex bg-bg-black h-screen">
+      <div className="flex bg-bg-black h-full max-w-full">
         <SideBar />
         <Outlet />
       </div>

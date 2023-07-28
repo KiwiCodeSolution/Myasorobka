@@ -8,34 +8,44 @@ import "./productSwiper.css";
 import * as icons from "../icons/iconComponent";
 import ProductCard from "./prouctCard";
 import productStore from "../store/products";
-import filterStore from "../store/filter";
 
-const AllProductSwiper = observer(() => {
-  const filteredProducts =
-    filterStore.category === "Всі продукти" || ""
-      ? productStore.products
-      : productStore.products.filter((product) => product.category === filterStore.category);
-
+const AdminProductsSwiper = observer(() => {
   return (
-    <div className="h-[780px] w-full py-4 relative product mx-auto">
+    <div className="relative admin-product mx-auto w-full">
       <>
         <Swiper
           modules={[Navigation, Grid, Pagination]}
           rewind={true}
+          pagination={{
+            clickable: true,
+            el: ".admin-pagination",
+          }}
+          navigation={{
+            nextEl: ".admin-prod-button-next",
+            prevEl: ".admin-prod-button-prev",
+          }}
           grid={{
             rows: 2,
             fill: "row",
           }}
-          pagination={{
-            clickable: true,
-            el: ".pagination",
-          }}
-          navigation={{
-            nextEl: ".prod-button-next",
-            prevEl: ".prod-button-prev",
-          }}
           breakpoints={{
+            1400: {
+              slidesPerView: 6,
+              spaceBetween: 20,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+            },
             1200: {
+              slidesPerView: 5,
+              spaceBetween: 15,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+            },
+            1000: {
               slidesPerView: 4,
               spaceBetween: 10,
               grid: {
@@ -44,14 +54,21 @@ const AllProductSwiper = observer(() => {
               },
             },
             760: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 10,
               grid: {
                 rows: 2,
                 fill: "row",
               },
             },
-
+            320: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+            },
             0: {
               slidesPerView: 1,
               spaceBetween: 10,
@@ -62,7 +79,7 @@ const AllProductSwiper = observer(() => {
             },
           }}
         >
-          {filteredProducts.map((product) => (
+          {productStore.products.map((product) => (
             <SwiperSlide key={product.name}>
               <ProductCard product={product} />
             </SwiperSlide>
@@ -71,11 +88,11 @@ const AllProductSwiper = observer(() => {
       </>
 
       <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
-        <button className="prod-button-prev hover:shadow-swiper focus:shadow-swiper">
+        <button className="admin-prod-button-prev hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
-        <div className="pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
-        <button className="prod-button-next hover:shadow-swiper focus:shadow-swiper">
+        <div className="admin-pagination flex justify-center gap-x-4 min-w-[200px] h-full "></div>
+        <button className="admin-prod-button-next hover:shadow-swiper focus:shadow-swiper">
           <icons.Right />
         </button>
       </div>
@@ -83,4 +100,4 @@ const AllProductSwiper = observer(() => {
   );
 });
 
-export default AllProductSwiper;
+export default AdminProductsSwiper;
