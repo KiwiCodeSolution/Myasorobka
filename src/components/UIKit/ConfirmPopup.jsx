@@ -5,12 +5,17 @@ import ButtonMain from "./button";
 import logoSrc from "../../images/logo.png";
 import ClosePopupBtn from "./buttons/ClosePopupBtn";
 
-const ConfirmPopup = ({ primaryBtnText, onPrimaryBtnClick, secondaryBtnText, onSecondaryBtnClick, children }) => {
+const ConfirmPopup = ({
+  primaryBtnText,
+  onPrimaryBtnClick,
+  secondaryBtnText,
+  onSecondaryBtnClick,
+  children,
+}) => {
   return (
     <PopupOverlay
       onClose={onSecondaryBtnClick}
       overlayStyles={"bg-[#000000aa]"}
-      closeByClickOnOverlay={onSecondaryBtnClick}
     >
       <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
         {/* ------------------------POPUP HEADER------------------------ */}
