@@ -72,14 +72,12 @@ class Auth {
     try {
       console.log("getCurrentAction - token:", this.token);
       if (this.token) {
+        this.setError("");
         await getCurrent(this.token);
-        // this.setError("");
       }
 
     } catch (error) {
-      this.isLoading = false;
       if (error.response) { // server error
-        // this.setError(error.response.data.message);
         this.setIsAuth(false);
         this.setToken("");
       } else {
