@@ -57,6 +57,9 @@ export default {
       animation: {
         rotate: "rotate 1s forwards",
       },
+      transitionDuration: {
+        250: "250ms",
+      },
     },
   },
   plugins: [],

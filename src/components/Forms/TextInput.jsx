@@ -33,7 +33,8 @@ const TextInput = ({ name, label, placeholder, control, mask = false }) => {
             onChange={onChange}
             placeholder={placeholder}
             autoComplete="off"
-            className="w-full h-8 px-4 text-base font-normal bg-bg-main outline-none  placeholder:text-bg-grey"
+            className="w-full h-8 px-4 text-base font-normal bg-bg-main outline-none
+             border border-transparent focus:border-b-txt-main-yellow transition-all duration-250 placeholder:text-bg-grey"
           />
           {error && (
             <p className="absolute text-xs font-bold text-[red]">

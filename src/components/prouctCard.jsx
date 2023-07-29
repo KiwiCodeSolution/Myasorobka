@@ -41,8 +41,8 @@ const ProductCard = observer(({ product }) => {
     });
   };
 
-  const onProductCardClick = (e) => {
-    if (e.target.nodeName === "BUTTON") {
+  const onProductCardClick = ({ target }) => {
+    if (target.nodeName === "BUTTON" || admin) {
       return;
     }
     toggleProductDetailInfoCard();
@@ -83,7 +83,7 @@ const ProductCard = observer(({ product }) => {
           </div>
           <button
             className="absolute top-[132px] right-6 w-6 h-6 bg-bg-black rounded"
-            onClick={toggleFavourite}
+            onClick={() => toggleFavourite()}
           >
             <FavouriteIcon filled={product.favourite} />
           </button>
