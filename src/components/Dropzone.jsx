@@ -7,22 +7,12 @@ import { observer } from "mobx-react-lite";
 import { baseServerURL } from "../config/url";
 
 const Dropzone = observer(() => {
-  // const [uploadedImages, setUploadedImages] = useState([]);
   const { uploadedImages, setUploadedImages } = ProductStore;
-
-  // useEffect(() => {
-  //   const storedData = JSON.parse(localStorage.getItem("uploadedImages"));
-  //   if (Array.isArray(storedData)) {
-  //     setUploadedImages(storedData);
-  //   }
-  // }, []);
 
   const handleDrop = async (acceptedFiles, productName) => {
     try {
       const formData = new FormData();
-      acceptedFiles.forEach((file) => {
-        formData.append("image", file);
-      });
+      acceptedFiles.forEach(file => formData.append("image", file));
       const url = `${baseServerURL}uploads?productName=${encodeURIComponent(
         productName
       )}`;
@@ -35,12 +25,14 @@ const Dropzone = observer(() => {
       console.log("Server response:", response.data);
       const newUploadedImages = [...uploadedImages, response.data.img_url];
       setUploadedImages(newUploadedImages);
-      localStorage.setItem("uploadedImages", JSON.stringify(newUploadedImages));
+      // localStorage.setItem("uploadedImages", JSON.stringify(newUploadedImages));
     } catch (error) {
       console.error("Error uploading images:", error);
     }
   };
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop: handleDrop });
+  
   return (
     <div
       {...getRootProps()}
