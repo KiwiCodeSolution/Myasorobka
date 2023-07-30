@@ -29,14 +29,6 @@ const AdminProductsSwiper = observer(() => {
             fill: "row",
           }}
           breakpoints={{
-            1400: {
-              slidesPerView: 6,
-              spaceBetween: 20,
-              grid: {
-                rows: 2,
-                fill: "row",
-              },
-            },
             1200: {
               slidesPerView: 5,
               spaceBetween: 15,
@@ -87,7 +79,7 @@ const AdminProductsSwiper = observer(() => {
         </Swiper>
       </>
 
-      <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
+      <div className="w-full mt-8 relative mx-auto flex justify-center items-center gap-x-2">
         <button className="admin-prod-button-prev hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
