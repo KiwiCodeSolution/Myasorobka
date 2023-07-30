@@ -58,7 +58,7 @@ const AddProductForm = observer(({ closePopup }) => {
       result = await createProductAction(formData);
     }
     
-    // console.log("submit result:", result);
+    console.log("submit result:", result);
     if (result) {
       unsetUploadedImages();
       unsetSelectedImageIdx();
@@ -149,9 +149,6 @@ const AddProductForm = observer(({ closePopup }) => {
         <ButtonMain style="redLarge" btnType="submit">
           {editProduct? "Редагувати" : "Додати"}
         </ButtonMain>
-      {/* <input
-        type="submit"
-        className="bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto rounded-full" /> */}
     </form>
   )
 // };

@@ -90,7 +90,6 @@ class Products {
       const result = await updateProduct(product);
       const updatedProduct = result.data.data;
       // console.log("updatedProduct: ", updatedProduct);
-
       runInAction(() => {
         const updatedProductIdx = this.products.findIndex(
           (prod) => prod._id === updatedProduct._id
@@ -101,11 +100,11 @@ class Products {
             `Продукт с id ${updatedProduct._id} відсутній у списку продуктів!`
           );
         }
-
         // console.log("idx: ", updatedProductIdx);
-
         this.products[updatedProductIdx] = updatedProduct;
+        adminState.setMessage("product updated successfully")
       });
+      return true;
     } catch (err) {
       console.log("Error: ", err.message);
       adminState.setError(err.message);
