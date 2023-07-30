@@ -20,11 +20,13 @@ export const createProduct = async (product) => {
   }
 };
 
-export const updateProduct = async (product) => {
+// export const updateProduct = async (product) => {
+  export const updateProduct = async ({id, formData}) => {
   // try {
-  const result = await axios.put(`${baseServerURL}product/${product._id}`, {
-    ...product,
-  });
+  // const result = await axios.put(`${baseServerURL}product/${product._id}`, {
+  //   ...product,
+  // });
+    const result = await axios.put(`${baseServerURL}product/${id}`, formData);
   return result;
   // } catch (error) {
   // return { error: error.message }

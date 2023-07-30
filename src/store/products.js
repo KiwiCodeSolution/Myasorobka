@@ -12,7 +12,7 @@ import {
 class Products {
   products = [];
   editProduct = null;
-  uploadedImages = [];
+  uploadedImages = null;
   selectedImageIdx = null;
 
   constructor() {

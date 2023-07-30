@@ -41,16 +41,21 @@ const AddProductForm = observer(({ closePopup }) => {
       discount_price: data.info,
       available: true,
       favourite: false,
-      img: uploadedImages.at(-1) || editProduct?.img || "",
+      // img: uploadedImages.at(-1) || editProduct?.img || "",
       archived: false
     }
     // console.log("newProduct:", newProduct);
-    
+    const formData = new FormData();
+    formData.append("product", newProduct);
+    formData.append("image", uploadedImages.image);
+
     let result;
     if (editProduct) {
-      result = await updateProductAction({ _id: toJS(editProduct)._id, ...newProduct });
+      // result = await updateProductAction({ _id: toJS(editProduct)._id, ...newProduct });
+      result = await updateProductAction({ _id: toJS(editProduct)._id, formData });
     } else {
-      result = await createProductAction(newProduct);
+      // result = await createProductAction(newProduct);
+      result = await createProductAction(formData);
     }
     
     // console.log("submit result:", result);
