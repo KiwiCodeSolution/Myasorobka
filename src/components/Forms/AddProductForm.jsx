@@ -44,7 +44,7 @@ const AddProductForm = observer(({ closePopup }) => {
       img: editProduct?.img || "", // оставляем старую картинку
       archived: false
     }
-    console.log("newProduct:", newProduct);
+    // console.log("newProduct:", newProduct);
     const formData = new FormData();
     formData.append("product", JSON.stringify(newProduct));
     formData.append("image", uploadedImages.image);
@@ -57,8 +57,6 @@ const AddProductForm = observer(({ closePopup }) => {
       // result = await createProductAction(newProduct);
       result = await createProductAction(formData);
     }
-    
-    console.log("submit result:", result);
     if (result) {
       unsetUploadedImages();
       unsetSelectedImageIdx();

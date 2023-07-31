@@ -1,14 +1,22 @@
 import { observer } from "mobx-react-lite";
 import productStore from "../store/products";
+// import { useState } from "react";
 
 const PreviewImgField = observer(() => {
-  const { uploadedImages: {url} } = productStore;
-  // console.log("uploadedImages:", toJS(url));
+  // const [preview, setPreview] = useState("");
+  const { uploadedImages: { image } } = productStore;
 
-  return ([1].length !== 0) &&
+  const url = image ? URL.createObjectURL(image) : "";
+  
+  // const reader = new FileReader();
+  // reader.readAsDataURL(image);
+  // reader.onload = () => setPreview(reader.result);
+
+  return image &&
+  // return preview &&
     <img
+      // src={preview}
       src={url}
-      // src={imgUrl.at(-1)}
       alt="preview image"
       className={"border border-txt-main-white text-txt-main-white text-center w-[162px] h-[192px] object-contain rounded-3xl"} />
 })
