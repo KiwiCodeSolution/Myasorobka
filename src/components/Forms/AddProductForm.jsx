@@ -57,6 +57,7 @@ const AddProductForm = observer(({ closePopup }) => {
       // result = await createProductAction(newProduct);
       result = await createProductAction(formData);
     }
+    console.log("result:", result);
     if (result) {
       unsetUploadedImages();
       unsetSelectedImageIdx();

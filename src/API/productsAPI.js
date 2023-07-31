@@ -12,12 +12,8 @@ export const getProducts = async () => {
 };
 
 export const createProduct = async (product) => {
-  try {
     const result = await axios.post(`${baseServerURL}product`, product);
     return result;
-  } catch (error) {
-    return { error: error.message };
-  }
 };
 
 // export const updateProduct = async (product) => {

@@ -54,18 +54,22 @@ class Products {
 
   createProductAction = async (product) => {
     adminState.setIsLoading(true);
-    const result = await createProduct(product);
-
-    runInAction(() => {
+    try {
+      const result = await createProduct(product);
+      // console.log("result in Action:", result)
+      runInAction(() => {
+        console.log("result:", result)
+        this.products.unshift(result.data.product)
+      });
+      // this.getProductsAction();
+      adminState.setMessage("Продукт додан успішно");
+      return true;
+    } catch (error) {
+      // console.log("catch error:", error.response.data.message);
+      adminState.setError(error.response.data.message)
+    } finally {
       adminState.setIsLoading(false);
-      if (result.error) {
-        adminState.setError(result.error);
-        return;
-      }
-    });
-    this.getProductsAction();
-    adminState.setMessage("Продукт додан успішно");
-    return true;
+    }
   };
 
   // updateProductAction = async (product) => {
@@ -106,7 +110,7 @@ class Products {
       });
       return true;
     } catch (err) {
-      console.log("Error: ", err.message);
+      // console.log("Error: ", err.message);
       adminState.setError(err.message);
     } finally {
       adminState.setIsLoading(false);
