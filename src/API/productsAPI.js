@@ -12,19 +12,17 @@ export const getProducts = async () => {
 };
 
 export const createProduct = async (product) => {
-  try {
     const result = await axios.post(`${baseServerURL}product`, product);
     return result;
-  } catch (error) {
-    return { error: error.message };
-  }
 };
 
-export const updateProduct = async (product) => {
+// export const updateProduct = async (product) => {
+  export const updateProduct = async ({id, formData}) => {
   // try {
-  const result = await axios.put(`${baseServerURL}product/${product._id}`, {
-    ...product,
-  });
+  // const result = await axios.put(`${baseServerURL}product/${product._id}`, {
+  //   ...product,
+  // });
+    const result = await axios.put(`${baseServerURL}product/${id}`, formData);
   return result;
   // } catch (error) {
   // return { error: error.message }

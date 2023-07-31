@@ -33,12 +33,18 @@ const ProductCard = observer(({ product }) => {
     setPopUpIsOpened(false);
   };
   const toggleFavourite = () => {
-    // console.log("addToFavourite");
     const newProduct = toJS(product);
+    newProduct.favourite = !newProduct.favourite;
+    const formData = new FormData;
+    formData.append("product", JSON.stringify(newProduct));
     productStore.updateProductAction({
-      ...newProduct,
-      favourite: !newProduct.favourite,
-    });
+      id: newProduct._id,
+      formData
+    })
+    // productStore.updateProductAction({
+    //   ...newProduct,
+    //   favourite: !newProduct.favourite,
+    // });
   };
 
   const onProductCardClick = ({ target }) => {

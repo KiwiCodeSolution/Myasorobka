@@ -41,19 +41,23 @@ const AddProductForm = observer(({ closePopup }) => {
       discount_price: data.info,
       available: true,
       favourite: false,
-      img: uploadedImages.at(-1) || editProduct?.img || "",
+      img: editProduct?.img || "", // оставляем старую картинку
       archived: false
     }
     // console.log("newProduct:", newProduct);
-    
+    const formData = new FormData();
+    formData.append("product", JSON.stringify(newProduct));
+    formData.append("image", uploadedImages.image);
+
     let result;
     if (editProduct) {
-      result = await updateProductAction({ _id: toJS(editProduct)._id, ...newProduct });
+      // result = await updateProductAction({ _id: toJS(editProduct)._id, ...newProduct });
+      result = await updateProductAction({ id: toJS(editProduct)._id, formData });
     } else {
-      result = await createProductAction(newProduct);
+      // result = await createProductAction(newProduct);
+      result = await createProductAction(formData);
     }
-    
-    // console.log("submit result:", result);
+    console.log("result:", result);
     if (result) {
       unsetUploadedImages();
       unsetSelectedImageIdx();
@@ -144,9 +148,6 @@ const AddProductForm = observer(({ closePopup }) => {
         <ButtonMain style="redLarge" btnType="submit">
           {editProduct? "Редагувати" : "Додати"}
         </ButtonMain>
-      {/* <input
-        type="submit"
-        className="bg-bg-red w-[280px] h-[56px] py-[14px] text-xl font-semibold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto rounded-full" /> */}
     </form>
   )
 // };
