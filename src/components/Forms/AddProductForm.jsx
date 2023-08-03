@@ -33,7 +33,6 @@ const AddProductForm = observer(({ closePopup }) => {
   });
 
   const onSubmit = async data => {
-
     // console.log("data:", data);
     const newProduct = {
       ...data,
@@ -47,7 +46,9 @@ const AddProductForm = observer(({ closePopup }) => {
     // console.log("newProduct:", newProduct);
     const formData = new FormData();
     formData.append("product", JSON.stringify(newProduct));
-    formData.append("image", uploadedImages.image);
+    if (uploadedImages?.image?.type.includes("image")) {
+      formData.append("image", uploadedImages.image);
+    }
 
     let result;
     if (editProduct) {

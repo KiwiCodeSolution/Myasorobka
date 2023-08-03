@@ -5,11 +5,7 @@ class AdminState {
   isLoading = false;
   error = "";
   message = "";
-  addProduct = {
-    img: ""
-  }
-  // language = "";
-  // theme = "";
+
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
