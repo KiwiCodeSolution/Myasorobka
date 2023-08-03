@@ -4,7 +4,8 @@ import productStore from "../store/products";
 
 const PreviewImgField = observer(() => {
   // const [preview, setPreview] = useState("");
-  const { uploadedImages: { image } } = productStore;
+
+  const image = productStore.uploadedImages?.image; 
 
   const url = image ? URL.createObjectURL(image) : "";
   
