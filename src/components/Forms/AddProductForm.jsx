@@ -11,6 +11,9 @@ import FileInput from "./FileInput";
 import PreviewImage from "../PreviewImage";
 import addProductSchema from "../../store/validationSchemas/addProductSchema";
 
+const commonInputStyle =
+  "h-8 px-4 text-base font-normal bg-bg-main outline-none border border-transparent focus:border-b-txt-main-yellow transition-all duration-250";
+
 const AddProductForm = observer(({ closePopup }) => {
   const {
     editProduct,
@@ -97,7 +100,7 @@ const AddProductForm = observer(({ closePopup }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col mb-4">
-        <div className="w-full flex mb-5 justify-center">
+        <div className="w-full flex mb-8 justify-center ">
           {isFileValid ? (
             <PreviewImage
               image={img}
@@ -113,10 +116,16 @@ const AddProductForm = observer(({ closePopup }) => {
             />
           )}
         </div>
+
+        {/* ----------------------------------------------- */}
+
         <label htmlFor="name">Назва товару</label>
         <input
           type="text"
-          className={`p-1 ${errors.username ? "bg-bg-orange" : "bg-bg-main"}`}
+          autoComplete="off"
+          className={`${commonInputStyle} ${
+            errors.username ? "bg-bg-orange" : "bg-bg-main"
+          }`}
           placeholder="Приклад: Підгорок мраморний"
           {...register("name", {
             required: "Це поле обов`язкове",
@@ -131,11 +140,13 @@ const AddProductForm = observer(({ closePopup }) => {
         <p className="text-bg-orange font-semibold">{errors.name?.message}</p>
       </div>
 
+      {/* -------------------------------------------------------- */}
+
       <label htmlFor="category">Виберіть або придумайте категорію</label>
       <div className="flex justify-between">
         <select
           {...register("selectCategory")}
-          className="bg-bg-main w-[282px] text-center"
+          className={`${commonInputStyle} w-[282px] text-center`}
         >
           {categories.map((category) => (
             <option key={category} value={category}>
@@ -147,7 +158,7 @@ const AddProductForm = observer(({ closePopup }) => {
           <>
             <input
               type="text"
-              className={`p-1 ${
+              className={`${commonInputStyle} ${
                 errors.password ? "bg-bg-orange" : "bg-bg-main"
               } w-[282px]`}
               placeholder="Назвіть категорію"
@@ -158,7 +169,8 @@ const AddProductForm = observer(({ closePopup }) => {
           <>
             <input
               type="text"
-              className={`p-1 ${
+              autoComplete="off"
+              className={`${commonInputStyle} ${
                 errors.password ? "bg-bg-orange" : "bg-bg-main"
               } ml-1 w-[282px]`}
               placeholder="Назвіть категорію"
@@ -180,14 +192,18 @@ const AddProductForm = observer(({ closePopup }) => {
         {errors.category?.message}
       </p>
 
-      <div className="flex gap-4">
+      {/* ------------------------------------------------- */}
+
+      <div className="flex gap-x-4">
         <div>
           <label htmlFor="price">Ціна та одиниця виміру</label>
-          <div className="flex gap-2">
+          <div className="flex gap-x-3">
             <div className="flex flex-col">
               <input
                 type="number"
-                className={`p-1 ${
+                autoComplete="off"
+                min={0}
+                className={`${commonInputStyle} ${
                   errors.username ? "bg-bg-orange" : "bg-bg-main"
                 } w-[128px]`}
                 placeholder="100"
@@ -201,7 +217,8 @@ const AddProductForm = observer(({ closePopup }) => {
             <div className="flex flex-col">
               <input
                 type="text"
-                className={`p-1 ${
+                autoComplete="off"
+                className={`${commonInputStyle} ${
                   errors.username ? "bg-bg-orange" : "bg-bg-main"
                 } w-[128px]`}
                 placeholder="шматок"
@@ -214,13 +231,14 @@ const AddProductForm = observer(({ closePopup }) => {
           </div>
         </div>
 
-        <div>
+        <div className="w-[282px] flex flex-col ml-auto">
           <label htmlFor="info">Доп інфо</label>
           <input
             type="text"
-            className={`p-1 ${
+            autoComplete="off"
+            className={`${commonInputStyle} ${
               errors.username ? "bg-bg-orange" : "bg-bg-main"
-            } w-[282px]`}
+            } `}
             placeholder="100"
             {...register("info", { required: false })}
           />
@@ -230,10 +248,14 @@ const AddProductForm = observer(({ closePopup }) => {
         </div>
       </div>
 
+      {/* ---------------------------------------------- */}
+
       <label htmlFor="description">Придумайте опис</label>
       <textarea
+        autoComplete="off"
         {...register("description")}
-        className="bg-bg-main mb-4"
+        className="bg-bg-main px-4 mb-4 resize-none overflow-auto outline-none border border-transparent 
+        focus:border-b-txt-main-yellow transition-all duration-250"
       ></textarea>
 
       <ButtonMain style="redLarge" btnType="submit">
