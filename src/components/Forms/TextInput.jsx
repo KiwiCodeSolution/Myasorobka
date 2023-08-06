@@ -51,7 +51,7 @@ TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  control: PropTypes.object,
+  control: PropTypes.object.isRequired,
   mask: PropTypes.oneOfType([PropTypes.array, PropTypes.func, PropTypes.bool]),
 };
 

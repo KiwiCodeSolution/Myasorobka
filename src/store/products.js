@@ -56,17 +56,14 @@ class Products {
     adminState.setIsLoading(true);
     try {
       const result = await createProduct(product);
-      // console.log("result in Action:", result)
+
       runInAction(() => {
-        console.log("result:", result)
-        this.products.unshift(result.data.product)
+        this.products.unshift(result.data.product);
       });
-      // this.getProductsAction();
       adminState.setMessage("Продукт додан успішно");
       return true;
     } catch (error) {
-      // console.log("catch error:", error.response.data.message);
-      adminState.setError(error.response.data.message)
+      adminState.setError(error.response.data.message);
     } finally {
       adminState.setIsLoading(false);
     }
@@ -88,10 +85,11 @@ class Products {
   //   return true;
   // };
 
-  updateProductAction = async (product) => {
+  updateProductAction = async (id, product) => {
     adminState.setIsLoading(true);
+    console.log("produectU: ", product);
     try {
-      const result = await updateProduct(product);
+      const result = await updateProduct(id, product);
       const updatedProduct = result.data.data;
       // console.log("updatedProduct: ", updatedProduct);
       runInAction(() => {
@@ -106,7 +104,7 @@ class Products {
         }
         // console.log("idx: ", updatedProductIdx);
         this.products[updatedProductIdx] = updatedProduct;
-        adminState.setMessage("product updated successfully")
+        adminState.setMessage("product updated successfully");
       });
       return true;
     } catch (err) {
