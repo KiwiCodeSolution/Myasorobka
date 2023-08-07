@@ -12,17 +12,32 @@ export const getProducts = async () => {
 };
 
 export const createProduct = async (product) => {
-    const result = await axios.post(`${baseServerURL}product`, product);
+  try {
+    const result = await axios.post(`${baseServerURL}product`, product, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     return result;
+  } catch (err) {
+    console.log("ERR: ", err);
+    console.log("MSG: ", err.message);
+  }
 };
 
 // export const updateProduct = async (product) => {
-  export const updateProduct = async ({id, formData}) => {
+export const updateProduct = async (id, product) => {
   // try {
-  // const result = await axios.put(`${baseServerURL}product/${product._id}`, {
-  //   ...product,
+  const result = await axios.put(
+    `${baseServerURL}product/${id}`,
+    {
+      ...product,
+    },
+    {
+      headers: { "Content-Type": "multipart/form-data" },
+    }
+  );
+  // const result = await axios.put(`${baseServerURL}product/${id}`, formData, {
+  //   headers: { "Content-Type": "multipart/form-data" },
   // });
-    const result = await axios.put(`${baseServerURL}product/${id}`, formData);
   return result;
   // } catch (error) {
   // return { error: error.message }
