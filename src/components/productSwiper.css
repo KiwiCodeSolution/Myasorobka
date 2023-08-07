@@ -61,15 +61,15 @@
     max-width: 1200px;
   }
   .admin-product .swiper {
-    max-width: 1300px;
+    max-width: 1200px;
   }
 }
 
-@media (min-width: 1400px) {
+/* @media (min-width: 1400px) {
   .admin-product .swiper {
     max-width: 1400px;
   }
-}
+} */
 
 .admin-prod-button-prev,
 .admin-prod-button-next,

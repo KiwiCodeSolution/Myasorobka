@@ -33,7 +33,7 @@ const AdminProducts = observer(() => {
           </ButtonMain>
         </div>
 
-        <div className="w-[80vw] bg-bg-black mx-auto">
+        <div className="w-[75vw] bg-bg-black mx-auto">
           <AdminProductsSwiper />
         </div>
       </div>
