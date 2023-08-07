@@ -11,6 +11,7 @@ import FileInput from "./FileInput";
 import PreviewImage from "../PreviewImage";
 import addProductSchema from "../../store/validationSchemas/addProductSchema";
 
+const NEW_CATEGORY = "+ додати нову категорію +";
 const commonInputStyle =
   "h-8 px-4 text-base font-normal bg-bg-main outline-none border border-transparent focus:border-b-txt-main-yellow transition-all duration-250";
 
@@ -48,21 +49,20 @@ const AddProductForm = observer(({ closePopup }) => {
 
   // USE FORM
 
-  const categories = ["+ додати нову категорію +"];
+  const categories = [NEW_CATEGORY];
   toJS(products).forEach((el) => {
     if (!categories.includes(el.category)) {
       categories.push(el.category);
     }
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async ({ selectCategory, ...data }) => {
     const newProduct = {
       ...data,
       price: data.price,
       discount_price: data.info,
       available: true,
       favourite: false,
-      // img: editProduct?.img || "", // оставляем старую картинку
       archived: false,
     };
 
@@ -87,11 +87,12 @@ const AddProductForm = observer(({ closePopup }) => {
     }
   };
 
-  // const onSubmit = (data) => {
-  //   console.log("data to send: ", data);
-  // };
+  const onSelect = ({ currentTarget: { value } }) => {
+    const newValue = value === NEW_CATEGORY ? "" : value;
+    setValue("category", newValue);
+  };
 
-  const { img } = watch();
+  const { img, selectCategory } = watch();
   const isFileValid = img && !errors.img;
 
   return (
@@ -145,7 +146,9 @@ const AddProductForm = observer(({ closePopup }) => {
       <label htmlFor="category">Виберіть або придумайте категорію</label>
       <div className="flex justify-between">
         <select
-          {...register("selectCategory")}
+          {...register("selectCategory", {
+            onChange: onSelect,
+          })}
           className={`${commonInputStyle} w-[282px] text-center`}
         >
           {categories.map((category) => (
@@ -154,35 +157,19 @@ const AddProductForm = observer(({ closePopup }) => {
             </option>
           ))}
         </select>
-        {watch("selectCategory")?.includes("+") ? (
-          <>
-            <input
-              type="text"
-              className={`${commonInputStyle} ${
-                errors.password ? "bg-bg-orange" : "bg-bg-main"
-              } w-[282px]`}
-              placeholder="Назвіть категорію"
-              {...register("category", { required: "Це поле обов`язкове" })}
-            />
-          </>
-        ) : (
-          <>
-            <input
-              type="text"
-              autoComplete="off"
-              className={`${commonInputStyle} ${
-                errors.password ? "bg-bg-orange" : "bg-bg-main"
-              } ml-1 w-[282px]`}
-              placeholder="Назвіть категорію"
-              value={watch("selectCategory")}
-              {...register("category", {
-                required: "Це поле обов`язкове",
-                maxLength: 20,
-              })}
-            />
-          </>
-        )}
+
+        <input
+          type="text"
+          autoComplete="off"
+          disabled={selectCategory !== NEW_CATEGORY}
+          className={`${commonInputStyle} ${
+            errors.password ? "bg-bg-orange" : "bg-bg-main"
+          } w-[282px]`}
+          placeholder="Назвіть категорію"
+          {...register("category", { required: "Це поле обов`язкове" })}
+        />
       </div>
+
       {errors.category?.type === "maxLength" && (
         <p className="text-bg-orange font-semibold ml-[294px]">
           максимально 15 букв
