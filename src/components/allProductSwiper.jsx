@@ -12,9 +12,9 @@ import filterStore from "../store/filter";
 
 const AllProductSwiper = observer(() => {
   const filteredProducts =
-    filterStore.category === "Всі продукти" || ""
+    filterStore.categoryClient === "Всі продукти" || ""
       ? productStore.products
-      : productStore.products.filter((product) => product.category === filterStore.category);
+      : productStore.products.filter((product) => product.category === filterStore.categoryClient);
 
   return (
     <div className="h-[780px] w-full py-4 relative product mx-auto">

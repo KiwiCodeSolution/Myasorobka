@@ -2,15 +2,19 @@ import { makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 
 class Filter {
-  category = "Всі продукти";
+  categoryClient = "Всі продукти";
+  categoryAdmin = "Всі продукти";
 
   constructor() {
     makeAutoObservable(this);
-    makePersistable(this, { name: "filter", properties: ["category"] });
+    makePersistable(this, { name: "filter", properties: ["categoryClient", "categoryAdmin"] });
   }
 
-  setText = (text) => {
-    this.category = text;
+  setTextClient = (text) => {
+    this.categoryClient = text;
+  };
+  setTextAdmin = (text) => {
+    this.categoryAdmin = text;
   };
 }
 
