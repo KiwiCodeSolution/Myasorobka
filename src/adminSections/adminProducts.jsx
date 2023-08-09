@@ -4,6 +4,7 @@ import AddProductPopup from "../components/popups/AddProductPopup";
 import ButtonMain from "../components/UIKit/button";
 import productStore from "../store/products";
 import AdminProductsSwiper from "../components/adminProductsSwiper";
+import Categories from "../components/categories";
 
 const AdminProducts = observer(() => {
   const [addProductPopup, setAddProductPopup] = useState(false);
@@ -32,7 +33,9 @@ const AdminProducts = observer(() => {
             Додати товар
           </ButtonMain>
         </div>
-
+        <div className="w-[90%] mx-auto relative">
+          <Categories products={productStore.products} section={"admin"} />
+        </div>
         <div className="w-[75vw] bg-bg-black mx-auto">
           <AdminProductsSwiper />
         </div>

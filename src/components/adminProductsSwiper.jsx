@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Grid, Pagination } from "swiper/modules";
 import { observer } from "mobx-react-lite";
+import filterStore from "../store/filter";
 import "swiper/css";
 import "swiper/css/grid";
 import "./productSwiper.css";
@@ -10,6 +11,11 @@ import ProductCard from "./prouctCard";
 import productStore from "../store/products";
 
 const AdminProductsSwiper = observer(() => {
+  const filteredProducts =
+    filterStore.categoryAdmin === "Всі продукти" || ""
+      ? productStore.products
+      : productStore.products.filter((product) => product.category === filterStore.categoryAdmin);
+
   return (
     <div className="relative admin-product mx-auto w-full">
       <>
@@ -29,7 +35,7 @@ const AdminProductsSwiper = observer(() => {
             fill: "row",
           }}
           breakpoints={{
-            1200: {
+            1440: {
               slidesPerView: 5,
               spaceBetween: 15,
               grid: {
@@ -37,7 +43,7 @@ const AdminProductsSwiper = observer(() => {
                 fill: "row",
               },
             },
-            1000: {
+            1220: {
               slidesPerView: 4,
               spaceBetween: 10,
               grid: {
@@ -45,7 +51,7 @@ const AdminProductsSwiper = observer(() => {
                 fill: "row",
               },
             },
-            760: {
+            1004: {
               slidesPerView: 3,
               spaceBetween: 10,
               grid: {
@@ -53,7 +59,7 @@ const AdminProductsSwiper = observer(() => {
                 fill: "row",
               },
             },
-            320: {
+            788: {
               slidesPerView: 2,
               spaceBetween: 10,
               grid: {
@@ -71,7 +77,7 @@ const AdminProductsSwiper = observer(() => {
             },
           }}
         >
-          {productStore.products.map((product) => (
+          {filteredProducts.map((product) => (
             <SwiperSlide key={product.name}>
               <ProductCard product={product} />
             </SwiperSlide>
