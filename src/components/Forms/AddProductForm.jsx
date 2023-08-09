@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import { observer } from "mobx-react-lite";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -5,8 +6,6 @@ import { toJS } from "mobx";
 
 import productStore from "../../store/products";
 import ButtonMain from "../UIKit/button";
-// import Dropzone from "react-dropzone";
-// import PreviewImgField from "../PreviewImgField";
 import FileInput from "./FileInput";
 import PreviewImage from "../PreviewImage";
 import addProductSchema from "../../store/validationSchemas/addProductSchema";
@@ -16,15 +15,8 @@ const commonInputStyle =
   "h-8 px-4 text-base font-normal bg-bg-main outline-none border border-transparent focus:border-b-txt-main-yellow transition-all duration-250";
 
 const AddProductForm = observer(({ closePopup }) => {
-  const {
-    editProduct,
-    products,
-    // uploadedImages,
-    createProductAction,
-    updateProductAction,
-    unsetSelectedImageIdx,
-    unsetUploadedImages,
-  } = productStore;
+  const { editProduct, products, createProductAction, updateProductAction } =
+    productStore;
 
   const defaultValues = {
     img: editProduct?.img || "",
@@ -36,8 +28,6 @@ const AddProductForm = observer(({ closePopup }) => {
     description: editProduct?.description || "",
   };
 
-  // USE FORM
-
   const {
     register,
     handleSubmit,
@@ -47,9 +37,8 @@ const AddProductForm = observer(({ closePopup }) => {
     formState: { errors },
   } = useForm({ defaultValues, resolver: yupResolver(addProductSchema) });
 
-  // USE FORM
-
   const categories = [NEW_CATEGORY];
+
   toJS(products).forEach((el) => {
     if (!categories.includes(el.category)) {
       categories.push(el.category);
