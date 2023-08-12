@@ -14,7 +14,7 @@ const Products = observer(() => {
       <div className="pt-8 bg-bg-black" id="shop">
         <div className="max-w-[1440px] mx-auto px-[10px]">
           <h2 className="text-4xl font-bold text-txt-main-white">Категорії товарів</h2>
-          <Categories products={productStore.products} />
+          <Categories products={productStore.products} section={"client"} />
           <h2 className="text-4xl font-bold text-txt-main-white">Всі категорії</h2>
         </div>
       </div>
