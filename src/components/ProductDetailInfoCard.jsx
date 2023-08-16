@@ -60,7 +60,7 @@ const ProductDetailInfoCard = observer(
           <div className="h-[80%] flex gap-14 px-8 py-6 text-txt-main-white  ">
             <div className="w-[45%] h-full bg-[tomato] text-3xl rounded-3xl overflow-hidden">
               <img
-                src={product.img || BlankImg}
+                src={product.images[0] || BlankImg}
                 alt="product picture"
                 className="w-full h-full object-cover overflow-hidden"
               />
