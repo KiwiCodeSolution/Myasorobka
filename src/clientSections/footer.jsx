@@ -2,20 +2,23 @@ import UpBtn from "../components/UIKit/buttons/upBtn";
 import ContactList from "../components/contactsList";
 import Menu from "../components/menu";
 import { SocialLinksBlock } from "../components/socBlock";
+import tomatoes from "../images/tomatoes.png";
+import logo from "../images/logo.png";
+import logoKiwiCode from "../images/kiwicode.png";
 
 const Footer = () => {
   return (
     <div className="bg-bg-black min-h-[453px] pt-8 pb-5 text-txt-main-white relative" id="contacts">
       <div className="max-w-[1440px] mx-auto px-[10px] ">
         <img
-          src="/src/images/tomatoes.png"
+          src={tomatoes}
           alt="tomatoes"
           className="absolute left-0 top-[-120px] w-[240px] h-[224px] lg:top-[-182px] lg:w-[300px] lg:h-[280px]"
         />
         <div className="flex flex-col lg:flex-row items-center justify-center lg:items-end gap-x-[50px] w-[300px] md:w-[450px] lg:min-w-[600px] mx-auto">
           <Menu section={"footer"} styles={"w-full 2xl:w-[188px] mt-[80px] lg:mt-[143px]"} />
           <div>
-            <img src="/src/images/logo.png" alt="Logo" className="max-w-[199px] max-h-[199px] mb-4" />
+            <img src={logo} alt="Logo" className="max-w-[199px] max-h-[199px] mb-4" />
             <div className="w-40 mx-auto mb-4">
               <SocialLinksBlock section={"footer"} />
             </div>
@@ -38,7 +41,7 @@ const Footer = () => {
           <div className="flex gap-x-4 flex-col lg:flex-row h-[55px] items-center justify-center">
             <p className="text-base text-txt-main-white opacity-[0.6] text-center">Designed and Development by</p>
             <a href="#">
-              <img src="/src/images/kiwicode.png" alt="Logo KiwiCode Solution" />
+              <img src={logoKiwiCode} alt="Logo KiwiCode Solution" />
             </a>
           </div>
         </div>
