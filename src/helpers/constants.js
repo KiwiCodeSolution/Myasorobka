@@ -21,4 +21,6 @@ const PHONE_MASK = [
   /\d/,
 ];
 
-export default { PHONE_MASK, PHONE_REGEX };
+const REQUIRED_FIELD = "Обов'язкове поле!";
+
+export default { PHONE_MASK, PHONE_REGEX, REQUIRED_FIELD };

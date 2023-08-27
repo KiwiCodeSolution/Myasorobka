@@ -87,7 +87,6 @@ class Products {
 
   updateProductAction = async (id, product) => {
     adminState.setIsLoading(true);
-    console.log("produectU: ", product);
     try {
       const result = await updateProduct(id, product);
       const updatedProduct = result.data.data;

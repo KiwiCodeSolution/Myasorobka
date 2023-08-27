@@ -7,6 +7,7 @@ import PopupOverlay from "./UIKit/PopupOverlay";
 import { Prev } from "../icons/iconComponent";
 import Counter from "./UIKit/Counter";
 import ButtonMain from "./UIKit/button";
+import BlankImg from "../images/BlankPic.jpg";
 
 import metaStore from "../store/meta";
 import ordersStore from "../store/orders";
@@ -57,8 +58,12 @@ const ProductDetailInfoCard = observer(
           </div>
           {/* ------------------------POPUP BODY------------------------ */}
           <div className="h-[80%] flex gap-14 px-8 py-6 text-txt-main-white  ">
-            <div className="w-[45%] h-full flex justify-center items-center  bg-[tomato] text-3xl">
-              <h1>Галлерея картинок</h1>
+            <div className="w-[45%] h-full bg-[tomato] text-3xl rounded-3xl overflow-hidden">
+              <img
+                src={product.images[0] || BlankImg}
+                alt="product picture"
+                className="w-full h-full object-cover overflow-hidden"
+              />
             </div>
             <div className="flex flex-col w-[55%] h-full ">
               <h1 className="text-3xl font-bold">{product.name}</h1>

@@ -3,10 +3,13 @@ import { useEffect } from "react";
 
 import Portal from "./Portal";
 import useScrollBlock from "../../hooks/useScrollBlock";
+import metaStorage from "../../store/meta";
+import { Cross2 } from "../../icons/iconComponent";
 
 const PopupOverlay = ({
   closeByClickOnOverlay, // true if you need it
   closeByPressEsc, // true if you need it
+  hasCloseBtn,
   onClose, // fn changing state - show modal
   overlayStyles = "",
   children,
@@ -45,10 +48,18 @@ const PopupOverlay = ({
   }, [closeByPressEsc, onClose]);
 
   useEffect(() => {
-    blockScroll();
+    if (!metaStorage.popupNestingLevel) {
+      blockScroll();
+    }
+
+    metaStorage.incrementPopupNestingLevel();
 
     return () => {
-      unblockScroll();
+      metaStorage.decrementPopupNestingLevel();
+
+      if (!metaStorage.popupNestingLevel) {
+        unblockScroll();
+      }
     };
   }, [blockScroll, unblockScroll]);
 
@@ -56,10 +67,23 @@ const PopupOverlay = ({
     <>
       <Portal>
         <div
-          className={`fixed inset-0 flex justify-center items-center z-[100] cursor-pointer ${overlayStyles}`}
+          className={`group fixed left-0 top-0 w-screen h-screen flex justify-center items-center z-[100] ${
+            closeByClickOnOverlay && "cursor-pointer"
+          } ${overlayStyles}`}
           onClick={onOverlayClick}
         >
-          <div className="cursor-default">{children}</div>
+          <div className="peer cursor-default">{children}</div>
+          {hasCloseBtn && (
+            <button
+              onClick={onClose}
+              className={`absolute top-5 right-10 w-10 h-10 text-[#a1a1a1] hover:text-[#ffffff] hover:cursor-pointer ${
+                closeByClickOnOverlay &&
+                "group-hover:text-[#ffffff] peer-hover:text-[#a1a1a1]"
+              } transition-all duration-250`}
+            >
+              <Cross2 className={`w-full h-full `} />
+            </button>
+          )}
         </div>
       </Portal>
     </>
@@ -69,6 +93,7 @@ const PopupOverlay = ({
 PopupOverlay.propTypes = {
   closeByClickOnOverlay: PropTypes.bool,
   closeByPressEsc: PropTypes.bool,
+  hasCloseBtn: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   overlayStyles: PropTypes.string,
   children: PropTypes.node,
