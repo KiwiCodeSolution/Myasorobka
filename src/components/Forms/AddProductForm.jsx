@@ -120,12 +120,14 @@ const AddProductForm = observer(({ closePopup }) => {
     );
   }
 
+  console.log("errors: ", errors);
+
   return (
     <form
       className="flex flex-col text-txt-main-white pt-5"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col mb-4">
+      <div className="flex flex-col mb-5">
         <div className="w-full flex gap-x-4 mb-8">
           <FileInput
             name="images"
@@ -137,130 +139,207 @@ const AddProductForm = observer(({ closePopup }) => {
           />
           <div className="flex flex-wrap gap-4">{imageList}</div>
         </div>
-
-        {/* ----------------------------------------------- */}
-
-        <label htmlFor="name">Назва товару</label>
-        <input
-          type="text"
-          autoComplete="off"
-          className={`${commonInputStyle} ${
-            errors.username ? "bg-bg-orange" : "bg-bg-main"
-          }`}
-          placeholder="Приклад: Підгорок мраморний"
-          {...register("name")}
-        />
-        {errors.name?.type === "maxLength" && (
-          <p className="text-bg-orange txt-lg font-semibold">
-            максимально 20 букв
-          </p>
-        )}
-        <p className="text-bg-orange font-semibold">{errors.name?.message}</p>
       </div>
 
-      {/* -------------------------------------------------------- */}
+      {/* ----------------------------------------------- */}
 
-      <label htmlFor="category">Виберіть або придумайте категорію</label>
-      <div className="flex justify-between">
-        <select
-          {...register("selectCategory", {
-            onChange: onSelect,
-          })}
-          className={`${commonInputStyle} w-[282px] text-center`}
-        >
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="text"
-          autoComplete="off"
-          disabled={selectCategory !== NEW_CATEGORY}
-          className={`${commonInputStyle} ${
-            errors.password ? "bg-bg-orange" : "bg-bg-main"
-          } w-[282px]`}
-          placeholder="Назвіть категорію"
-          {...register("category")}
-        />
-      </div>
-
-      {errors.category?.type === "maxLength" && (
-        <p className="text-bg-orange font-semibold ml-[294px]">
-          максимально 15 букв
-        </p>
-      )}
-      <p className="text-bg-orange font-semibold ml-[294px] mb-4">
-        {errors.category?.message}
-      </p>
-
-      {/* ------------------------------------------------- */}
-
-      <div className="flex gap-x-4">
+      <div className="flex flex-col gap-y-4">
         <div>
-          <label htmlFor="price">Ціна та одиниця виміру</label>
-          <div className="flex gap-x-3">
-            <div className="flex flex-col">
-              <input
-                type="number"
-                autoComplete="off"
-                min={0}
-                className={`${commonInputStyle} ${
-                  errors.username ? "bg-bg-orange" : "bg-bg-main"
-                } w-[128px]`}
-                placeholder="100"
-                {...register("price")}
-              />
-              <p className="text-bg-orange font-semibold mb-4">
-                {errors.price?.message}
+          <label
+            htmlFor="name"
+            className="text-base font-medium text-txt-main-white"
+          >
+            Назва товару
+            <span className="text-[#ff0000]"> * </span>
+          </label>
+          <div className="relative">
+            <input
+              id="name"
+              type="text"
+              autoComplete="off"
+              className={`w-full ${commonInputStyle} ${
+                errors.name && "border-b-[#ff0000] focus:border-b-[#ff0000]"
+              } `}
+              placeholder="Приклад: Підгорок мраморний"
+              {...register("name")}
+            />
+            {errors.name && (
+              <p className="absolute text-xs font-bold text-[red]">
+                {errors.name.message}
               </p>
-            </div>
+            )}
+          </div>
+        </div>
 
-            <div className="flex flex-col">
+        {/* -------------------------------------------------------- */}
+
+        <div>
+          <div>
+            <label
+              className="text-base font-medium text-txt-main-white"
+              htmlFor="selectCategory"
+            >
+              Виберіть
+            </label>
+            <span> або </span>
+            <label
+              className="text-base font-medium text-txt-main-white"
+              htmlFor="category"
+            >
+              придумайте категорію
+              <span className="text-[#ff0000]"> * </span>
+            </label>
+          </div>
+          <div className="flex justify-between">
+            <select
+              id="selectCategory"
+              {...register("selectCategory", {
+                onChange: onSelect,
+              })}
+              className={`${commonInputStyle} w-[282px] text-center`}
+            >
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+
+            {/* -------------------------------------------------------- */}
+
+            <div className="relative">
               <input
+                id="category"
                 type="text"
                 autoComplete="off"
-                className={`${commonInputStyle} ${
-                  errors.username ? "bg-bg-orange" : "bg-bg-main"
-                } w-[128px]`}
-                placeholder="шматок"
-                {...register("unit")}
+                disabled={selectCategory !== NEW_CATEGORY}
+                className={`w-[282px] ${commonInputStyle} ${
+                  errors.category &&
+                  "border-b-[#ff0000] focus:border-b-[#ff0000]"
+                } `}
+                placeholder="Назвіть категорію"
+                {...register("category")}
               />
-              <p className="text-bg-orange font-semibold mb-4">
-                {errors.unit?.message}
-              </p>
+              {errors.category && (
+                <p className="absolute text-xs font-bold text-[red]">
+                  {errors.category.message}
+                </p>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="w-[282px] flex flex-col ml-auto">
-          <label htmlFor="info">Доп інфо</label>
-          <input
-            type="text"
+        {/* ------------------------------------------------- */}
+
+        <div className="flex gap-x-4">
+          <div>
+            <label
+              className="text-base font-medium text-txt-main-white"
+              htmlFor="price"
+            >
+              Ціна
+            </label>
+            <span> та </span>
+            <label
+              className="text-base font-medium text-txt-main-white"
+              htmlFor="unit"
+            >
+              одиниця виміру
+              <span className="text-[#ff0000]"> * </span>
+            </label>
+            <div className="flex gap-x-3">
+              <div className="relative">
+                <input
+                  id="price"
+                  type="number"
+                  autoComplete="off"
+                  min={0}
+                  className={`w-[128px] text-center ${commonInputStyle} ${
+                    errors.price &&
+                    "border-b-[#ff0000] focus:border-b-[#ff0000]"
+                  }`}
+                  placeholder="100"
+                  {...register("price")}
+                />
+                {errors.price && (
+                  <p className="absolute w-[110%] text-xs font-bold text-[red]">
+                    {errors.price.message}
+                  </p>
+                )}
+              </div>
+
+              {/* ------------------------------------------------- */}
+
+              <div className="relative">
+                <input
+                  id="unit"
+                  type="text"
+                  autoComplete="off"
+                  className={`w-[128px] text-center ${commonInputStyle} ${
+                    errors.unit && "border-b-[#ff0000] focus:border-b-[#ff0000]"
+                  } `}
+                  placeholder="шматок"
+                  {...register("unit")}
+                />
+                {errors.unit && (
+                  <p className="absolute w-[110%] text-xs font-bold text-[red]">
+                    {errors.unit.message}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* ------------------------------------------------- */}
+
+          <div className="w-[282px] flex flex-col ml-auto">
+            <label
+              className="text-base font-medium text-txt-main-white"
+              htmlFor="info"
+            >
+              Доп інфо
+              <span className="text-[#ff0000]"> * </span>
+            </label>
+            <div className="relativ">
+              <input
+                id="info"
+                type="text"
+                autoComplete="off"
+                className={`w-full ${commonInputStyle}  ${
+                  errors.info && "border-b-[#ff0000] focus:border-b-[#ff0000]"
+                }`}
+                placeholder="100"
+                {...register("info")}
+              />
+              {errors.info && (
+                <p className="absolute text-xs font-bold text-[red]">
+                  {errors.info.message}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* ---------------------------------------------- */}
+
+        <div className="relative mb-4">
+          <label
+            className="text-base font-medium text-txt-main-white"
+            htmlFor="description"
+          >
+            Придумайте опис
+          </label>
+          <textarea
+            id="description"
             autoComplete="off"
-            className={`${commonInputStyle} ${
-              errors.username ? "bg-bg-orange" : "bg-bg-main"
-            } `}
-            placeholder="100"
-            {...register("info")}
+            {...register("description")}
+            className={`block w-full bg-bg-main px-4 resize-none overflow-auto outline-none border border-transparent 
+        focus:border-b-txt-main-yellow transition-all duration-250 ${
+          errors.description && "border-b-[#ff0000] focus:border-b-[#ff0000]"
+        }`}
           />
-          <p className="text-bg-orange txt-lg font-semibold">
-            {errors.info?.message}
-          </p>
         </div>
       </div>
-
-      {/* ---------------------------------------------- */}
-
-      <label htmlFor="description">Придумайте опис</label>
-      <textarea
-        autoComplete="off"
-        {...register("description")}
-        className="bg-bg-main px-4 mb-4 resize-none overflow-auto outline-none border border-transparent 
-        focus:border-b-txt-main-yellow transition-all duration-250"
-      ></textarea>
 
       <ButtonMain style="redLarge" btnType="submit">
         {editProduct ? "Редагувати" : "Додати"}

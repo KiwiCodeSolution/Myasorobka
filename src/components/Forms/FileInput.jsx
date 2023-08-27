@@ -44,7 +44,7 @@ const FileInput = ({
     <div className="relative flex justify-center">
       <div
         {...getRootProps({ tabIndex: disabled ? -1 : 0 })}
-        className={`group flex justify-center items-center w-[160px] h-[192px] rounded-3xl cursor-pointer 
+        className={`group/file flex justify-center items-center w-[160px] h-[192px] rounded-3xl cursor-pointer 
           text-txt-main-black font-bold bg-bg-white outline-none ${
             disabled && "opacity-70 cursor-auto"
           }`}
@@ -55,7 +55,7 @@ const FileInput = ({
           <div
             className={`flex flex-col gap-4 items-center ${
               !disabled &&
-              "group-hover:text-bg-orange group-focus:text-bg-orange"
+              "group-hover/file:text-bg-orange group-focus/file:text-bg-orange"
             } transition-all duration-250`}
           >
             <PlusInCircle className="fill-[tomato]" />
@@ -76,7 +76,7 @@ const FileInput = ({
         </p>
       ) : (
         <p className="absolute w-[300%] left-0 bottom-0 translate-y-full text-sm text-txt-main-white ">
-          Клацніть по кнопці або перетягніть файл
+          Клацніть по кнопці або перетягніть файли
         </p>
       )}
     </div>
