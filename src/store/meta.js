@@ -8,6 +8,8 @@ class Meta {
     delivery_address: "",
   };
 
+  _popupNestingLevel = 0;
+
   _isOrderPopupShown = false;
   _isCartPopupShown = false;
 
@@ -34,6 +36,18 @@ class Meta {
       phone_number: "",
       delivery_address: "",
     };
+  }
+
+  get popupNestingLevel() {
+    return this._popupNestingLevel;
+  }
+
+  incrementPopupNestingLevel() {
+    this._popupNestingLevel = this._popupNestingLevel + 1;
+  }
+
+  decrementPopupNestingLevel() {
+    this._popupNestingLevel = this._popupNestingLevel - 1;
   }
 
   toggleOrderPopup() {

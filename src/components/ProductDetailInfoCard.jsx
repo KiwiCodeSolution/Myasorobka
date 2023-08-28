@@ -7,6 +7,7 @@ import PopupOverlay from "./UIKit/PopupOverlay";
 import { Prev } from "../icons/iconComponent";
 import Counter from "./UIKit/Counter";
 import ButtonMain from "./UIKit/button";
+import BlankImg from "../images/BlankPic.jpg";
 
 import metaStore from "../store/meta";
 import ordersStore from "../store/orders";
@@ -57,32 +58,48 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
               <h1>Шкода, але картинок поки немає</h1>
             )}
           </div>
-          <div className="flex flex-col w-[55%] h-full ">
-            <h1 className="text-3xl font-bold">{product.name}</h1>
-            <p className="mt-2 text-2xl font-bold text-txt-main-yellow">{`ціна за шматок: від ${product.price} грн`}</p>
-            <p className="mt-2 text-2xl font-bold text-txt-grey">Шматки вагою від 0.7 до 1.2 кг</p>
-            <div className="flex mt-8">
-              <Counter
-                initialValue={quantity}
-                size="m"
-                outlinedControls
-                disabled={isProductInCart}
-                onChange={(value) => setQuantity(value)}
+          {/* ------------------------POPUP BODY------------------------ */}
+          <div className="h-[80%] flex gap-14 px-8 py-6 text-txt-main-white  ">
+            <div className="w-[45%] h-full bg-[tomato] text-3xl rounded-3xl overflow-hidden">
+              <img
+                src={product.images[0] || BlankImg}
+                alt="product picture"
+                className="w-full h-full object-cover overflow-hidden"
               />
-              {isProductInCart ? (
-                <ButtonMain style="redLarge" btnClass="ml-14" onClick={() => ordersStore.deleteProduct(product.name)}>
-                  Видалити з кошика
-                </ButtonMain>
-              ) : (
-                <ButtonMain
-                  style="redLarge"
-                  btnClass="ml-14"
-                  onClick={() => ordersStore.addToCart(product, quantity)}
-                  disabled={!isQuantityNotNull}
-                >
-                  Додати до кошика
-                </ButtonMain>
-              )}
+            </div>
+            <div className="flex flex-col w-[55%] h-full ">
+              <h1 className="text-3xl font-bold">{product.name}</h1>
+              <p className="mt-2 text-2xl font-bold text-txt-main-yellow">{`ціна за шматок: від ${product.price} грн`}</p>
+              <p className="mt-2 text-2xl font-bold text-txt-grey">Шматки вагою від 0.7 до 1.2 кг</p>
+              <div className="flex mt-8">
+                <Counter
+                  initialValue={quantity}
+                  size="m"
+                  outlinedControls
+                  disabled={isProductInCart}
+                  onChange={(value) => setQuantity(value)}
+                />
+                {isProductInCart ? (
+                  <ButtonMain style="redLarge" btnClass="ml-14" onClick={() => ordersStore.deleteProduct(product.name)}>
+                    Видалити з кошика
+                  </ButtonMain>
+                ) : (
+                  <ButtonMain
+                    style="redLarge"
+                    btnClass="ml-14"
+                    onClick={() => ordersStore.addToCart(product, quantity)}
+                    disabled={!isQuantityNotNull}
+                  >
+                    Додати до кошика
+                  </ButtonMain>
+                )}
+              </div>
+              <p className="mt-8 text-2xl font-bold">Опис:</p>
+              <p className="mt-2 text-xl font-semibold">{product.description}</p>
+              <p className="mt-auto text-sm">
+                * Товар ваговий. Вказано середню вагу упаковки продукту. Можливе відхилення у більшу чи меншу сторону.
+                Про точну суму та вагу ми повідомимо вам напередодні доставки після збирання продукції на нашому складі.
+              </p>
             </div>
             <p className="mt-8 text-2xl font-bold">Опис:</p>
             <p className="mt-2 text-xl font-semibold">{product.description}</p>

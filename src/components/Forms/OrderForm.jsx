@@ -9,7 +9,7 @@ import TextInput from "./TextInput";
 import metaStore from "../../store/meta";
 import orderStore from "../../store/orders";
 import constants from "../../helpers/constants";
-import orderShema from "../../store/validationSchemas/orderShema";
+import orderShema from "../../validationSchemas/orderShema";
 
 const formFields = [
   {

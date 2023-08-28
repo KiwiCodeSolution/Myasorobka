@@ -9,4 +9,7 @@
   button {
     outline: none;
   }
+  label {
+    cursor: pointer;
+  }
 }
