@@ -36,7 +36,7 @@ const AdminProducts = observer(() => {
         <div className="w-[90%] mx-auto relative">
           <Categories products={productStore.products} section={"admin"} />
         </div>
-        <div className="w-[75vw] bg-bg-black mx-auto">
+        <div className="w-[75vw] bg-bg-black mx-auto pb-5">
           <AdminProductsSwiper />
         </div>
       </div>
