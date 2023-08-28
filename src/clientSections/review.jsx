@@ -1,3 +1,5 @@
+import hotPepper from "../images/hot-pepper_1.png";
+import rosemary from "../images/rosemary-big.png";
 import ReviewCard from "../components/reviewCard";
 
 const REVIEWS = [
@@ -23,7 +25,7 @@ const REVIEWS = [
 const Review = () => {
   return (
     <div className="bg-bg-white min-h-[530px] pt-10 pb-14 relative">
-      <img src="/src/images/hot-pepper_1.png" alt="hot pepper" className="absolute top-[-40px] right-0" />
+      <img src={hotPepper} alt="hot pepper" className="absolute top-[-40px] right-0" />
       <div className="max-w-[1440px] mx-auto px-[10px] relative">
         <h2 className="text-4xl font-bold text-txt-main-black mb-20">Відгуки про нашу працю</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 justify-between">
@@ -32,7 +34,7 @@ const Review = () => {
           ))}
         </div>
         <img
-          src="/src/images/rosemary-big.png"
+          src={rosemary}
           alt="rosemary"
           className="h-[60px] w-[360px] md:h-[82px] md:w-[480px] lg:h-[137px] lg:w-[800px] absolute bottom-[-80px] left-0 md:bottom-[-100px] md:left-[136px] lg:bottom-[-150px] lg:left-[150px]  xl:bottom-[-120px] xl:left-[295px] z-[2]"
         />
