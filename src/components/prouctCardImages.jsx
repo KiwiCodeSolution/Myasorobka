@@ -12,7 +12,6 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs, Controller } from "swiper/modules";
 
 const ProuctCardImages = ({ data }) => {
-  console.log(data);
   const [thumbsSwiper, setThumbsSwiper] = useState();
   const [firstSwiper, setFirstSwiper] = useState();
   const [secondSwiper, setSecondSwiper] = useState();
@@ -26,7 +25,7 @@ const ProuctCardImages = ({ data }) => {
   }, []);
 
   return (
-    <div className="w-[400px] h-[536px] flex flex-col justify-between gap-y-3 p-2 relative images-swiper">
+    <div className="w-[400px] h-[536px] flex flex-col justify-between gap-y-3 p-2 relative images-swiper ml-[72px]">
       <Swiper
         onSwiper={(swiper) => {
           if (swiper1Ref.current !== null) {
@@ -42,11 +41,11 @@ const ProuctCardImages = ({ data }) => {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         modules={[FreeMode, Navigation, Thumbs, Controller]}
-        className="w-full h-[70%] mySwiperOne rounded-lg"
+        className="w-full h-[70%] mySwiperOne"
       >
         {data.map((el, index) => (
           <SwiperSlide key={index + 1}>
-            <img src={el} alt="swiper gallary" className="w-full h-full" />
+            <img src={el} alt="swiper gallary" className="w-full h-full object-contain" />
           </SwiperSlide>
         ))}
       </Swiper>

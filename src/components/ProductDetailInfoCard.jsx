@@ -48,18 +48,22 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
           </button>
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
-        <div className="h-[80%] flex justify-between px-8 py-6 text-txt-main-white  ">
-          <div className="flex justify-center items-center text-3xl ml-[72px]">
+        <div className="h-[80%] flex justify-center px-8 py-6 text-txt-main-white gap-x-14">
+          <div className="flex justify-center items-center text-3xl">
             {product.images && product.images.length > 1 ? (
               <ProuctCardImages data={product.images} />
             ) : product.images && product.images.length === 1 ? (
               <img
                 src={product.images[0]}
                 alt="product picture"
-                className="w-full h-full object-cover overflow-hidden"
+                className="object-contain overflow-hidden w-[480px] h-[480px]"
               />
             ) : (
-              <img src={BlankImg} alt="product picture" className="w-full h-full object-cover overflow-hidden" />
+              <img
+                src={BlankImg}
+                alt="product picture"
+                className="w-[480px] h-[480px] object-contain overflow-hidden"
+              />
             )}
           </div>
           <div className="flex flex-col w-[55%] h-full ">

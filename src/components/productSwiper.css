@@ -91,15 +91,13 @@
 
 .images-swiper .swiper-button-prev,
 .images-swiper .swiper-button-next {
-  color: #fff5da;
+  color: #646360;
   position: absolute;
   height: 32px;
-  /* top: 0; */
 }
 
 .images-swiper .swiper-button-prev {
   left: 0px;
-  z-index: 100;
 }
 
 .images-swiper .swiper-button-next {
