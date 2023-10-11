@@ -24,8 +24,13 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
   };
 
   return (
-    <PopupOverlay onClose={onClose} closeByClickOnOverlay closeByPressEsc overlayStyles="bg-[rgb(0,0,0,0.3)]">
-      <div className="w-[1360px] h-[720px]  rounded-3xl overflow-hidden bg-bg-black">
+    <PopupOverlay
+      onClose={onClose}
+      closeByClickOnOverlay
+      closeByPressEsc
+      overlayStyles="bg-[rgb(0,0,0,0.3)] overflow-x-auto"
+    >
+      <div className="max-w-[1360px] max-h-[720px] rounded-3xl overflow-hidden bg-bg-black overflow-y-auto ">
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px] ">
@@ -48,8 +53,8 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
           </button>
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
-        <div className="h-[80%] flex justify-between px-8 py-6 text-txt-main-white  ">
-          <div className="flex justify-center items-center text-3xl ml-[72px]">
+        <div className="w-full h-[80%] flex flex-col xl:flex-row justify-between px-8 py-6 gap-x-4 text-txt-main-white">
+          <div className="flex justify-center items-center text-3xl xl:ml-5">
             {product.images && product.images.length > 1 ? (
               <ProuctCardImages data={product.images} />
             ) : product.images && product.images.length === 1 ? (
@@ -62,11 +67,11 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
               <img src={BlankImg} alt="product picture" className="w-full h-full object-cover overflow-hidden" />
             )}
           </div>
-          <div className="flex flex-col w-[55%] h-full ">
+          <div className="flex flex-col max-w-[300px] xl:max-w-[55%] h-full">
             <h1 className="text-3xl font-bold">{product.name}</h1>
             <p className="mt-2 text-2xl font-bold text-txt-main-yellow">{`ціна за шматок: від ${product.price} грн`}</p>
             <p className="mt-2 text-2xl font-bold text-txt-grey">Шматки вагою від 0.7 до 1.2 кг</p>
-            <div className="flex mt-8">
+            <div className="flex flex-col xl:flex-row gap-4 mt-8 ">
               <Counter
                 initialValue={quantity}
                 size="m"
@@ -75,13 +80,17 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
                 onChange={(value) => setQuantity(value)}
               />
               {isProductInCart ? (
-                <ButtonMain style="redLarge" btnClass="ml-14" onClick={() => ordersStore.deleteProduct(product.name)}>
+                <ButtonMain
+                  style="redLarge"
+                  btnClass="ml-0 xl:ml-14"
+                  onClick={() => ordersStore.deleteProduct(product.name)}
+                >
                   Видалити з кошика
                 </ButtonMain>
               ) : (
                 <ButtonMain
                   style="redLarge"
-                  btnClass="ml-14"
+                  btnClass="ml-0 xl:ml-14"
                   onClick={() => ordersStore.addToCart(product, quantity)}
                   disabled={!isQuantityNotNull}
                 >

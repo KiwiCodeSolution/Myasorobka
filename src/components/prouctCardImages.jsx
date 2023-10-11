@@ -26,7 +26,7 @@ const ProuctCardImages = ({ data }) => {
   }, []);
 
   return (
-    <div className="w-[400px] h-[536px] flex flex-col justify-between gap-y-3 p-2 relative images-swiper">
+    <div className="max-w-[400px] h-[536px] flex flex-col justify-between gap-y-3 p-2 relative images-swiper">
       <Swiper
         onSwiper={(swiper) => {
           if (swiper1Ref.current !== null) {
