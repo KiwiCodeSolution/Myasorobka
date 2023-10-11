@@ -2,9 +2,9 @@ import * as icons from "../icons/iconComponent";
 import PropTypes from "prop-types";
 
 const SOC_ELEMENTS = [
-  { key: "fb", Icon: icons.Fb, link: "#" },
-  { key: "tg", Icon: icons.Tg, link: "#" },
-  { key: "inst", Icon: icons.Insta, link: "#" },
+  { key: "fb", Icon: icons.Fb, link: "https://www.facebook.com/profile.php?id=61551225297005" },
+  { key: "tg", Icon: icons.Tg, link: "https://t.me/Rick_oss" },
+  { key: "inst", Icon: icons.Insta, link: "https://www.instagram.com/myasorobka/" },
 ];
 
 export const SocialLinksBlock = ({ section }) => (
@@ -17,7 +17,7 @@ export const SocialLinksBlock = ({ section }) => (
   >
     {SOC_ELEMENTS.map(({ key, Icon, link }) => (
       <li key={key} className="rounded-full hover:shadow-soc focus:shadow-soc">
-        <a href={link} className="">
+        <a href={link} className="" target="_blank" rel="noreferrer">
           <Icon />
         </a>
       </li>
