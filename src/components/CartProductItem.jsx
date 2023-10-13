@@ -10,14 +10,10 @@ const CartProductItem = observer(({ name, quantity, price }) => {
   // console.log("quantity: ", quantity);
 
   return (
-    <div className="w-full h-12 grid grid-cols-productItem items-center  ">
+    <div className="w-full h-full xl:h-12 grid grid-cols-productItem items-center gap-x-1">
       <span>{name}</span>
-      <Counter
-        initialValue={quantity}
-        onChange={(value) => orderStore.changeProductQuantity(name, value)}
-        size="s"
-      />
-      <span className=" text-center">{quantity * price}</span>
+      <Counter initialValue={quantity} onChange={(value) => orderStore.changeProductQuantity(name, value)} size="s" />
+      <span className="text-center">{quantity * price}</span>
       <div>
         <DeleteBtn onClick={() => orderStore.deleteProduct(name)} />
       </div>

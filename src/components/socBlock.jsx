@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const SOC_ELEMENTS = [
   { key: "fb", Icon: icons.Fb, link: "https://www.facebook.com/profile.php?id=61551225297005" },
   { key: "tg", Icon: icons.Tg, link: "https://t.me/Rick_oss" },
-  { key: "inst", Icon: icons.Insta, link: "https://www.instagram.com/myasorobka/" },
+  { key: "inst", Icon: icons.Insta, link: "https://www.instagram.com/myasorobka.meals/" },
 ];
 
 export const SocialLinksBlock = ({ section }) => (

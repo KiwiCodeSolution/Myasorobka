@@ -11,18 +11,11 @@ const CartPopup = observer(({ onClose, onGoToTheOrder }) => {
   const isCartEmpty = ordersStore.products.length === 0;
   const isOrderExist = ordersStore.totalQuantity !== 0;
   return (
-    <BasePopup
-      title="Кошик"
-      closeByPressEsc
-      closeByClickOnOverlay
-      onClose={onClose}
-    >
-      <div className="h-[468px]">
+    <BasePopup title="Кошик" closeByPressEsc closeByClickOnOverlay onClose={onClose}>
+      <div className="h-full xl:h-[468px]">
         {isCartEmpty ? (
           <div className="w-full h-full flex justify-center items-center">
-            <span className="text-3xl text-txt-main-white">
-              Кошик порожнiй!
-            </span>
+            <span className="text-3xl text-txt-main-white">Кошик порожнiй!</span>
           </div>
         ) : (
           <div className="flex flex-col items-center text-txt-main-white">
@@ -34,19 +27,13 @@ const CartPopup = observer(({ onClose, onGoToTheOrder }) => {
               <CartProductList products={toJS(ordersStore.products)} />
             </div>
             <div className="mt-8">
-              <ButtonMain
-                style="redLarge"
-                clickFn={onGoToTheOrder}
-                disabled={!isOrderExist}
-              >
+              <ButtonMain style="redLarge" clickFn={onGoToTheOrder} disabled={!isOrderExist}>
                 Перейти до замовлення
               </ButtonMain>
             </div>
             <p className="mt-4 text-white text-sm">
-              * Товар ваговий. Вказано середню вагу упаковки продукту. Можливе
-              відхилення у більшу чи меншу сторону. Про точну суму та вагу ми
-              повідомимо вам напередодні доставки після збирання продукції на
-              нашому складі.
+              * Товар ваговий. Вказано середню вагу упаковки продукту. Можливе відхилення у більшу чи меншу сторону. Про
+              точну суму та вагу ми повідомимо вам напередодні доставки після збирання продукції на нашому складі.
             </p>
           </div>
         )}

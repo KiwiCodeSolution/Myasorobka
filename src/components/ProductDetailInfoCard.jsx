@@ -30,41 +30,49 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
       closeByPressEsc
       overlayStyles="bg-[rgb(0,0,0,0.3)] overflow-x-auto"
     >
-      <div className="max-w-[1360px] max-h-[720px] rounded-3xl overflow-hidden bg-bg-black overflow-y-auto ">
+      <div className="max-w-[1360px] max-h-[720px] xl:h-[720px] rounded-3xl overflow-hidden bg-bg-black overflow-y-auto ">
         {/* ------------------------POPUP HEADER------------------------ */}
 
-        <div className="relative w-full h-[74px] ">
+        <div className="relative w-full h-[74px]">
           <button
             type="button"
             onClick={onPrev}
             className="group absolute left-10 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-center gap-x-3 text-[#ffffff]"
           >
             <Prev className="stroke-[#ffffff]" />
-            <span className="text-xl font-bold group-hover:underline group-focus:underline ">Повернутися</span>
+            <span className="hidden md:inline md:text-xl md:font-bold md:group-hover:underline md:group-focus:underline">
+              Повернутися
+            </span>
           </button>
 
           <button
             type="button"
             onClick={onGoToCart}
-            className="group absolute right-28 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-center gap-x-3 text-bg-light-grey"
+            className="group absolute right-10 xl:right-28 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-center gap-x-3 text-bg-light-grey"
           >
-            <span className="text-xl font-bold group-hover:underline group-focus:underline text-[#ffffff]">Кошик</span>
+            <span className="hidden md:inline md:text-xl md:font-bold md:group-hover:underline md:group-focus:underline md:text-[#ffffff]">
+              Кошик
+            </span>
             <Prev className="rotate-180 stroke-[#ffffff]" />
           </button>
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
         <div className="w-full h-[80%] flex flex-col xl:flex-row justify-between px-8 py-6 gap-x-4 text-txt-main-white">
-          <div className="flex justify-center items-center text-3xl xl:ml-5">
+          <div className="w-full flex justify-center items-center text-3xl xl:ml-5">
             {product.images && product.images.length > 1 ? (
               <ProuctCardImages data={product.images} />
             ) : product.images && product.images.length === 1 ? (
               <img
                 src={product.images[0]}
                 alt="product picture"
-                className="w-full h-full object-cover overflow-hidden"
+                className="w-[300px] h-[300px] xl:w-full xl:h-full mx-auto object-contain overflow-hidden"
               />
             ) : (
-              <img src={BlankImg} alt="product picture" className="w-full h-full object-cover overflow-hidden" />
+              <img
+                src={BlankImg}
+                alt="product picture"
+                className="w-[300px] h-[300px] xl:w-full xl:h-full mx-auto object-contain overflow-hidden"
+              />
             )}
           </div>
           <div className="flex flex-col max-w-[300px] xl:max-w-[55%] h-full">

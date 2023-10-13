@@ -38,7 +38,7 @@ const FavouriteProductSwiper = observer(() => {
           }}
         >
           {favouriteProducts.map((product) => (
-            <SwiperSlide key={product.name}>
+            <SwiperSlide key={product.name} className="mx-auto">
               <ProductCard product={product} />
             </SwiperSlide>
           ))}
