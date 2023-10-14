@@ -27,7 +27,6 @@ const ProductDetailInfoCard = observer(
     return (
       <PopupOverlay
         onClose={onClose}
-        closeByClickOnOverlay
         closeByPressEsc
         overlayStyles="bg-[rgb(0,0,0,0.3)] overflow-x-auto"
       >
@@ -62,7 +61,7 @@ const ProductDetailInfoCard = observer(
           </div>
           {/* ------------------------POPUP BODY------------------------ */}
           <div className="w-full h-[80%] flex flex-col xl:flex-row justify-between px-8 py-6 gap-x-4 text-txt-main-white">
-            <div className="w-full flex justify-center items-center text-3xl xl:ml-5">
+            <div className="w-[528px]  flex justify-center items-center text-3xl xl:ml-5">
               {product.images && product.images.length > 1 ? (
                 <ProuctCardImages data={product.images} />
               ) : product.images && product.images.length === 1 ? (
