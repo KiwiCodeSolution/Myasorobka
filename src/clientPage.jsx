@@ -11,9 +11,11 @@ import { observer } from "mobx-react-lite";
 import AlertPopup from "./components/UIKit/AlertPopup";
 import clientStore from "./store/client";
 import meta from "./store/meta";
+import orderStore from "./store/orders";
 import Cart from "./components/cart";
 import CartPopup from "./components/popups/CartPopup";
 import OrderPopup from "./components/popups/OrderPopup";
+import CompleteOrderPopup from "./components/popups/CompleteOrderPopup";
 
 const ClientPage = observer(() => {
   const toggleSwitchFromCartToOrder = () => {
@@ -42,10 +44,21 @@ const ClientPage = observer(() => {
           onBackToTheCart={toggleSwitchFromCartToOrder}
         />
       )}
+      {meta._isCompleteOrderPopupShown && (
+        <CompleteOrderPopup
+          orderNumber={orderStore.order_number}
+          onComplete={() => meta.toggleCompleteOrderPopup()}
+        />
+      )}
       <Footer />
       {clientStore.error && (
         <AlertPopup onOk={() => clientStore.setError("")}>
           <h1 className="text-2xl">{clientStore.error}</h1>
+        </AlertPopup>
+      )}
+      {orderStore.error && (
+        <AlertPopup onOk={() => orderStore.setError(null)}>
+          <h1 className="text-2xl">{orderStore.error}</h1>
         </AlertPopup>
       )}
     </>
