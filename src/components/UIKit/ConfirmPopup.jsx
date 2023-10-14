@@ -17,7 +17,7 @@ const ConfirmPopup = ({
       onClose={onSecondaryBtnClick}
       overlayStyles={"bg-[#000000aa]"}
     >
-      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
+      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black shadow-popups">
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px] ">
