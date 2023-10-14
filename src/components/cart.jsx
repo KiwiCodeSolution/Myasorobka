@@ -11,11 +11,7 @@ const Cart = observer(({ onClick }) => {
   const isCartEmpty = cartProductsNum === 0;
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="fixed bottom-[60px] left-[86vw] z-50"
-    >
+    <button type="button" onClick={onClick} className="fixed bottom-[60px] left-[65vw] xl:left-[86vw] z-50">
       <icons.Cart />
       {!isCartEmpty && (
         <p

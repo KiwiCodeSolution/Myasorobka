@@ -13,13 +13,7 @@ const CONTAINER_STYLES = {
   m: "gap-x-4",
 };
 
-const Counter = ({
-  initialValue = 0,
-  onChange,
-  size,
-  outlinedControls,
-  disabled,
-}) => {
+const Counter = ({ initialValue = 0, onChange, size, outlinedControls, disabled }) => {
   const [count, setCount] = useState(initialValue);
 
   const onInputChange = ({ currentTarget: { value } }) => {
@@ -32,11 +26,7 @@ const Counter = ({
   }, [count, onChange]);
 
   return (
-    <div
-      className={`w-fit flex items-center ${CONTAINER_STYLES[size]} ${
-        disabled && "opacity-[0.5]"
-      }`}
-    >
+    <div className={`w-full xl:w-fit flex items-center ${CONTAINER_STYLES[size]} ${disabled && "opacity-[0.5]"}`}>
       <IncDecBtn
         size={size}
         type="dec"
