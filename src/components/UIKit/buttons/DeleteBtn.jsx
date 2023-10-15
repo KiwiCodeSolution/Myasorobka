@@ -7,10 +7,10 @@ const DeleteBtn = ({ onClick }) => {
     <button
       type="button"
       onClick={onClick}
-      className="group w-6 h-6 flex justify-center items-center rounded-full bg-bg-black"
+      className="group/delItem w-6 h-6 flex justify-center items-center rounded-full bg-bg-black"
     >
       <Cross
-        className="w-1/2 h-1/2 fill-bg-grey group-hover:fill-bg-red group-focus:fill-bg-red 
+        className="w-1/2 h-1/2 fill-bg-grey group-hover/delItem:fill-bg-red group-focus/ttt:fill-bg-red 
       transition-colors duration-[250ms]"
       />
     </button>

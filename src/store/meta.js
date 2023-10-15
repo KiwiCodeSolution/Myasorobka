@@ -12,6 +12,7 @@ class Meta {
 
   _isOrderPopupShown = false;
   _isCartPopupShown = false;
+  _isCompleteOrderPopupShown = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -56,6 +57,10 @@ class Meta {
 
   toggleCartPopup() {
     this._isCartPopupShown = !this._isCartPopupShown;
+  }
+
+  toggleCompleteOrderPopup() {
+    this._isCompleteOrderPopupShown = !this._isCompleteOrderPopupShown;
   }
 
   get orderFormFieldValues() {

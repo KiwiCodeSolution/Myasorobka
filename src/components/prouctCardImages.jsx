@@ -26,7 +26,7 @@ const ProuctCardImages = ({ data }) => {
   }, []);
 
   return (
-    <div className="max-w-[400px] h-[536px] flex flex-col justify-between gap-y-3 p-2 relative images-swiper">
+    <div className="max-w-[528px] h-[536px] flex flex-col relative justify-between images-swiper">
       <Swiper
         onSwiper={(swiper) => {
           if (swiper1Ref.current !== null) {
@@ -42,11 +42,15 @@ const ProuctCardImages = ({ data }) => {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         modules={[FreeMode, Navigation, Thumbs, Controller]}
-        className="w-full h-[70%] mySwiperOne rounded-lg"
+        className="w-full h-[400px] mySwiperOne rounded-lg flex"
       >
         {data.map((el, index) => (
           <SwiperSlide key={index + 1}>
-            <img src={el} alt="swiper gallary" className="w-full h-full" />
+            <img
+              src={el}
+              alt="swiper gallary"
+              className="w-[400px] h-full mx-auto object-cover rounded-2xl"
+            />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -54,18 +58,23 @@ const ProuctCardImages = ({ data }) => {
       <Swiper
         controller={{ control: firstSwiper }}
         loop={false}
-        spaceBetween={10}
+        grabCursor={true}
+        spaceBetween={32}
         slidesPerView={3}
         watchSlidesProgress
         touchRatio={0.2}
         slideToClickedSlide={true}
         onSwiper={setThumbsSwiper}
         modules={[Navigation, Thumbs, Controller]}
-        className="w-full min-h-fit mySwiper"
+        className="w-[376px] h-[104px] mySwiper "
       >
         {data.map((el, index) => (
           <SwiperSlide key={index + 1} className="opacity-70 ">
-            <img src={el} alt="swiper gallary" className="rounded-lg h-full" />
+            <img
+              src={el}
+              alt="swiper gallary"
+              className="w-[104px] h-full rounded-lg "
+            />
           </SwiperSlide>
         ))}
       </Swiper>

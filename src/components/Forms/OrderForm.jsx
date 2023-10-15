@@ -2,8 +2,6 @@ import { useForm } from "react-hook-form";
 import { observer } from "mobx-react-lite";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import CompleteOrderPopup from "../popups/CompleteOrderPopup";
-import AlertPopup from "../UIKit/AlertPopup";
 import ButtonMain from "../UIKit/button";
 import TextInput from "./TextInput";
 import metaStore from "../../store/meta";
@@ -41,11 +39,8 @@ const OrderForm = observer(() => {
 
   const onFormSubmit = async (fieldValues) => {
     await orderStore.placeOrderAction(fieldValues);
-  };
-
-  const onOrderComplete = () => {
-    orderStore.setOrderNumber(null);
     metaStore.toggleOrderPopup();
+    metaStore.toggleCompleteOrderPopup();
   };
 
   return (
@@ -71,17 +66,6 @@ const OrderForm = observer(() => {
           {orderStore.isOrderProcessing ? "В обробцi..." : "Замовити"}
         </ButtonMain>
       </form>
-      {orderStore.order_number && (
-        <CompleteOrderPopup
-          orderNumber={orderStore.order_number}
-          onComplete={onOrderComplete}
-        />
-      )}
-      {orderStore.error && (
-        <AlertPopup onOk={() => orderStore.setError(null)}>
-          <h1 className="text-2xl">{orderStore.error}</h1>
-        </AlertPopup>
-      )}
     </>
   );
 });

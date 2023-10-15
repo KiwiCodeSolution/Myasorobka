@@ -14,7 +14,9 @@ const AllProductSwiper = observer(() => {
   const filteredProducts =
     filterStore.categoryClient === "Всі продукти" || ""
       ? productStore.products
-      : productStore.products.filter((product) => product.category === filterStore.categoryClient);
+      : productStore.products.filter(
+          (product) => product.category === filterStore.categoryClient
+        );
 
   return (
     <div className="h-[780px] w-full py-4 relative product mx-auto">
@@ -74,7 +76,7 @@ const AllProductSwiper = observer(() => {
         <button className="prod-button-prev hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
-        <div className="pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
+        <div className="pagination flex justify-center gap-x-4 w-[200px] h-full mx-6"></div>
         <button className="prod-button-next hover:shadow-swiper focus:shadow-swiper">
           <icons.Right />
         </button>
