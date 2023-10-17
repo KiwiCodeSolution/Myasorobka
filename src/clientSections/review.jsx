@@ -4,18 +4,18 @@ import ReviewCard from "../components/reviewCard";
 
 const REVIEWS = [
   {
-    name: "Павло Тичина",
+    name: "Сергій Ковалевський",
     photo:
       "https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=",
     text: "Я вже довгий час користуюся цим інтернет-магазином м'ясних виробів і дуже задоволений їхньою послугою. М'ясо завжди свіже, якісне і добре упаковане. Великий вибір продукції і зручне онлайн-замовлення роблять процес покупок дуже простим і зручним. Рекомендую!",
   },
   {
-    name: "Лесь Подеревянський",
+    name: "Андрій Хотицький",
     photo: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     text: "М'ясоробка - це справжня знахідка для гурманів. Їхні продукти відмінної якості і смаку. Великий вибір м'яса, делікатесів і готових страв завжди задовольняє мої кулінарні потреби. Доставка завжди вчасна і з хорошою упаковкою. Я дуже задоволений цим магазином!",
   },
   {
-    name: "Олесь Кіндзер",
+    name: "Олександр Мех",
     photo:
       "https://media.istockphoto.com/id/1045886560/photo/portrait-of-smiling-handsome-man-in-blue-t-shirt-standing-with-crossed-arms-isolated-on-grey.jpg?s=612x612&w=0&k=20&c=TX1-1UJ3PKonFEmgs_WDZf7wtfqKVMHYjeRaYjaZ1Rc=",
     text: "М'ясоробка - мій улюблений вибір, коли йдеться про покупку якісного м'яса. Їхні продукти завжди свіжі, а якість бездоганна. Персонал магазину завжди ввічливий і готовий допомогти з будь-якими питаннями. Я регулярно замовляю у них і завжди залишаюся задоволеним.",
