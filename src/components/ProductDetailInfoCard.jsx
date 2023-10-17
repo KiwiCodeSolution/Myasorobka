@@ -24,53 +24,60 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
   };
 
   return (
-    <PopupOverlay onClose={onClose} closeByClickOnOverlay closeByPressEsc overlayStyles="bg-[rgb(0,0,0,0.3)]">
-      <div className="w-[1360px] h-[720px]  rounded-3xl overflow-hidden bg-bg-black">
+    <PopupOverlay onClose={onClose} closeByPressEsc overlayStyles="bg-[rgb(0,0,0,0.3)] overflow-x-auto">
+      <div
+        className="max-w-[1360px] max-h-[720px] xl:h-[720px] rounded-3xl overflow-hidden 
+      bg-bg-black overflow-y-auto shadow-popups "
+      >
         {/* ------------------------POPUP HEADER------------------------ */}
 
-        <div className="relative w-full h-[74px] ">
+        <div className="relative w-full h-[74px]">
           <button
             type="button"
             onClick={onPrev}
             className="group absolute left-10 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-center gap-x-3 text-[#ffffff]"
           >
             <Prev className="stroke-[#ffffff]" />
-            <span className="text-xl font-bold group-hover:underline group-focus:underline ">Повернутися</span>
+            <span className="hidden md:inline md:text-xl md:font-bold md:group-hover:underline md:group-focus:underline">
+              Повернутися
+            </span>
           </button>
 
           <button
             type="button"
             onClick={onGoToCart}
-            className="group absolute right-28 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-center gap-x-3 text-bg-light-grey"
+            className="group absolute right-10 xl:right-28 bottom-[45%] translate-y-1/2 px-1 h-[40px] flex items-center gap-x-3 text-bg-light-grey"
           >
-            <span className="text-xl font-bold group-hover:underline group-focus:underline text-[#ffffff]">Кошик</span>
+            <span className="hidden md:inline md:text-xl md:font-bold md:group-hover:underline md:group-focus:underline md:text-[#ffffff]">
+              Кошик
+            </span>
             <Prev className="rotate-180 stroke-[#ffffff]" />
           </button>
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
-        <div className="h-[80%] flex justify-center px-8 py-6 text-txt-main-white gap-x-14">
-          <div className="flex justify-center items-center text-3xl">
+        <div className="w-full h-[80%] flex flex-col xl:flex-row justify-between px-8 py-6 gap-x-4 text-txt-main-white">
+          <div className="w-[528px]  flex justify-center items-center text-3xl xl:ml-5">
             {product.images && product.images.length > 1 ? (
               <ProuctCardImages data={product.images} />
             ) : product.images && product.images.length === 1 ? (
               <img
                 src={product.images[0]}
                 alt="product picture"
-                className="object-contain overflow-hidden w-[480px] h-[480px]"
+                className="w-[300px] h-[300px] xl:w-full xl:h-full mx-auto object-contain overflow-hidden"
               />
             ) : (
               <img
                 src={BlankImg}
                 alt="product picture"
-                className="w-[480px] h-[480px] object-contain overflow-hidden"
+                className="w-[300px] h-[300px] xl:w-full xl:h-full mx-auto object-contain overflow-hidden"
               />
             )}
           </div>
-          <div className="flex flex-col w-[55%] h-full ">
+          <div className="flex flex-col max-w-[300px] xl:max-w-[55%] h-full">
             <h1 className="text-3xl font-bold">{product.name}</h1>
             <p className="mt-2 text-2xl font-bold text-txt-main-yellow">{`ціна за шматок: від ${product.price} грн`}</p>
             <p className="mt-2 text-2xl font-bold text-txt-grey">Шматки вагою від 0.7 до 1.2 кг</p>
-            <div className="flex mt-8">
+            <div className="flex flex-col xl:flex-row gap-4 mt-8 ">
               <Counter
                 initialValue={quantity}
                 size="m"
@@ -79,13 +86,17 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
                 onChange={(value) => setQuantity(value)}
               />
               {isProductInCart ? (
-                <ButtonMain style="redLarge" btnClass="ml-14" onClick={() => ordersStore.deleteProduct(product.name)}>
+                <ButtonMain
+                  style="redLarge"
+                  btnClass="ml-0 xl:ml-14"
+                  onClick={() => ordersStore.deleteProduct(product.name)}
+                >
                   Видалити з кошика
                 </ButtonMain>
               ) : (
                 <ButtonMain
                   style="redLarge"
-                  btnClass="ml-14"
+                  btnClass="ml-0 xl:ml-14"
                   onClick={() => ordersStore.addToCart(product, quantity)}
                   disabled={!isQuantityNotNull}
                 >

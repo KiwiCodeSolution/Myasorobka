@@ -20,10 +20,10 @@ const BasePopup = ({
       closeByPressEsc={closeByPressEsc}
       overlayStyles="bg-[#000000aa]"
     >
-      <div className="w-[640px]  rounded-3xl overflow-hidden bg-bg-black">
+      <div className="w-[320px] xl:w-[640px] rounded-3xl overflow-hidden bg-bg-black shadow-popups">
         {/* ------------------------POPUP HEADER------------------------ */}
 
-        <div className="relative w-full h-[74px] ">
+        <div className="relative w-full h-[74px]">
           {onPrevBtnClick && (
             <button
               type="button"
@@ -53,7 +53,7 @@ const BasePopup = ({
           <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#ACACAC00] via-[#EB1A1A] to-[#ACACAC00]"></div>
         </div>
         {/* ------------------------POPUP BODY------------------------ */}
-        <div className="px-8 py-6 ">{children}</div>
+        <div className="px-8 py-6">{children}</div>
       </div>
     </PopupOverlay>
   );

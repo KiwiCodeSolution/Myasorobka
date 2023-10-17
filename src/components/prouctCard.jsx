@@ -14,8 +14,9 @@ import ordersStore from "../store/orders";
 import productStore from "../store/products";
 
 const ProductCard = observer(({ product }) => {
-  console.log(product.images[0]);
   const [isProductDetailInfoCardShown, setIsProductDetailInfoCardShown] = useState(false);
+  const isProductInCart = ordersStore.checkProductInCart(product);
+
   const [qttyBtn, setQttyBtn] = useState(1);
   const [popUpIsOpened, setPopUpIsOpened] = useState(false);
   const { pathname } = useLocation();
@@ -101,9 +102,15 @@ const ProductCard = observer(({ product }) => {
         <>
           <RoundNumbers activeBtn={qttyBtn} setQtty={setQttyBtn} />
           <div className="flex justify-center">
-            <ButtonMain style={"addToCart"} clickFn={addToCart}>
-              Додати у кошик
-            </ButtonMain>
+            {isProductInCart ? (
+              <ButtonMain style={"addToCart"} clickFn={() => ordersStore.deleteProduct(product.name)}>
+                Видалити з кошика
+              </ButtonMain>
+            ) : (
+              <ButtonMain style={"addToCart"} clickFn={addToCart}>
+                Додати у кошик
+              </ButtonMain>
+            )}
           </div>
         </>
       )}

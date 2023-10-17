@@ -9,7 +9,9 @@ import ProductCard from "./prouctCard";
 import productStore from "../store/products";
 
 const FavouriteProductSwiper = observer(() => {
-  const favouriteProducts = productStore.products.filter((product) => product.favourite === true);
+  const favouriteProducts = productStore.products.filter(
+    (product) => product.favourite === true
+  );
 
   return (
     <div className="w-full py-4 relative mx-auto favourite">
@@ -38,7 +40,7 @@ const FavouriteProductSwiper = observer(() => {
           }}
         >
           {favouriteProducts.map((product) => (
-            <SwiperSlide key={product.name}>
+            <SwiperSlide key={product.name} className="mx-auto">
               <ProductCard product={product} />
             </SwiperSlide>
           ))}
@@ -48,7 +50,7 @@ const FavouriteProductSwiper = observer(() => {
         <button className="fav-button-prev hover:shadow-swiper focus:shadow-swiper">
           <icons.Left />
         </button>
-        <div className="fav-pagination flex justify-center gap-x-4 w-[200px] h-full "></div>
+        <div className="fav-pagination flex justify-center gap-x-4 mx-6 w-[200px] h-full "></div>
         <button className="fav-button-next hover:shadow-swiper focus:shadow-swiper">
           <icons.Right />
         </button>
