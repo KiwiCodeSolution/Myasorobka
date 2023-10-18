@@ -14,9 +14,9 @@ import ordersStore from "../store/orders";
 import productStore from "../store/products";
 
 const ProductCard = observer(({ product }) => {
-  const [isProductDetailInfoCardShown, setIsProductDetailInfoCardShown] =
-    useState(false);
+  const [isProductDetailInfoCardShown, setIsProductDetailInfoCardShown] = useState(false);
   const isProductInCart = ordersStore.checkProductInCart(product);
+
   const [qttyBtn, setQttyBtn] = useState(1);
   const [popUpIsOpened, setPopUpIsOpened] = useState(false);
   const { pathname } = useLocation();
@@ -94,10 +94,7 @@ const ProductCard = observer(({ product }) => {
           >
             <FavouriteIcon filled={product.favourite} />
           </button>
-          <button
-            className="absolute top-3 right-6 w-6 h-6 bg-bg-black rounded"
-            onClick={() => setPopUpIsOpened(true)}
-          >
+          <button className="absolute top-3 right-6 w-6 h-6 bg-bg-black rounded" onClick={() => setPopUpIsOpened(true)}>
             <Trash />
           </button>
         </>
@@ -106,10 +103,7 @@ const ProductCard = observer(({ product }) => {
           <RoundNumbers activeBtn={qttyBtn} setQtty={setQttyBtn} />
           <div className="flex justify-center">
             {isProductInCart ? (
-              <ButtonMain
-                style={"addToCart"}
-                clickFn={() => ordersStore.deleteProduct(product.name)}
-              >
+              <ButtonMain style={"addToCart"} clickFn={() => ordersStore.deleteProduct(product.name)}>
                 Видалити з кошика
               </ButtonMain>
             ) : (
@@ -131,8 +125,7 @@ const ProductCard = observer(({ product }) => {
           <div className="mt-[78px] text-txt-main-white mb-[52px]">
             <p className="text-[32px] mb-4">Ви впевнені що хочете видалити?</p>
             <p className="text-sm text-white">
-              * Видалення картки з товаром видалить всі додані зображення та
-              інформацію без можливості поверння.
+              * Видалення картки з товаром видалить всі додані зображення та інформацію без можливості поверння.
             </p>
           </div>
         </ConfirmPopup>
