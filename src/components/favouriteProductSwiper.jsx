@@ -45,11 +45,11 @@ const FavouriteProductSwiper = observer(() => {
         </Swiper>
       </>
       <div className="w-full mt-8 relative mx-auto flex justify-center items-center">
-        <button className="fav-button-prev hover:shadow-swiper focus:shadow-swiper">
+        <button className="fav-button-prev hover:shadow-swiper">
           <icons.Left />
         </button>
         <div className="fav-pagination flex justify-center gap-x-4 mx-6 w-[200px] h-full "></div>
-        <button className="fav-button-next hover:shadow-swiper focus:shadow-swiper">
+        <button className="fav-button-next hover:shadow-swiper">
           <icons.Right />
         </button>
       </div>

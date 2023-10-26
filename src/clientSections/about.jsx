@@ -1,6 +1,8 @@
 import * as icons from "../icons/iconComponent";
 import leftImg from "../images/spice.png";
 import logo from "../images/logo.png";
+import { MTitle } from "../components/Title";
+import { titleAnimation } from "../helpers/stylesHelpers";
 
 const About = () => {
   return (
@@ -10,9 +12,12 @@ const About = () => {
         <img
           src={logo}
           alt="logo"
-          className="hidden w-[200px] h-[200px] md:inline md:absolute top-[50px] right-[45px]"
+          className="hidden w-[200px] h-[220px] md:inline md:absolute top-[50px] right-[45px]"
         />
-        <h2 className="text-4xl font-bold text-txt-main-white pt-14 mb-10">Трохи про М&apos;ясорОбку</h2>
+        <MTitle tClass="pt-14 mb-10" type="white" variants={titleAnimation} initial="hidden" whileInView="visible">
+          Трохи про М&apos;ясорОбку
+        </MTitle>
+        <h2 className="text-4xl font-bold text-txt-main-white "></h2>
         <div className="flex flex-col gap-y-6">
           <div className="bg-bg-orange max-w-[420px] rounded-3xl md:absolute top-[176px] left-[10px] md:left-[120px] py-3 px-5">
             <div className="flex justify-center">

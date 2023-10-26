@@ -54,9 +54,21 @@ export default {
             transform: "translateY(40px) rotate(180deg)",
           },
         },
+        ripple: {
+          "0%": {
+            boxShadow: " 0 0 0 0 rgba(210,28,28,0.6)",
+          },
+          "60%": {
+            boxShadow: "0 0 0 20px rgba(210,28,28,0)",
+          },
+          "100%": {
+            boxShadow: "0 0 0 0 rgba(210,28,28,0)",
+          },
+        },
       },
       animation: {
         rotate: "rotate 1s forwards",
+        ripple: "ripple 2s ease-in-out infinite",
       },
       transitionDuration: {
         250: "250ms",

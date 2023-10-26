@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+
 import { observer } from "mobx-react-lite";
 import productStore from "../store/products";
 import ProductList from "../components/productList";
@@ -6,7 +7,8 @@ import Categories from "../components/categories";
 import meat from "../images/meat.png";
 import meatSm from "../images/meat-small.png";
 import meatNext from "../images/meat_1.png";
-import Title from "../components/Title";
+import { MTitle } from "../components/Title";
+import { titleAnimation } from "../helpers/stylesHelpers";
 
 const Products = observer(() => {
   useEffect(() => {
@@ -17,12 +19,14 @@ const Products = observer(() => {
     <>
       <div className="pt-8 bg-bg-black" id="shop">
         <div className="max-w-[1440px] mx-auto px-[10px] pt-5">
-          <Title style={"mb-5"} type="white">
+          <MTitle tClass="mb-5" type="white" variants={titleAnimation} initial="hidden" whileInView="visible">
             Категорії товарів
-          </Title>
+          </MTitle>
 
           <Categories products={productStore.products} section={"client"} />
-          <Title type="white">Всі категорії</Title>
+          <MTitle type="white" variants={titleAnimation} initial="hidden" whileInView="visible">
+            Всі категорії
+          </MTitle>
         </div>
       </div>
       <div className="bg-bg-black bg-products bg-no-repeat bg-cover bg-top relative">

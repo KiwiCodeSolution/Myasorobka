@@ -13,7 +13,7 @@ const Discount = () => {
             Наш консультант підкаже, яке м&apos;ясо підійде Вам як найкраще. <br />
             Не зволікайте - замовляйте вже зараз.
           </p>
-          <ButtonMain style="redLarge" clickFn={scrollToTProducts}>
+          <ButtonMain style="redOrder" clickFn={scrollToTProducts}>
             Замовити смаколики
           </ButtonMain>
         </div>

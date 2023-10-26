@@ -22,7 +22,7 @@ const buttonsStyle = {
   transparent:
     "min-w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-btnWhiteS focus:shadow-btnWhiteS mx-auto",
   redOrder:
-    "bg-bg-red w-[300px] py-[14px] text-3xl font-bold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto disabled:opacity-50 disabled:hover:shadow-none",
+    "bg-bg-red min-w-[300px] px-5 py-[14px] text-3xl font-bold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto disabled:opacity-50 disabled:hover:shadow-none transition-all ease-linear animate-ripple hover:animate-none",
 };
 
 const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass, ...restProps }) => {

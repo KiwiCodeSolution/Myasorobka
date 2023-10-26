@@ -60,9 +60,15 @@
     padding-bottom: 24px;
     max-width: 1200px;
   }
+
   .categories .swiper-wrapper {
     margin: 0 auto;
   }
+
+  /* .product .swiper-wrapper {
+    display: flex;
+    justify-content: center;
+  } */
 
   .admin-product .swiper {
     max-width: 1200px;
