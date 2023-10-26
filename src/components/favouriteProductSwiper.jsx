@@ -9,9 +9,7 @@ import ProductCard from "./prouctCard";
 import productStore from "../store/products";
 
 const FavouriteProductSwiper = observer(() => {
-  const favouriteProducts = productStore.products.filter(
-    (product) => product.favourite === true
-  );
+  const favouriteProducts = productStore.products.filter((product) => product.favourite === true);
 
   return (
     <div className="w-full py-4 relative mx-auto favourite">

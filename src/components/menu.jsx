@@ -16,7 +16,10 @@ const Menu = ({ section, styles }) => {
     >
       {NAV_ELEMENTS.map((el) => (
         <li key={el.name}>
-          <a href={el.linkId} className="cursor-pointer text-xl hover:text-txt-main-yellow focus:text-txt-main-yellow">
+          <a
+            href={el.linkId}
+            className="cursor-pointer text-2xl font-bold hover:text-txt-main-yellow focus:text-txt-main-yellow"
+          >
             {el.name}
           </a>
         </li>

@@ -60,6 +60,10 @@
     padding-bottom: 24px;
     max-width: 1200px;
   }
+  .categories .swiper-wrapper {
+    margin: 0 auto;
+  }
+
   .admin-product .swiper {
     max-width: 1200px;
   }

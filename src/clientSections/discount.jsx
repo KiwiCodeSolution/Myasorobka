@@ -10,8 +10,8 @@ const Discount = () => {
             Отримай знижку <span className="text-txt-marine">5% </span>на третє замовлення
           </h3>
           <p className="text-xl mb-10 lg:mb-16">
-            Наш консультант підкаже яке м&apos;ясо підійде вам як найкраще. <br />
-            Не зволікай - заявку залишай!
+            Наш консультант підкаже, яке м&apos;ясо підійде Вам як найкраще. <br />
+            Не зволікайте - замовляйте вже зараз.
           </p>
           <ButtonMain style="redLarge" clickFn={scrollToTProducts}>
             Замовити смаколики
