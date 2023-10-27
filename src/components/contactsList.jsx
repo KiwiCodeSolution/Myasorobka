@@ -2,11 +2,11 @@ const TEL_NUMBERS = [{ id: "+380951166712", number: "+380 95 116 67 12" }];
 
 const styleContactsTitle = "text-2xl text-txt-main-yellow leading-[1.6] flex flex-col gap-y-2";
 const styleContactsText = "text-base text-txt-main-white opacity-[0.6]";
-const styleContactsEffect = "hover:text-txt-main-yellow focus:text-txt-main-yellow";
+const styleContactsEffect = "hover:text-txt-main-yellow";
 
 const ContactList = () => {
   return (
-    <ul className="flex flex-col lg:flex-row lg:flex-wrap gap-x-8 w-[300px] md:w-[450px] lg:w-[500px] xl:min-w-[600px] mx-auto justify-between">
+    <ul className="flex flex-col lg:flex-row lg:flex-wrap gap-x-8 md:w-[450px] lg:w-[500px] xl:min-w-[600px] mx-auto justify-between">
       <li className={`${styleContactsTitle} min-w-[110px]`}>
         Телефон
         {TEL_NUMBERS.map((tel) => (

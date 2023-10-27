@@ -1,24 +1,30 @@
 import hotPepper from "../images/hot-pepper_1.png";
 import rosemary from "../images/rosemary-big.png";
 import ReviewCard from "../components/reviewCard";
+import { MTitle } from "../components/Title";
+import Sofia from "../images/Sofia.jpg";
+import Dmytro from "../images/Dmytro.jpg";
+import Volodymyr from "../images/Volodymyr.jpg";
+import { titleAnimation } from "../helpers/stylesHelpers";
 
 const REVIEWS = [
   {
-    name: "Сергій Ковалевський",
-    photo:
-      "https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=",
-    text: "Я вже довгий час користуюся цим інтернет-магазином м'ясних виробів і дуже задоволений їхньою послугою. М'ясо завжди свіже, якісне і добре упаковане. Великий вибір продукції і зручне онлайн-замовлення роблять процес покупок дуже простим і зручним. Рекомендую!",
+    id: 1,
+    name: "Володимир Зміївський",
+    photo: Volodymyr,
+    text: "Замовляв котлети для бургерів, бо часто завантажений на роботі і дуже люблю перекуси у обідню перерву. Курячі котлети від М’ясоробки - це тепер незамінний продукт у моїй морозилці)",
   },
   {
-    name: "Андрій Хотицький",
-    photo: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    text: "М'ясоробка - це справжня знахідка для гурманів. Їхні продукти відмінної якості і смаку. Великий вибір м'яса, делікатесів і готових страв завжди задовольняє мої кулінарні потреби. Доставка завжди вчасна і з хорошою упаковкою. Я дуже задоволений цим магазином!",
+    id: 2,
+    name: "Софія Тарамали",
+    photo: Sofia,
+    text: "Вперше замовляла у М’ясоробці снеки для свого друга, коли той був на передовій. Дуже вдячна власнику Євгену за допомогу у транспортуванні та пакуванні. Окремо вдячні за презент для нього у вигляді смачних кабанос, бригада була задоволена - зберігається довго, та щей смачне!",
   },
   {
-    name: "Олександр Мех",
-    photo:
-      "https://media.istockphoto.com/id/1045886560/photo/portrait-of-smiling-handsome-man-in-blue-t-shirt-standing-with-crossed-arms-isolated-on-grey.jpg?s=612x612&w=0&k=20&c=TX1-1UJ3PKonFEmgs_WDZf7wtfqKVMHYjeRaYjaZ1Rc=",
-    text: "М'ясоробка - мій улюблений вибір, коли йдеться про покупку якісного м'яса. Їхні продукти завжди свіжі, а якість бездоганна. Персонал магазину завжди ввічливий і готовий допомогти з будь-якими питаннями. Я регулярно замовляю у них і завжди залишаюся задоволеним.",
+    id: 3,
+    name: "Панасенко Дмитро",
+    photo: Dmytro,
+    text: "Я займаюся важкою атлетикою, тому завжди “набираю” масу. З того часу як знайшов М'ясоробку - раціон став набагато смачніший, не кажучи вже що навіть мій дієтолог “присів” на їх продукцію)",
   },
 ];
 
@@ -27,7 +33,10 @@ const Review = () => {
     <div className="bg-bg-white min-h-[530px] pt-10 pb-14 relative">
       <img src={hotPepper} alt="hot pepper" className="absolute top-[-40px] right-0" />
       <div className="max-w-[1440px] mx-auto px-[10px] relative">
-        <h2 className="text-4xl font-bold text-txt-main-black mb-20">Відгуки про нашу працю</h2>
+        <MTitle tClass="mb-20" type="black" variants={titleAnimation} initial="hidden" whileInView="visible">
+          Відгуки про нашу працю
+        </MTitle>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 justify-between">
           {REVIEWS.map((review) => (
             <ReviewCard review={review} key={review.name} />

@@ -23,7 +23,7 @@ export default {
         "bg-light-orange": "#D09E32",
       },
       fontFamily: {
-        basic: "Roboto, sans-serif",
+        basic: "Jura, sans-serif",
         review: "Nunito, sans-serif",
       },
       backgroundImage: {
@@ -37,7 +37,7 @@ export default {
         btnRedS: "0 0 4px 4px rgba(210,28,28,0.4)",
         btnBlack: "0 0 14px 14px rgba(40,40,40,0.4)",
         btnBlackSmall: "0 0 6px 6px rgba(40,40,40,0.4)",
-        btnWhite: "0 0 14px 14px rgba(255,245,218,0.4)",
+        btnWhite: "0 0 14px 8px rgba(255,245,218,0.4)",
         btnWhiteS: "0 0 4px 4px rgba(255,245,218,0.4)",
         swiper: "0 0 5px 5px rgba(255,245,218,0.4)",
         popups: "4px 4px 5px 2px rgba(5,0,0, 0.5)",
@@ -54,9 +54,21 @@ export default {
             transform: "translateY(40px) rotate(180deg)",
           },
         },
+        ripple: {
+          "0%": {
+            boxShadow: " 0 0 0 0 rgba(210,28,28,0.6)",
+          },
+          "60%": {
+            boxShadow: "0 0 0 20px rgba(210,28,28,0)",
+          },
+          "100%": {
+            boxShadow: "0 0 0 0 rgba(210,28,28,0)",
+          },
+        },
       },
       animation: {
         rotate: "rotate 1s forwards",
+        ripple: "ripple 2s ease-in-out infinite",
       },
       transitionDuration: {
         250: "250ms",

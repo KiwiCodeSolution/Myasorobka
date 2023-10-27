@@ -18,9 +18,11 @@ const buttonsStyle = {
   whiteSmall:
     "bg-bg-white w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-black border border-2 border-bg-black hover:shadow-btnWhite focus:shadow-btnWhite mx-auto",
   redCustom:
-    "hidden lg:inline bg-bg-red w-[240px] h-[38px] py-2 text-base font-medium text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto",
+    "hidden lg:inline bg-bg-red w-[240px] py-2 text-xl font-medium text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto",
   transparent:
     "min-w-[140px] h-[32px] py-1 text-base font-semibold text-txt-main-white border border-2 border-bg-white hover:shadow-btnWhiteS focus:shadow-btnWhiteS mx-auto",
+  redOrder:
+    "bg-bg-red min-w-[300px] px-5 py-[14px] text-3xl font-bold text-txt-main-white hover:shadow-btnRed focus:shadow-btnRed mx-auto disabled:opacity-50 disabled:hover:shadow-none transition-all ease-linear animate-ripple hover:animate-none",
 };
 
 const ButtonMain = ({ children, style, btnType, icon, clickFn, btnClass, ...restProps }) => {
@@ -50,6 +52,7 @@ ButtonMain.propTypes = {
     "redCustom",
     "categoriesBtn",
     "transparent",
+    "redOrder",
   ]).isRequired,
   btnType: PropTypes.string,
   icon: PropTypes.element,

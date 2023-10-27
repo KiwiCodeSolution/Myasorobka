@@ -25,10 +25,7 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
 
   return (
     <PopupOverlay onClose={onClose} closeByPressEsc overlayStyles="bg-[rgb(0,0,0,0.3)] overflow-x-auto">
-      <div
-        className="w-[320px] xl:max-w-[1360px] max-h-[720px] xl:h-[720px] rounded-3xl overflow-hidden 
-      bg-bg-black overflow-y-auto shadow-popups "
-      >
+      <div className="w-70 md:w-full xl:w-5/6 max-w-full xl:max-w-1/3 h-screen md:h-screen xl:h-[720px] rounded-3xl bg-bg-black overflow-y-auto shadow-popups p-10 mx-auto">
         {/* ------------------------POPUP HEADER------------------------ */}
 
         <div className="relative w-full h-[74px]">

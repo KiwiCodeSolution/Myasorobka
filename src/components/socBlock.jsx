@@ -9,15 +9,19 @@ const SOC_ELEMENTS = [
 
 export const SocialLinksBlock = ({ section }) => (
   <ul
-    className={`flex ${
-      section === "header"
-        ? "absolute flex-row gap-x-5 bottom-[25px] lg:flex-col lg:gap-y-6 md:bottom-[65px] lg:bottom-[85px] left-[70px]"
-        : "flex-row gap-x-5 justify-between"
+    className={` ${
+      section === "header" ? "hidden xl:flex flex-col gap-y-6 fixed top-1/3 left-[2%] -translate-y-1/4 z-20" : "hidden"
+      // "flex flex-row gap-x-5 justify-between"
     } `}
   >
     {SOC_ELEMENTS.map(({ key, Icon, link }) => (
-      <li key={key} className="rounded-full hover:shadow-soc focus:shadow-soc">
-        <a href={link} className="" target="_blank" rel="noreferrer">
+      <li key={key} className="rounded-full ">
+        <a
+          href={link}
+          className="rounded-full bg-bg-light-grey bg-opacity-20 hover:shadow-soc"
+          target="_blank"
+          rel="noreferrer"
+        >
           <Icon />
         </a>
       </li>

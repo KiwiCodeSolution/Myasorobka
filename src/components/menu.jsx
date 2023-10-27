@@ -10,13 +10,18 @@ const NAV_ELEMENTS = [
 const Menu = ({ section, styles }) => {
   return (
     <ul
-      className={`flex ${
-        section === "header" ? "items-center gap-x-3 lg:gap-x-11 h-20" : "flex-col gap-y-2"
+      className={`flex flex-col justify-between ${
+        section === "header"
+          ? "xl:flex-row items-center gap-x-3 lg:gap-x-11 h-20"
+          : "gap-y-3 mb-8 xl:mb-1 w-full xl:w-[160px]"
       } ${styles}`}
     >
       {NAV_ELEMENTS.map((el) => (
-        <li key={el.name}>
-          <a href={el.linkId} className="cursor-pointer text-xl hover:text-txt-main-yellow focus:text-txt-main-yellow">
+        <li key={el.name} className="mx-auto md:ml-0">
+          <a
+            href={el.linkId}
+            className="cursor-pointer text-2xl font-bold hover:text-txt-main-yellow focus:text-txt-main-yellow"
+          >
             {el.name}
           </a>
         </li>

@@ -25,8 +25,7 @@ const formFields = [
   {
     name: "delivery_address",
     label: "Адреса доставки вiддiлення Нової Пошти",
-    placeholder:
-      "приклад: м. Харків вул.Пушкінська 79б відділення нової почти №135",
+    placeholder: "приклад: м.Запоріжжя, вул. Шевченка, 1, відділення Нової Пошти №22",
     mask: false,
   },
 ];
@@ -45,10 +44,7 @@ const OrderForm = observer(() => {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit(onFormSubmit)}
-        className="w-full flex flex-col gap-y-8"
-      >
+      <form onSubmit={handleSubmit(onFormSubmit)} className="w-full flex flex-col gap-y-8">
         <ul className="flex flex-col gap-y-4 text-txt-main-white">
           {formFields.map((field) => (
             <li key={field.name} className="">
