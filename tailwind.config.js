@@ -40,7 +40,9 @@ export default {
         btnWhite: "0 0 14px 8px rgba(255,245,218,0.4)",
         btnWhiteS: "0 0 4px 4px rgba(255,245,218,0.4)",
         swiper: "0 0 5px 5px rgba(255,245,218,0.4)",
+        swiperReview: "0 0 5px 5px rgba(249,188,17,0.4)",
         popups: "4px 4px 5px 2px rgba(5,0,0, 0.5)",
+        reviewItem: "0px 56px 80px -16px rgba(219,222,229,0.80)",
       },
       gridTemplateColumns: {
         productItem: "50% 25% 20% 5%",
