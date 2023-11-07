@@ -56,7 +56,7 @@ const Review = () => {
             <button className="review-button-prev hover:shadow-swiperReview">
               <icons.Left />
             </button>
-            <div className="review-pagination flex justify-center gap-x-4 mx-6 w-[200px] h-full "></div>
+            <div className="review-pagination flex justify-center gap-x-4 mx-6 w-[200px] h-full z-20"></div>
             <button className="review-button-next hover:shadow-swiperReview">
               <icons.Right />
             </button>
