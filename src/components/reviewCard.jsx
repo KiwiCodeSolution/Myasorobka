@@ -1,33 +1,23 @@
 import Proptypes from "prop-types";
-import { motion } from "framer-motion";
+
+import Logo from "../images/logo.png";
 
 const ReviewCard = ({ review }) => {
-  const blocAnimation = {
-    hidden: {
-      scale: 0,
-      opacity: 0,
-    },
-    visible: (custom) => ({ scale: 1, opacity: 1, transition: { delay: custom * 0.3, duration: 0.5 } }),
-  };
   return (
-    <motion.div
-      className="max-w-[380px] min-h-[464px] px-4 mx-auto"
-      initial="hidden"
-      whileInView="visible"
-      custom={review.id}
-      variants={blocAnimation}
-    >
+    <div className="w-[300px] md:w-[370px] h-[464px] px-4 pt-4 mx-auto rounded-md shadow-reviewItem pb-8">
       <div className="w-[120px] mx-auto mb-3">
         <img
-          src={review.photo}
+          src={review.photo || Logo}
           alt={`відгук ${review.name}`}
-          className="object-cover w-[120px] h-[120px] rounded-full"
+          className={`object-cover w-[120px] h-[120px]
+            ${review.photo ? "rounded-full" : ""} 
+          `}
         />
       </div>
 
-      <p className="text-center text-xl font-semibold mb-3">{review.name}</p>
+      <p className="text-center text-xl font-semibold mb-3">{review.name || "Анонімний відгук"}</p>
       <p className="text-center text-xl font-review">{review.text}</p>
-    </motion.div>
+    </div>
   );
 };
 
