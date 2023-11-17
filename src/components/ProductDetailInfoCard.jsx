@@ -72,8 +72,8 @@ const ProductDetailInfoCard = observer(({ product, productQuantity, onClose, onP
           </div>
           <div className="flex flex-col max-w-[300px] xl:max-w-[55%] h-full">
             <h1 className="text-3xl font-bold">{product.name}</h1>
-            <p className="mt-2 text-2xl font-bold text-txt-main-yellow">{`ціна за шматок: від ${product.price} грн`}</p>
-            <p className="mt-2 text-2xl font-bold text-txt-grey">Шматки вагою від 0.7 до 1.2 кг</p>
+            <p className="mt-2 text-2xl font-bold text-txt-main-yellow">{`ціна за упаковку: від ${product.price} грн`}</p>
+            <p className="mt-2 text-2xl font-bold text-txt-grey">упаковка вагою від 100г </p>
             <div className="flex flex-col xl:flex-row gap-4 mt-8 ">
               <Counter
                 initialValue={quantity}
