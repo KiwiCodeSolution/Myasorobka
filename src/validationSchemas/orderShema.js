@@ -14,8 +14,8 @@ const orderShema = Yup.object({
     ),
   delivery_address: Yup.string()
     .required(constants.REQUIRED_FIELD)
-    .min(20, "Довжина поля має бути не менше 20 символів.")
-    .max(100, "Довжина поля має бути не більше 100 символів."),
+    .min(5, "Довжина поля має бути не менше 5 символів.")
+    .max(300, "Довжина поля має бути не більше 300 символів."),
 });
 
 export default orderShema;
