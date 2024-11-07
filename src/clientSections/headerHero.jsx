@@ -17,7 +17,7 @@ const HeaderHero = () => {
       transition: { delay: custom * 0.4, duration: 0.7 },
     }),
   };
-
+  
   return (
     <div className="bg-hero bg-no-repeat bg-cover min-h-[764px] text-txt-main-white relative">
       <div className="max-w-[1440px] mx-auto px-[10px]">

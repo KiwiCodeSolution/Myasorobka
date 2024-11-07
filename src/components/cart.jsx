@@ -1,8 +1,6 @@
-import Proptypes from "prop-types";
-
 import * as icons from "../icons/iconComponent";
 import { observer } from "mobx-react-lite";
-import { toJS } from "mobx";
+// import { toJS } from "mobx";
 import ordersStore from "../store/orders";
 
 const Cart = observer(({ onClick }) => {
@@ -24,9 +22,5 @@ const Cart = observer(({ onClick }) => {
     </button>
   );
 });
-
-Cart.propTypes = {
-  onClick: Proptypes.func.isRequired,
-};
 
 export default Cart;

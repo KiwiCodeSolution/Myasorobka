@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// import Proptypes from "prop-types";
 
 import CartProductItem from "./CartProductItem";
 
