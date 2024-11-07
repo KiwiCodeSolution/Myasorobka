@@ -22,18 +22,7 @@ const HeaderHero = () => {
     <div className="bg-hero bg-no-repeat bg-cover min-h-[764px] text-txt-main-white relative">
       <div className="max-w-[1440px] mx-auto px-[10px]">
         <Header />
-        <motion.p
-          initial="hidden"
-          whileInView="visible"
-          custom={1}
-          variants={textAnimation}
-          className="mt-[50px] xl:mt-8 ml-0 lg:ml-[142px] max-w-[950px] text-[46px] lg:text-[56px] font-bold leading-tight"
-        >
-          М&apos;ясорОбка: про смак та якість{" "}
-          <span className="text-txt-main-yellow">
-            ми подбали, <span className="text-txt-main-white">а </span> Ви - придбали!
-          </span>
-        </motion.p>
+
         <motion.p
           initial="hidden"
           whileInView="visible"

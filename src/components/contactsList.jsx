@@ -1,4 +1,4 @@
-const TEL_NUMBERS = [{ id: "+380951166712", number: "+380 95 116 67 12" }];
+const TEL_NUMBERS = [{ id: "+38669996046", number: "+380 66 999 60 46" }];
 
 const styleContactsTitle = "text-2xl text-txt-main-yellow leading-[1.6] flex flex-col gap-y-2";
 const styleContactsText = "text-base text-txt-main-white opacity-[0.6]";
